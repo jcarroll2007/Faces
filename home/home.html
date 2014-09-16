@@ -1,8 +1,8 @@
-<script src="/home/home.js"></script>
+<div id="user-credentials">
+	<input ng-model="username" placeholder="Username" id="username-input" class="form-control">
+	<input ng-model="password" placeholder="Password" type="password" id="password-input" class="form-control">
+</div>
 
-<div ng-app="FacesHome"> 
-	<div test-dir></div>
-	<div ng-controller="HomeCtrl">
-		{{ welcome_message }}
-	</div>
+<div id="home-buttons-container">
+	<button ng-click="sign_in()" class="btn btn-default btn-lg faces-button">Sign In</button>
 </div>
