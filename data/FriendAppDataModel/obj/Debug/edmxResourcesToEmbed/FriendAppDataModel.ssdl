@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FriendAppDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FriendAppDataModelStoreContainer">
+    <EntitySet Name="Users" EntityType="FriendAppDataModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Friends" EntityType="FriendAppDataModel.Store.Friends" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Walls" EntityType="FriendAppDataModel.Store.Walls" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tags" EntityType="FriendAppDataModel.Store.Tags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WallPostTagsTables" EntityType="FriendAppDataModel.Store.WallPostTagsTables" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserTags" EntityType="FriendAppDataModel.Store.UserTags" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserFriends" Association="FriendAppDataModel.Store.UserFriends">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="UserFriends1" Association="FriendAppDataModel.Store.UserFriends1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTags_User" Association="FriendAppDataModel.Store.FK_UserTags_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserTags" EntitySet="UserTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserTags_Tags" Association="FriendAppDataModel.Store.FK_UserTags_Tags">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="UserTags" EntitySet="UserTags" />
+    </AssociationSet>
+    <AssociationSet Name="UserWall" Association="FriendAppDataModel.Store.UserWall">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Wall" EntitySet="Walls" />
+    </AssociationSet>
+    <AssociationSet Name="PostTags" Association="FriendAppDataModel.Store.PostTags">
+      <End Role="Wall" EntitySet="Walls" />
+      <End Role="WallPostTagsTable" EntitySet="WallPostTagsTables" />
+    </AssociationSet>
+    <AssociationSet Name="WallPost" Association="FriendAppDataModel.Store.WallPost">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="WallPostTagsTable" EntitySet="WallPostTagsTables" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProfilePicture" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Friends">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FriendId" Type="int" Nullable="false" />
+    <Property Name="RequestTime" Type="datetime" Nullable="false" />
+    <Property Name="CompletedRequest" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Walls">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Picture" Type="varbinary(max)" Nullable="false" />
+    <Property Name="PostTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WallPostTagsTables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WallId" Type="int" Nullable="false" />
+    <Property Name="TagsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTags">
+    <Key>
+      <PropertyRef Name="Users_Id" />
+      <PropertyRef Name="Tags_Id" />
+    </Key>
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+    <Property Name="Tags_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserFriends">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="Friends" Type="FriendAppDataModel.Store.Friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserFriends1">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="Friends" Type="FriendAppDataModel.Store.Friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="FriendId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserWall">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="Wall" Type="FriendAppDataModel.Store.Walls" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Wall">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PostTags">
+    <End Role="Wall" Type="FriendAppDataModel.Store.Walls" Multiplicity="1" />
+    <End Role="WallPostTagsTable" Type="FriendAppDataModel.Store.WallPostTagsTables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wall">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WallPostTagsTable">
+        <PropertyRef Name="WallId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WallPost">
+    <End Role="Tags" Type="FriendAppDataModel.Store.Tags" Multiplicity="1" />
+    <End Role="WallPostTagsTable" Type="FriendAppDataModel.Store.WallPostTagsTables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WallPostTagsTable">
+        <PropertyRef Name="TagsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTags_User">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="UserTags" Type="FriendAppDataModel.Store.UserTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserTags">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserTags_Tags">
+    <End Role="UserTags" Type="FriendAppDataModel.Store.UserTags" Multiplicity="*" />
+    <End Role="Tags" Type="FriendAppDataModel.Store.Tags" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserTags">
+        <PropertyRef Name="Tags_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faces", "Faces\Faces.csproj", "{D0DD3030-4CE0-4EF1-9DE6-06F2D53D1837}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendAppDataModel", "FriendAppDataModel\FriendAppDataModel.csproj", "{D47D830F-1FBB-4139-AE79-EAE729C8C148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendAppDataRepository", "FriendAppDataRepository\FriendAppDataRepository.csproj", "{24AD7C13-8E17-4DA0-8390-55A45891D736}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0DD3030-4CE0-4EF1-9DE6-06F2D53D1837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0DD3030-4CE0-4EF1-9DE6-06F2D53D1837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0DD3030-4CE0-4EF1-9DE6-06F2D53D1837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0DD3030-4CE0-4EF1-9DE6-06F2D53D1837}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47D830F-1FBB-4139-AE79-EAE729C8C148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47D830F-1FBB-4139-AE79-EAE729C8C148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47D830F-1FBB-4139-AE79-EAE729C8C148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47D830F-1FBB-4139-AE79-EAE729C8C148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24AD7C13-8E17-4DA0-8390-55A45891D736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24AD7C13-8E17-4DA0-8390-55A45891D736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24AD7C13-8E17-4DA0-8390-55A45891D736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24AD7C13-8E17-4DA0-8390-55A45891D736}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\bin\Debug\FriendAppDataRepository.dll.config
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\bin\Debug\FriendAppDataRepository.dll
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\bin\Debug\FriendAppDataRepository.pdb
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\bin\Debug\EntityFramework.dll
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\bin\Debug\EntityFramework.xml
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.csprojResolveAssemblyReference.cache
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.dll
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.pdb

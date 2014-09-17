@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FriendAppDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="FriendAppDataModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="FriendAppDataModel.User" />
+    <EntitySet Name="Friends" EntityType="FriendAppDataModel.Friends" />
+    <AssociationSet Name="UserFriends" Association="FriendAppDataModel.UserFriends">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="UserFriends1" Association="FriendAppDataModel.UserFriends1">
+      <End EntitySet="Users" Role="User" />
+      <End EntitySet="Friends" Role="Friends" />
+    </AssociationSet>
+    <EntitySet Name="Walls" EntityType="FriendAppDataModel.Wall" />
+    <EntitySet Name="Tags" EntityType="FriendAppDataModel.Tags" />
+    <AssociationSet Name="UserTags" Association="FriendAppDataModel.UserTags">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="UserWall" Association="FriendAppDataModel.UserWall">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Wall" EntitySet="Walls" />
+    </AssociationSet>
+    <EntitySet Name="WallPostTagsTables" EntityType="FriendAppDataModel.WallPostTagsTable" />
+    <AssociationSet Name="PostTags" Association="FriendAppDataModel.PostTags">
+      <End Role="Wall" EntitySet="Walls" />
+      <End Role="WallPostTagsTable" EntitySet="WallPostTagsTables" />
+    </AssociationSet>
+    <AssociationSet Name="WallPost" Association="FriendAppDataModel.WallPost">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="WallPostTagsTable" EntitySet="WallPostTagsTables" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Friends" Relationship="FriendAppDataModel.UserFriends" FromRole="User" ToRole="Friends" />
+    <NavigationProperty Name="FriendRequest" Relationship="FriendAppDataModel.UserFriends1" FromRole="User" ToRole="Friends" />
+    <Property Name="ProfilePicture" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Tags" Relationship="FriendAppDataModel.UserTags" FromRole="User" ToRole="Tags" />
+    <NavigationProperty Name="Post" Relationship="FriendAppDataModel.UserWall" FromRole="User" ToRole="Wall" />
+  </EntityType>
+  <EntityType Name="Friends">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="FriendAppDataModel.FriendStatus" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="FriendAppDataModel.UserFriends" FromRole="Friends" ToRole="User" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Friend" Relationship="FriendAppDataModel.UserFriends1" FromRole="Friends" ToRole="User" />
+    <Property Name="FriendId" Type="Int32" Nullable="false" />
+    <Property Name="RequestTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompletedRequest" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EnumType Name="FriendStatus">
+    <Member Name="Follower" Value="1" />
+    <Member Name="Friend" Value="2" />
+    <Member Name="Pending" Value="3" />
+    <Member Name="Decline" Value="4" />
+    <Member Name="Blocked" Value="5" />
+  </EnumType>
+  <Association Name="UserFriends">
+    <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
+    <End Type="FriendAppDataModel.Friends" Role="Friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserFriends1">
+    <End Type="FriendAppDataModel.User" Multiplicity="1" Role="User" />
+    <End Type="FriendAppDataModel.Friends" Multiplicity="*" Role="Friends" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="FriendId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Wall">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="User" Relationship="FriendAppDataModel.UserWall" FromRole="Wall" ToRole="User" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PostTags" Relationship="FriendAppDataModel.PostTags" FromRole="Wall" ToRole="WallPostTagsTable" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="FriendAppDataModel.UserTags" FromRole="Tags" ToRole="User" />
+    <NavigationProperty Name="WallPost" Relationship="FriendAppDataModel.WallPost" FromRole="Tags" ToRole="WallPostTagsTable" />
+  </EntityType>
+  <Association Name="UserTags">
+    <End Type="FriendAppDataModel.User" Role="User" Multiplicity="*" />
+    <End Type="FriendAppDataModel.Tags" Role="Tags" Multiplicity="*" />
+  </Association>
+  <Association Name="UserWall">
+    <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
+    <End Type="FriendAppDataModel.Wall" Role="Wall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Wall">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="WallPostTagsTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Wall" Relationship="FriendAppDataModel.PostTags" FromRole="WallPostTagsTable" ToRole="Wall" />
+    <Property Name="WallId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Tag" Relationship="FriendAppDataModel.WallPost" FromRole="WallPostTagsTable" ToRole="Tags" />
+    <Property Name="TagsId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="PostTags">
+    <End Type="FriendAppDataModel.Wall" Role="Wall" Multiplicity="1" />
+    <End Type="FriendAppDataModel.WallPostTagsTable" Role="WallPostTagsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wall">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WallPostTagsTable">
+        <PropertyRef Name="WallId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WallPost">
+    <End Type="FriendAppDataModel.Tags" Role="Tags" Multiplicity="1" />
+    <End Type="FriendAppDataModel.WallPostTagsTable" Role="WallPostTagsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WallPostTagsTable">
+        <PropertyRef Name="TagsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
