@@ -1,0 +1,19 @@
+.faces-btn, .faces-btn:focus {
+	color: #FFFFFF;
+	background-color: #334885;
+	border-color:  rgba(255,255,255,0.3);
+}
+
+.faces-btn:hover {
+	background-color: #1F2B50;
+	color: #FFFFFF;
+	border-color:  rgba(255,255,255,0.3);
+}
+
+body {
+	/* background: url("/home/waterfall.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; */
+}

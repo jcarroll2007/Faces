@@ -6,7 +6,7 @@ app.controller('HomeCtrl', ['$scope',
 
 		$scope.username = "";
 
-		$scope.sign_in = function() {
+		$scope.log_in = function() {
 			alert('You really want to sign in? Too bad.. haven\'t implemented that yet.');
 		};
 }]);
