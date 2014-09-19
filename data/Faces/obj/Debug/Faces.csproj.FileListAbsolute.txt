@@ -36,3 +36,6 @@ C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\Faces\bin\Antlr3.
 C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\Faces\obj\Debug\Faces.csprojResolveAssemblyReference.cache
 C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\Faces\obj\Debug\Faces.dll
 C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\Faces\obj\Debug\Faces.pdb
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\Faces\bin\AutoMapper.Net4.dll
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\Faces\bin\AutoMapper.dll
+C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\Faces\bin\AutoMapper.xml

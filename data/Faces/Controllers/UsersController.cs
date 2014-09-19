@@ -38,15 +38,20 @@ namespace Faces.Controllers
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        public UserModel GetUser(int id)
         {
+            var temp = new UserModel();
+
+
             User user = db.Users.Find(id);
             if (user == null)
             {
-                return NotFound();
+                return null;
             }
+            else
+                temp = ModelFactory.ParseUserEntityToModel(user);
 
-            return Ok(user);
+            return temp;
         }
 
         // PUT: api/Users/5
