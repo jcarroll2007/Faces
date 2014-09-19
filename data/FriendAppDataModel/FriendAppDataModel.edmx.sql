@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/19/2014 09:55:31
+-- Date Created: 09/19/2014 11:41:32
 -- Generated from EDMX file: C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
@@ -38,6 +38,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_WallPost]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[WallPostTagsTables] DROP CONSTRAINT [FK_WallPost];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UserMessage]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Messages] DROP CONSTRAINT [FK_UserMessage];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserMessage1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Messages] DROP CONSTRAINT [FK_UserMessage1];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -58,6 +64,9 @@ GO
 IF OBJECT_ID(N'[dbo].[WallPostTagsTables]', 'U') IS NOT NULL
     DROP TABLE [dbo].[WallPostTagsTables];
 GO
+IF OBJECT_ID(N'[dbo].[Messages]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Messages];
+GO
 IF OBJECT_ID(N'[dbo].[UserTags]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserTags];
 GO
@@ -74,7 +83,7 @@ CREATE TABLE [dbo].[Users] (
     [ProfilePicture] varbinary(max)  NULL,
     [FirstName] nvarchar(max)  NOT NULL,
     [LastName] nvarchar(max)  NOT NULL,
-    [Phone] int  NOT NULL,
+    [Phone] nvarchar(max)  NOT NULL,
     [DateOfBirth] datetime  NOT NULL,
     [City] nvarchar(max)  NOT NULL,
     [AccountType] int  NOT NULL,

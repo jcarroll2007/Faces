@@ -60,7 +60,7 @@
     <Property Name="ProfilePicture" Type="varbinary(max)" Nullable="true" />
     <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Phone" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
     <Property Name="City" Type="nvarchar(max)" Nullable="false" />
     <Property Name="AccountType" Type="int" Nullable="false" />
@@ -289,7 +289,7 @@
           <NavigationProperty Name="Post" Relationship="FriendAppDataModel.UserWall" FromRole="User" ToRole="Wall" />
           <Property Name="FirstName" Type="String" Nullable="false" />
           <Property Name="LastName" Type="String" Nullable="false" />
-          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" />
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
           <Property Name="City" Type="String" Nullable="false" />
           <Property Name="AccountType" Type="Int32" Nullable="false" />
@@ -351,7 +351,7 @@
           <NavigationProperty Name="User" Relationship="FriendAppDataModel.UserWall" FromRole="Wall" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Picture" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
           <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="PostTags" Relationship="FriendAppDataModel.PostTags" FromRole="Wall" ToRole="WallPostTagsTable" />
         </EntityType>

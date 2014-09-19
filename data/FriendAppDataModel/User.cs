@@ -30,7 +30,7 @@ namespace FriendAppDataModel
         public byte[] ProfilePicture { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         public System.DateTime DateOfBirth { get; set; }
         public string City { get; set; }
         public int AccountType { get; set; }
