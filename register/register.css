@@ -13,8 +13,8 @@
 
 #new-user-information-container {
 	display: inline-block;
-	width: 80%;
-	max-width: 40em;
+	width: 90%;
+	max-width: 45em;
 }
 
 #register-controls-container {
@@ -24,8 +24,14 @@
 	text-align: center;
 }
 
-.input-group-addon {
-	min-width: 150px;
+#new-user-information-container .input-group {
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+}
+
+#new-user-information-container .input-group-addon {
+	min-width: 13em;
 }
 
 #register-controls-container.input-group {
