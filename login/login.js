@@ -1,6 +1,6 @@
-var app = angular.module('Faces_Home', []);
+var app = angular.module('Faces_Login', []);
 
-app.controller('HomeCtrl', ['$scope', 'routing', 'URLs',
+app.controller('LoginCtrl', ['$scope', 'routing', 'URLs',
 	function($scope, routing, URLs) {
 
 		$scope.credentials = {
