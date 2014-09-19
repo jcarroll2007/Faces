@@ -13,8 +13,17 @@ namespace Faces.Models
             UserModel userModelTemp = new UserModel();
 
             userModelTemp.Id = entity.Id;
-            userModelTemp.Username = entity.Username;
+            userModelTemp.FirstName = entity.FirstName;
+            userModelTemp.LastName = entity.LastName;
             userModelTemp.Password = entity.Password;
+            userModelTemp.Email = entity.Email;
+            userModelTemp.Phone = entity.Phone;
+            userModelTemp.DateOfBirth = entity.DateOfBirth;
+            userModelTemp.City = entity.City;
+            userModelTemp.State = entity.State;
+            userModelTemp.AccountType = entity.AccountType;
+            userModelTemp.Gender = entity.Gender;
+            userModelTemp.AboutMe = entity.AboutMe;
             
             userModelTemp.ProfilePicture = entity.ProfilePicture;
 
@@ -31,10 +40,25 @@ namespace Faces.Models
         {
             var userEntityTemp = new User();
 
-            userEntityTemp.Username = model.Username;
-            userEntityTemp.Password = model.Password;
             userEntityTemp.Id = model.Id;
+            userEntityTemp.FirstName = model.FirstName;
+            userEntityTemp.LastName = model.LastName;
+            userEntityTemp.Password = model.Password;
+            userEntityTemp.Email = model.Email;
+            userEntityTemp.Phone = model.Phone;
+            userEntityTemp.DateOfBirth = model.DateOfBirth;
+            userEntityTemp.City = model.City;
+            userEntityTemp.State = model.State;
+            userEntityTemp.AccountType = model.AccountType;
+            userEntityTemp.Gender = model.Gender;
+            userEntityTemp.AboutMe = model.AboutMe;
+
             userEntityTemp.ProfilePicture = model.ProfilePicture;
+
+            foreach (var u in model.Friends)
+            {
+                userEntityTemp.Friends.Add(ParseFriendModelToEntiy(u));
+            }
 
             return userEntityTemp;
         }
@@ -47,10 +71,24 @@ namespace Faces.Models
             model.CompletedRequest = entity.CompletedRequest;
 
             model.Id = entity.FriendId;
-            model.Username = entity.Friend.Username;
+            model.Email = entity.Friend.Email;
             model.ProfilePicture = entity.Friend.ProfilePicture;
 
             return model;
+        }
+
+        public static Friends ParseFriendModelToEntiy(FriendModel model)
+        {
+            var entity = new Friends();
+            entity.Status = model.Status;
+            entity.RequestTime = model.RequestTime;
+            entity.CompletedRequest = model.CompletedRequest;
+
+            entity.Id = model.Id;
+            entity.Friend.Email = model.Email;
+            entity.Friend.ProfilePicture = model.ProfilePicture;
+
+            return entity;
         }
 
 

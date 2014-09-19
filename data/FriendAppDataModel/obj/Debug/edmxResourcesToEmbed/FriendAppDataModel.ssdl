@@ -6,6 +6,7 @@
     <EntitySet Name="Walls" EntityType="FriendAppDataModel.Store.Walls" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tags" EntityType="FriendAppDataModel.Store.Tags" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="WallPostTagsTables" EntityType="FriendAppDataModel.Store.WallPostTagsTables" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Messages" EntityType="FriendAppDataModel.Store.Messages" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserTags" EntityType="FriendAppDataModel.Store.UserTags" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserFriends" Association="FriendAppDataModel.Store.UserFriends">
       <End Role="User" EntitySet="Users" />
@@ -35,15 +36,32 @@
       <End Role="Tags" EntitySet="Tags" />
       <End Role="WallPostTagsTable" EntitySet="WallPostTagsTables" />
     </AssociationSet>
+    <AssociationSet Name="UserMessage" Association="FriendAppDataModel.Store.UserMessage">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="UserMessage1" Association="FriendAppDataModel.Store.UserMessage1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ProfilePicture" Type="varbinary(max)" Nullable="true" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="int" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AccountType" Type="int" Nullable="false" />
+    <Property Name="AboutMe" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Friends">
     <Key>
@@ -81,6 +99,16 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="WallId" Type="int" Nullable="false" />
     <Property Name="TagsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeSent" Type="datetime" Nullable="false" />
+    <Property Name="MessageText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FromUserId" Type="int" Nullable="false" />
+    <Property Name="ToUserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UserTags">
     <Key>
@@ -147,6 +175,30 @@
       </Principal>
       <Dependent Role="WallPostTagsTable">
         <PropertyRef Name="TagsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMessage">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="Message" Type="FriendAppDataModel.Store.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="FromUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMessage1">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="Message" Type="FriendAppDataModel.Store.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="ToUserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

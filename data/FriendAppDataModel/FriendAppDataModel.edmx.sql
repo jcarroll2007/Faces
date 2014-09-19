@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/17/2014 15:28:45
--- Generated from EDMX file: C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataModel\FriendAppDataModel.edmx
+-- Date Created: 09/19/2014 09:55:31
+-- Generated from EDMX file: C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -69,9 +69,18 @@ GO
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Username] nvarchar(max)  NOT NULL,
+    [Email] nvarchar(max)  NOT NULL,
     [Password] nvarchar(max)  NOT NULL,
-    [ProfilePicture] varbinary(max)  NULL
+    [ProfilePicture] varbinary(max)  NULL,
+    [FirstName] nvarchar(max)  NOT NULL,
+    [LastName] nvarchar(max)  NOT NULL,
+    [Phone] int  NOT NULL,
+    [DateOfBirth] datetime  NOT NULL,
+    [City] nvarchar(max)  NOT NULL,
+    [AccountType] int  NOT NULL,
+    [AboutMe] nvarchar(max)  NOT NULL,
+    [Gender] nvarchar(max)  NOT NULL,
+    [State] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -109,6 +118,16 @@ CREATE TABLE [dbo].[WallPostTagsTables] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [WallId] int  NOT NULL,
     [TagsId] int  NOT NULL
+);
+GO
+
+-- Creating table 'Messages'
+CREATE TABLE [dbo].[Messages] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [TimeSent] datetime  NOT NULL,
+    [MessageText] nvarchar(max)  NOT NULL,
+    [FromUserId] int  NOT NULL,
+    [ToUserId] int  NOT NULL
 );
 GO
 
@@ -150,6 +169,12 @@ GO
 -- Creating primary key on [Id] in table 'WallPostTagsTables'
 ALTER TABLE [dbo].[WallPostTagsTables]
 ADD CONSTRAINT [PK_WallPostTagsTables]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Messages'
+ALTER TABLE [dbo].[Messages]
+ADD CONSTRAINT [PK_Messages]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -260,6 +285,36 @@ GO
 CREATE INDEX [IX_FK_WallPost]
 ON [dbo].[WallPostTagsTables]
     ([TagsId]);
+GO
+
+-- Creating foreign key on [FromUserId] in table 'Messages'
+ALTER TABLE [dbo].[Messages]
+ADD CONSTRAINT [FK_UserMessage]
+    FOREIGN KEY ([FromUserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserMessage'
+CREATE INDEX [IX_FK_UserMessage]
+ON [dbo].[Messages]
+    ([FromUserId]);
+GO
+
+-- Creating foreign key on [ToUserId] in table 'Messages'
+ALTER TABLE [dbo].[Messages]
+ADD CONSTRAINT [FK_UserMessage1]
+    FOREIGN KEY ([ToUserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserMessage1'
+CREATE INDEX [IX_FK_UserMessage1]
+ON [dbo].[Messages]
+    ([ToUserId]);
 GO
 
 -- --------------------------------------------------

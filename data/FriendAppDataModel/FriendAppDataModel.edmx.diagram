@@ -5,17 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="896eb75c250446a394887196bf35d144" Name="Diagram1" >
-        <EntityTypeShape EntityType="FriendAppDataModel.User" Width="1.5" PointX="0.875" PointY="0.5" />
-        <EntityTypeShape EntityType="FriendAppDataModel.Friends" Width="1.5" PointX="4.5" PointY="0.5" />
+        <EntityTypeShape EntityType="FriendAppDataModel.User" Width="1.5" PointX="2.625" PointY="0.5" />
+        <EntityTypeShape EntityType="FriendAppDataModel.Friends" Width="1.5" PointX="0.5" PointY="0.5" />
         <AssociationConnector Association="FriendAppDataModel.UserFriends" />
         <AssociationConnector Association="FriendAppDataModel.UserFriends1" />
-        <EntityTypeShape EntityType="FriendAppDataModel.Wall" Width="1.5" PointX="1.25" PointY="3.625" />
-        <EntityTypeShape EntityType="FriendAppDataModel.Tags" Width="1.5" PointX="5.125" PointY="4" />
+        <EntityTypeShape EntityType="FriendAppDataModel.Wall" Width="1.5" PointX="4.75" PointY="4.875" />
+        <EntityTypeShape EntityType="FriendAppDataModel.Tags" Width="1.5" PointX="6.875" PointY="2.625" />
         <AssociationConnector Association="FriendAppDataModel.UserTags" />
         <AssociationConnector Association="FriendAppDataModel.UserWall" />
-        <EntityTypeShape EntityType="FriendAppDataModel.WallPostTagsTable" Width="1.5" PointX="3.125" PointY="4.125" />
+        <EntityTypeShape EntityType="FriendAppDataModel.WallPostTagsTable" Width="1.5" PointX="6.875" PointY="5.25" />
         <AssociationConnector Association="FriendAppDataModel.PostTags" />
         <AssociationConnector Association="FriendAppDataModel.WallPost" />
+        <EntityTypeShape EntityType="FriendAppDataModel.Message" Width="1.5" PointX="4.75" PointY="0.625" />
+        <AssociationConnector Association="FriendAppDataModel.UserMessage" />
+        <AssociationConnector Association="FriendAppDataModel.UserMessage1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,3 +8,13 @@ C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataMode
 C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataModel\obj\Debug\FriendAppDataModel.csprojResolveAssemblyReference.cache
 C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataModel\obj\Debug\FriendAppDataModel.dll
 C:\Users\scoobydoo\Documents\Visual Studio 2013\Projects\Faces\FriendAppDataModel\obj\Debug\FriendAppDataModel.pdb
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\FriendAppDataModel.dll.config
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\FriendAppDataModel.dll
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\FriendAppDataModel.pdb
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.dll
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.xml
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.csprojResolveAssemblyReference.cache
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.dll
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.pdb

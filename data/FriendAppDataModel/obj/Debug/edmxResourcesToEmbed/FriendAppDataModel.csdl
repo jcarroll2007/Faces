@@ -30,19 +30,39 @@
       <End Role="Tags" EntitySet="Tags" />
       <End Role="WallPostTagsTable" EntitySet="WallPostTagsTables" />
     </AssociationSet>
+    <EntitySet Name="Messages" EntityType="FriendAppDataModel.Message" />
+    <AssociationSet Name="UserMessage" Association="FriendAppDataModel.UserMessage">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="UserMessage1" Association="FriendAppDataModel.UserMessage1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Friends" Relationship="FriendAppDataModel.UserFriends" FromRole="User" ToRole="Friends" />
     <NavigationProperty Name="FriendRequest" Relationship="FriendAppDataModel.UserFriends1" FromRole="User" ToRole="Friends" />
     <Property Name="ProfilePicture" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Tags" Relationship="FriendAppDataModel.UserTags" FromRole="User" ToRole="Tags" />
     <NavigationProperty Name="Post" Relationship="FriendAppDataModel.UserWall" FromRole="User" ToRole="Wall" />
+    <Property Name="FirstName" Type="String" Nullable="false" />
+    <Property Name="LastName" Type="String" Nullable="false" />
+    <Property Name="Phone" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
+    <Property Name="City" Type="String" Nullable="false" />
+    <Property Name="AccountType" Type="Int32" Nullable="false" />
+    <Property Name="AboutMe" Type="String" Nullable="false" MaxLength="Max" />
+    <Property Name="Gender" Type="String" Nullable="false" />
+    <Property Name="State" Type="String" Nullable="false" />
+    <NavigationProperty Name="SentMessages" Relationship="FriendAppDataModel.UserMessage" FromRole="User" ToRole="Message" />
+    <NavigationProperty Name="receivedMessages" Relationship="FriendAppDataModel.UserMessage1" FromRole="User" ToRole="Message" />
   </EntityType>
   <EntityType Name="Friends">
     <Key>
@@ -157,6 +177,42 @@
       </Principal>
       <Dependent Role="WallPostTagsTable">
         <PropertyRef Name="TagsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimeSent" Type="DateTime" Nullable="false" />
+    <Property Name="MessageText" Type="String" Nullable="false" MaxLength="Max" />
+    <NavigationProperty Name="FromUser" Relationship="FriendAppDataModel.UserMessage" FromRole="Message" ToRole="User" />
+    <Property Name="FromUserId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ToUser" Relationship="FriendAppDataModel.UserMessage1" FromRole="Message" ToRole="User" />
+    <Property Name="ToUserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="UserMessage">
+    <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
+    <End Type="FriendAppDataModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="FromUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMessage1">
+    <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
+    <End Type="FriendAppDataModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="ToUserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
