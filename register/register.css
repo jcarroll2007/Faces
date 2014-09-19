@@ -1,0 +1,35 @@
+.register-input {
+	margin-top: .5em;
+	margin-bottom: .5em;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(255,255,255,.90);
+}
+
+#register-input:focus {
+	background-color: rgba(255,255,255,.95);
+}
+
+#new-user-information-container {
+	display: inline-block;
+	width: 80%;
+	max-width: 40em;
+}
+
+#register-controls-container {
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto; 
+	text-align: center;
+}
+
+.input-group-addon {
+	min-width: 150px;
+}
+
+#register-controls-container.input-group {
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+
