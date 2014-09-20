@@ -16,7 +16,6 @@ namespace FriendAppDataModel
     {
         public Tags()
         {
-            this.Users = new HashSet<User>();
             this.WallPost = new HashSet<WallPostTagsTable>();
         }
     
@@ -24,7 +23,7 @@ namespace FriendAppDataModel
         public string Name { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<WallPostTagsTable> WallPost { get; set; }
+        public virtual SubscribedTags SubscribedTag { get; set; }
     }
 }

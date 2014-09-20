@@ -12,20 +12,12 @@ namespace FriendAppDataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Wall
+    public partial class SubscribedTags
     {
-        public Wall()
-        {
-            this.PostTags = new HashSet<WallPostTagsTable>();
-        }
-    
-        public int Id { get; set; }
+        public int TagId { get; set; }
         public int UserId { get; set; }
-        public string Message { get; set; }
-        public string Picture { get; set; }
-        public System.DateTime PostTime { get; set; }
     
         public virtual User User { get; set; }
-        public virtual ICollection<WallPostTagsTable> PostTags { get; set; }
+        public virtual Tags Tag { get; set; }
     }
 }
