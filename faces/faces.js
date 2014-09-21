@@ -1,4 +1,4 @@
-var app = angular.module('Faces', ['ngRoute', 'Faces_Login', 'Faces_Register']);
+var app = angular.module('Faces', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'Faces_Login', 'Faces_Register']);
 
 app.constant('URLs', {
 	LOGIN: "/login",
@@ -17,9 +17,9 @@ app.config(['$routeProvider', 'URLs',
 			controller: 'RegisterCtrl'
 		}).
 		otherwise({
-			redirectTo: '/'
+			redirectTo: URLs.LOGIN
 		});
-	}]);
+}]);
 
 app.factory('routing', ['$location', function($location) {
 	var routing = {};
