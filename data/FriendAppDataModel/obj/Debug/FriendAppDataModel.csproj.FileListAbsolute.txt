@@ -25,5 +25,6 @@ C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\Entit
 C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.xml
 C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.csprojResolveAssemblyReference.cache
 C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.dll
 C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.pdb

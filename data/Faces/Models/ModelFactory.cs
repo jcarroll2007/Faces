@@ -67,7 +67,7 @@ namespace Faces.Models
         {
             var model = new FriendModel();
             model.Status = entity.Status;
-            model.RequestTime = entity.RequestTime;
+            model.ActionDate = entity.ActionDate;
 
             model.Id = entity.FriendId;
             model.Email = entity.Friend.Email;
@@ -80,7 +80,7 @@ namespace Faces.Models
         {
             var entity = new Friends();
             entity.Status = model.Status;
-            entity.RequestTime = model.RequestTime;
+            entity.ActionDate = model.ActionDate;
 
             entity.Id = model.Id;
             entity.Friend.Email = model.Email;

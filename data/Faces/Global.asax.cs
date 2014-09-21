@@ -29,6 +29,9 @@ namespace Faces
         private void InitalizeAutoMapper()
         {
             Mapper.CreateMap<User, UserModel>();
+            Mapper.CreateMap<UserModel, User>();
+            Mapper.CreateMap<Friends, FriendModel>();
+            Mapper.CreateMap<FriendModel, Friends>();
         }
     }
 }

@@ -27,7 +27,7 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="FriendId" ColumnName="FriendId" />
-          <ScalarProperty Name="RequestTime" ColumnName="RequestTime" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

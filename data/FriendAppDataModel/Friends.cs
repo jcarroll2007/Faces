@@ -18,7 +18,7 @@ namespace FriendAppDataModel
         public FriendStatus Status { get; set; }
         public int UserId { get; set; }
         public int FriendId { get; set; }
-        public System.DateTime RequestTime { get; set; }
+        public System.DateTime ActionDate { get; set; }
     
         public virtual User User { get; set; }
         public virtual User Friend { get; set; }

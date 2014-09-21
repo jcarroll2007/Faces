@@ -55,7 +55,7 @@
     <Property Name="ProfilePicture" Type="varchar(max)" Nullable="true" />
     <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Phone" Type="int" Nullable="true" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
     <Property Name="City" Type="nvarchar(max)" Nullable="false" />
     <Property Name="AccountType" Type="int" Nullable="false" />
@@ -71,7 +71,7 @@
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="FriendId" Type="int" Nullable="false" />
-    <Property Name="RequestTime" Type="datetime" Nullable="false" />
+    <Property Name="ActionDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Walls">
     <Key>
