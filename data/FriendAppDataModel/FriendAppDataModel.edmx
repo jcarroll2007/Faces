@@ -12,6 +12,7 @@
     <EntitySet Name="Tags" EntityType="FriendAppDataModel.Store.Tags" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="WallPostTagsTables" EntityType="FriendAppDataModel.Store.WallPostTagsTables" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Messages" EntityType="FriendAppDataModel.Store.Messages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubscribedTags" EntityType="FriendAppDataModel.Store.SubscribedTags" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserFriends" Association="FriendAppDataModel.Store.UserFriends">
       <End Role="User" EntitySet="Users" />
       <End Role="Friends" EntitySet="Friends" />
@@ -40,6 +41,14 @@
       <End Role="User" EntitySet="Users" />
       <End Role="Message" EntitySet="Messages" />
     </AssociationSet>
+    <AssociationSet Name="UserTags" Association="FriendAppDataModel.Store.UserTags">
+      <End Role="SubscribedTags" EntitySet="SubscribedTags" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="SubscribedTagsTags" Association="FriendAppDataModel.Store.SubscribedTagsTags">
+      <End Role="SubscribedTags" EntitySet="SubscribedTags" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -48,16 +57,16 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ProfilePicture" Type="varbinary(max)" Nullable="true" />
+    <Property Name="ProfilePicture" Type="varchar(max)" Nullable="true" />
     <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="int" Nullable="true" />
     <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
     <Property Name="City" Type="nvarchar(max)" Nullable="false" />
     <Property Name="AccountType" Type="int" Nullable="false" />
-    <Property Name="AboutMe" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AboutMe" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Gender" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="State" Type="char" Nullable="false" MaxLength="2" />
   </EntityType>
   <EntityType Name="Friends">
     <Key>
@@ -68,7 +77,6 @@
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="FriendId" Type="int" Nullable="false" />
     <Property Name="RequestTime" Type="datetime" Nullable="false" />
-    <Property Name="CompletedRequest" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Walls">
     <Key>
@@ -77,7 +85,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Picture" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Picture" Type="varchar(max)" Nullable="true" />
     <Property Name="PostTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Tags">
@@ -105,6 +113,14 @@
     <Property Name="MessageText" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FromUserId" Type="int" Nullable="false" />
     <Property Name="ToUserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubscribedTags">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Tag_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="UserFriends">
     <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
@@ -190,7 +206,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  </Schema></edmx:StorageModels>
+  <Association Name="UserTags">
+    <End Role="SubscribedTags" Type="FriendAppDataModel.Store.SubscribedTags" Multiplicity="*" />
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubscribedTags">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubscribedTagsTags">
+    <End Role="SubscribedTags" Type="FriendAppDataModel.Store.SubscribedTags" Multiplicity="*" />
+    <End Role="Tags" Type="FriendAppDataModel.Store.Tags" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubscribedTags">
+        <PropertyRef Name="Tag_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FriendAppDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -518,19 +558,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <AssociationSetMapping Name="SubscribedTagsTags" TypeName="FriendAppDataModel.SubscribedTagsTags" StoreEntitySet="Tags">
-            <EndProperty Name="SubscribedTags">
-              <ScalarProperty Name="TagId" ColumnName="Id" />
-            </EndProperty>
-            <EndProperty Name="Tags">
-              <ScalarProperty Name="Id" ColumnName="Id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="SubscribedTags">
-            <EntityTypeMapping TypeName="IsTypeOf(FriendAppDataModel.SubscribedTags)">
-              <MappingFragment StoreEntitySet="Users" />
-            </EntityTypeMapping>
-          </EntitySetMapping>
+    <EntitySetMapping Name="SubscribedTags">
+      <EntityTypeMapping TypeName="IsTypeOf(FriendAppDataModel.SubscribedTags)">
+        <MappingFragment StoreEntitySet="SubscribedTags">
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SubscribedTagsTags" TypeName="FriendAppDataModel.SubscribedTagsTags" StoreEntitySet="SubscribedTags">
+      <EndProperty Name="Tags">
+        <ScalarProperty Name="Id" ColumnName="Tag_Id" />
+      </EndProperty>
+      <EndProperty Name="SubscribedTags">
+        <ScalarProperty Name="TagId" ColumnName="TagId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

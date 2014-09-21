@@ -68,7 +68,6 @@ namespace Faces.Models
             var model = new FriendModel();
             model.Status = entity.Status;
             model.RequestTime = entity.RequestTime;
-            model.CompletedRequest = entity.CompletedRequest;
 
             model.Id = entity.FriendId;
             model.Email = entity.Friend.Email;
@@ -82,7 +81,6 @@ namespace Faces.Models
             var entity = new Friends();
             entity.Status = model.Status;
             entity.RequestTime = model.RequestTime;
-            entity.CompletedRequest = model.CompletedRequest;
 
             entity.Id = model.Id;
             entity.Friend.Email = model.Email;
