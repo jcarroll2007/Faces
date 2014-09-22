@@ -1,12 +1,10 @@
 var  app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate']);
 
 app.constant('partial_urls', {
-    PERSONAL_INFO: "/Faces/register/partials/personal_info.html",
-    ABOUT: "/Faces/register/partials/about.html",
-    PROFILE_PICTURE: "/Faces/register/partials/profile_picture.html"
+    PERSONAL_INFO: "/register/partials/personal_info.html",
+    ABOUT: "/register/partials/about.html",
+    PROFILE_PICTURE: "/register/partials/profile_picture.html"
 });
-
-
 
 app.controller('RegisterCtrl', ['$scope', 'partial_urls', function($scope, partial_urls) {
 
