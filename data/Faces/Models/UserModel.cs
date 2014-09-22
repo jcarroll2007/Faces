@@ -21,7 +21,7 @@ namespace Faces.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
-        public System.DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
         public string City { get; set; }
         public int AccountType { get; set; }
         public string AboutMe { get; set; }

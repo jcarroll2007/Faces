@@ -16,7 +16,7 @@ namespace Faces.Controllers
         public IHttpActionResult GetUsers(string uname, string pass)
         {
             var temp = new UserModel();
-            User user = db.Users.SingleOrDefault(c => c.Email == uname && c.Password == pass);
+            User user = db.Users.FirstOrDefault(c => c.Email == uname && c.Password == pass);
 
             if (user == null)
             {
