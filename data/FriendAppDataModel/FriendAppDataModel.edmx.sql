@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/19/2014 11:41:32
--- Generated from EDMX file: C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
+-- Date Created: 09/21/2014 10:38:56
+-- Generated from EDMX file: C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -23,12 +23,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserFriends1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Friends] DROP CONSTRAINT [FK_UserFriends1];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UserTags_User]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserTags] DROP CONSTRAINT [FK_UserTags_User];
-GO
-IF OBJECT_ID(N'[dbo].[FK_UserTags_Tags]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserTags] DROP CONSTRAINT [FK_UserTags_Tags];
-GO
 IF OBJECT_ID(N'[dbo].[FK_UserWall]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Walls] DROP CONSTRAINT [FK_UserWall];
 GO
@@ -43,6 +37,12 @@ IF OBJECT_ID(N'[dbo].[FK_UserMessage]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserMessage1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Messages] DROP CONSTRAINT [FK_UserMessage1];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserTags]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SubscribedTags] DROP CONSTRAINT [FK_UserTags];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SubscribedTagsTags]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SubscribedTags] DROP CONSTRAINT [FK_SubscribedTagsTags];
 GO
 
 -- --------------------------------------------------
@@ -67,8 +67,8 @@ GO
 IF OBJECT_ID(N'[dbo].[Messages]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Messages];
 GO
-IF OBJECT_ID(N'[dbo].[UserTags]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[UserTags];
+IF OBJECT_ID(N'[dbo].[SubscribedTags]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SubscribedTags];
 GO
 
 -- --------------------------------------------------
@@ -80,16 +80,16 @@ CREATE TABLE [dbo].[Users] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Email] nvarchar(max)  NOT NULL,
     [Password] nvarchar(max)  NOT NULL,
-    [ProfilePicture] varbinary(max)  NULL,
+    [ProfilePicture] varchar(max)  NULL,
     [FirstName] nvarchar(max)  NOT NULL,
     [LastName] nvarchar(max)  NOT NULL,
-    [Phone] nvarchar(max)  NOT NULL,
+    [Phone] nvarchar(max)  NULL,
     [DateOfBirth] datetime  NOT NULL,
     [City] nvarchar(max)  NOT NULL,
     [AccountType] int  NOT NULL,
-    [AboutMe] nvarchar(max)  NOT NULL,
-    [Gender] nvarchar(max)  NOT NULL,
-    [State] nvarchar(max)  NOT NULL
+    [AboutMe] nvarchar(max)  NULL,
+    [Gender] char(1)  NOT NULL,
+    [State] char(2)  NOT NULL
 );
 GO
 
@@ -99,8 +99,7 @@ CREATE TABLE [dbo].[Friends] (
     [Status] int  NOT NULL,
     [UserId] int  NOT NULL,
     [FriendId] int  NOT NULL,
-    [RequestTime] datetime  NOT NULL,
-    [CompletedRequest] datetime  NOT NULL
+    [ActionDate] datetime  NOT NULL
 );
 GO
 
@@ -109,7 +108,7 @@ CREATE TABLE [dbo].[Walls] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [UserId] int  NOT NULL,
     [Message] nvarchar(max)  NOT NULL,
-    [Picture] varbinary(max)  NOT NULL,
+    [Picture] varchar(max)  NULL,
     [PostTime] datetime  NOT NULL
 );
 GO
@@ -140,10 +139,11 @@ CREATE TABLE [dbo].[Messages] (
 );
 GO
 
--- Creating table 'UserTags'
-CREATE TABLE [dbo].[UserTags] (
-    [Users_Id] int  NOT NULL,
-    [Tags_Id] int  NOT NULL
+-- Creating table 'SubscribedTags'
+CREATE TABLE [dbo].[SubscribedTags] (
+    [TagId] int IDENTITY(1,1) NOT NULL,
+    [UserId] int  NOT NULL,
+    [Tag_Id] int  NOT NULL
 );
 GO
 
@@ -187,10 +187,10 @@ ADD CONSTRAINT [PK_Messages]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Users_Id], [Tags_Id] in table 'UserTags'
-ALTER TABLE [dbo].[UserTags]
-ADD CONSTRAINT [PK_UserTags]
-    PRIMARY KEY CLUSTERED ([Users_Id], [Tags_Id] ASC);
+-- Creating primary key on [TagId] in table 'SubscribedTags'
+ALTER TABLE [dbo].[SubscribedTags]
+ADD CONSTRAINT [PK_SubscribedTags]
+    PRIMARY KEY CLUSTERED ([TagId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -204,7 +204,6 @@ ADD CONSTRAINT [FK_UserFriends]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserFriends'
 CREATE INDEX [IX_FK_UserFriends]
@@ -219,36 +218,11 @@ ADD CONSTRAINT [FK_UserFriends1]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserFriends1'
 CREATE INDEX [IX_FK_UserFriends1]
 ON [dbo].[Friends]
     ([FriendId]);
-GO
-
--- Creating foreign key on [Users_Id] in table 'UserTags'
-ALTER TABLE [dbo].[UserTags]
-ADD CONSTRAINT [FK_UserTags_User]
-    FOREIGN KEY ([Users_Id])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [Tags_Id] in table 'UserTags'
-ALTER TABLE [dbo].[UserTags]
-ADD CONSTRAINT [FK_UserTags_Tags]
-    FOREIGN KEY ([Tags_Id])
-    REFERENCES [dbo].[Tags]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserTags_Tags'
-CREATE INDEX [IX_FK_UserTags_Tags]
-ON [dbo].[UserTags]
-    ([Tags_Id]);
 GO
 
 -- Creating foreign key on [UserId] in table 'Walls'
@@ -258,7 +232,6 @@ ADD CONSTRAINT [FK_UserWall]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserWall'
 CREATE INDEX [IX_FK_UserWall]
@@ -273,7 +246,6 @@ ADD CONSTRAINT [FK_PostTags]
     REFERENCES [dbo].[Walls]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PostTags'
 CREATE INDEX [IX_FK_PostTags]
@@ -288,7 +260,6 @@ ADD CONSTRAINT [FK_WallPost]
     REFERENCES [dbo].[Tags]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_WallPost'
 CREATE INDEX [IX_FK_WallPost]
@@ -303,7 +274,6 @@ ADD CONSTRAINT [FK_UserMessage]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserMessage'
 CREATE INDEX [IX_FK_UserMessage]
@@ -318,12 +288,39 @@ ADD CONSTRAINT [FK_UserMessage1]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserMessage1'
 CREATE INDEX [IX_FK_UserMessage1]
 ON [dbo].[Messages]
     ([ToUserId]);
+GO
+
+-- Creating foreign key on [UserId] in table 'SubscribedTags'
+ALTER TABLE [dbo].[SubscribedTags]
+ADD CONSTRAINT [FK_UserTags]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserTags'
+CREATE INDEX [IX_FK_UserTags]
+ON [dbo].[SubscribedTags]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [Tag_Id] in table 'SubscribedTags'
+ALTER TABLE [dbo].[SubscribedTags]
+ADD CONSTRAINT [FK_SubscribedTagsTags]
+    FOREIGN KEY ([Tag_Id])
+    REFERENCES [dbo].[Tags]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SubscribedTagsTags'
+CREATE INDEX [IX_FK_SubscribedTagsTags]
+ON [dbo].[SubscribedTags]
+    ([Tag_Id]);
 GO
 
 -- --------------------------------------------------

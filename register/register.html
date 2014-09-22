@@ -1,35 +1,12 @@
 <div id="register-controls-container" >
+    <h2>New User Information</h2>
+
     <div id="new-user-information-container" >
-        <div class="input-group">
-            <span class="input-group-addon">First Name</span>
-            <input type="text" class="form-control" ng-model="user.first_name">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Last Name</span>
-            <input type="text" class="form-control">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Email</span>
-            <input type="email" class="form-control">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Re-enter Email</span>
-            <input type="email" class="form-control">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Password</span>
-            <input type="email" class="form-control">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Re-enter Password</span>
-            <input type="email" class="form-control">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">Birthdate</span>
-            <input type="text" class="form-control" ng-model="user.date_of_birth" is-open="datepicker_opened" datepicker-options="date_options" ng-required="true" close-text="Close"/>
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open_datepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
+        <div ng-include src="current_partial" id="register-partials-view"></div>
+        <div id="buttons-container" class="btn-group btn-group-justified" >
+            <button ng-click="previous_partial()" ng-hide="is_first_partial()" id="next-button" class="faces-btn btn btn-default glyphicon glyphicon-chevron-left"></button>
+            <button ng-click="next_partial()" ng-hide="is_last_partial()" id="previous-button" class="btn btn-default faces-btn glyphicon glyphicon-chevron-right"></button>
         </div>
     </div>
+
 </div>

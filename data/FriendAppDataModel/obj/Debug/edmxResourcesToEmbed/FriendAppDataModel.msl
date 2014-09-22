@@ -27,8 +27,7 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="FriendId" ColumnName="FriendId" />
-          <ScalarProperty Name="RequestTime" ColumnName="RequestTime" />
-          <ScalarProperty Name="CompletedRequest" ColumnName="CompletedRequest" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -72,12 +71,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="UserTags" TypeName="FriendAppDataModel.UserTags" StoreEntitySet="UserTags">
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Users_Id" />
-      </EndProperty>
+    <EntitySetMapping Name="SubscribedTags">
+      <EntityTypeMapping TypeName="IsTypeOf(FriendAppDataModel.SubscribedTags)">
+        <MappingFragment StoreEntitySet="SubscribedTags">
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SubscribedTagsTags" TypeName="FriendAppDataModel.SubscribedTagsTags" StoreEntitySet="SubscribedTags">
       <EndProperty Name="Tags">
-        <ScalarProperty Name="Id" ColumnName="Tags_Id" />
+        <ScalarProperty Name="Id" ColumnName="Tag_Id" />
+      </EndProperty>
+      <EndProperty Name="SubscribedTags">
+        <ScalarProperty Name="TagId" ColumnName="TagId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

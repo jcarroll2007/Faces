@@ -18,16 +18,16 @@ namespace FriendAppDataModel
         {
             this.Friends = new HashSet<Friends>();
             this.FriendRequest = new HashSet<Friends>();
-            this.Tags = new HashSet<Tags>();
             this.Post = new HashSet<Wall>();
             this.SentMessages = new HashSet<Message>();
             this.receivedMessages = new HashSet<Message>();
+            this.SubscribedTags = new HashSet<SubscribedTags>();
         }
     
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public byte[] ProfilePicture { get; set; }
+        public string ProfilePicture { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
@@ -40,9 +40,9 @@ namespace FriendAppDataModel
     
         public virtual ICollection<Friends> Friends { get; set; }
         public virtual ICollection<Friends> FriendRequest { get; set; }
-        public virtual ICollection<Tags> Tags { get; set; }
         public virtual ICollection<Wall> Post { get; set; }
         public virtual ICollection<Message> SentMessages { get; set; }
         public virtual ICollection<Message> receivedMessages { get; set; }
+        public virtual ICollection<SubscribedTags> SubscribedTags { get; set; }
     }
 }

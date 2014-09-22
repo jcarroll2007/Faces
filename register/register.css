@@ -18,9 +18,9 @@
 }
 
 #register-controls-container {
-	display: block; 
-	margin-left: auto; 
-	margin-right: auto; 
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 
@@ -31,11 +31,20 @@
 }
 
 #new-user-information-container .input-group-addon {
-	min-width: 13em;
+	min-width: 11em;
 }
 
 #register-controls-container.input-group {
 	margin-top: .5em;
 	margin-bottom: .5em;
 }
+
+#next-button, #previous-button {
+	width: 20%;
+}
+
+#register-partials-view {
+	height: 27em;
+}
+
 

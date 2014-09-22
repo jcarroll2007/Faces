@@ -74,6 +74,9 @@
       <DependentUpon>FriendAppDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubscribedTags.cs">
+      <DependentUpon>FriendAppDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tags.cs">
       <DependentUpon>FriendAppDataModel.tt</DependentUpon>
     </Compile>

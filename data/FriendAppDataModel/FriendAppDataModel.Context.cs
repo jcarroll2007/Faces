@@ -31,5 +31,6 @@ namespace FriendAppDataModel
         public virtual DbSet<Tags> Tags { get; set; }
         public virtual DbSet<WallPostTagsTable> WallPostTagsTables { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<SubscribedTags> SubscribedTags { get; set; }
     }
 }

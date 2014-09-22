@@ -18,3 +18,13 @@ C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataRepository\bin\Debug
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.csprojResolveAssemblyReference.cache
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.dll
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.pdb
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\bin\Debug\FriendAppDataRepository.dll.config
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\bin\Debug\FriendAppDataRepository.dll
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\bin\Debug\FriendAppDataRepository.pdb
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\bin\Debug\EntityFramework.dll
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\bin\Debug\EntityFramework.xml
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.csprojResolveAssemblyReference.cache
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.dll
+C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataRepository\obj\Debug\FriendAppDataRepository.pdb
