@@ -1,0 +1,9 @@
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.dll.config
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.dll
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.pdb
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.dll
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.xml
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.dll
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.pdb
