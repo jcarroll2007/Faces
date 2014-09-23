@@ -1,4 +1,4 @@
-<div class="input-group">
+<div class="input-group input-group-first">
     <span class="input-group-addon">First Name</span>
     <input type="text" class="form-control" ng-model="user.first_name">
 </div>
@@ -20,15 +20,15 @@
 
 <div class="input-group">
     <span class="input-group-addon">Password</span>
-    <input type="email" class="form-control">
+    <input type="password" class="form-control">
 </div>
 
 <div class="input-group">
     <span class="input-group-addon">Re-enter Password</span>
-    <input type="email" class="form-control">
+    <input type="password" class="form-control">
 </div>
 
-<div class="input-group">
+<div class="input-group input-group-last">
     <span class="input-group-addon">Birthdate</span>
     <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="user.date_of_birth" is-open="datepicker_opened" datepicker-options="date_options" ng-required="true" close-text="Close"/>
     <span class="input-group-btn">

@@ -1,12 +1,12 @@
 var  app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate']);
 
 app.constant('partial_urls', {
-    PERSONAL_INFO: "/register/partials/personal_info.html",
-    ABOUT: "/register/partials/about.html",
-    PROFILE_PICTURE: "/register/partials/profile_picture.html"
+    PERSONAL_INFO: "register/partials/personal_info.html",
+    ABOUT: "register/partials/about.html",
+    PROFILE_PICTURE: "register/partials/profile_picture.html"
 });
 
-app.controller('RegisterCtrl', ['$scope', 'partial_urls', function($scope, partial_urls) {
+app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', function($scope, partial_urls, $http) {
 
     // User Data
     $scope.user = {
@@ -17,6 +17,21 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', function($scope, parti
         password: "",
         password_verification: "",
         date_of_birth: ""
+    };
+
+    // Datepicker Optuons and variables
+    $scope.datepicker_opened = false;
+
+    $scope.open_datepicker = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.datepicker_opened = !$scope.datepicker_opened;
+    };
+
+    $scope.date_options = {
+        formatYear: 'yy',
+        startingDay: 1
     };
 
     // The register page has several different partials that are used to get the new user's data
@@ -48,20 +63,5 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', function($scope, parti
 
     $scope.previous_partial = function() {
         $scope.current_partial = $scope.partials[--current_partial_index];
-    };
-
-    // Datepicker Optuons and variables
-    $scope.datepicker_opened = false;
-
-    $scope.open_datepicker = function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-
-        $scope.datepicker_opened = !$scope.datepicker_opened;
-    };
-
-    $scope.date_options = {
-        formatYear: 'yy',
-        startingDay: 1
     };
 }]);

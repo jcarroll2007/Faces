@@ -27,7 +27,27 @@
 #new-user-information-container .input-group {
 	margin-top: 1em;
 	margin-bottom: 1em;
+}
 
+#next-button, #previous-button {
+	width: 20%;
+}
+
+#next-button.ng-hide, #previous-button.ng-hide {
+	display: block!important;
+	opacity: 0;
+}
+
+#register-partials-view {
+	height: 27em;
+}
+
+#new-user-information-container .input-group-first {
+	margin-top: 0;
+}
+
+#new-user-information-container .input-group-last {
+	margin-bottom: 0;
 }
 
 #new-user-information-container .input-group-addon {
@@ -37,14 +57,6 @@
 #register-controls-container.input-group {
 	margin-top: .5em;
 	margin-bottom: .5em;
-}
-
-#next-button, #previous-button {
-	width: 20%;
-}
-
-#register-partials-view {
-	height: 27em;
 }
 
 

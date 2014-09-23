@@ -9,11 +9,11 @@ app.config(['$routeProvider', 'URLs',
 	function($routeProvider, URLs) {
 		$routeProvider.
 		when(URLs.LOGIN, {
-			templateUrl: '/login/login.html',
+			templateUrl: 'login/login.html',
 			controller: 'LoginCtrl'
 		}).
 		when(URLs.REGISTER, {
-			templateUrl: '/register/register.html',
+			templateUrl: 'register/register.html',
 			controller: 'RegisterCtrl'
 		}).
 		otherwise({
