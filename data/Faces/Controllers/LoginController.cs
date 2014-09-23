@@ -13,8 +13,9 @@ namespace Faces.Controllers
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();
 
-        public IHttpActionResult GetUsers(string uname, string pass)
+        public IHttpActionResult Get(string uname, string pass)
         {
+
             var temp = new UserModel();
             User user = db.Users.FirstOrDefault(c => c.Email == uname && c.Password == pass);
 
@@ -26,6 +27,8 @@ namespace Faces.Controllers
                 temp = ModelFactory.ParseUserEntityToModel(user);
 
             return Ok(temp);
+
         }
+
     }
 }
