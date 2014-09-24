@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/21/2014 10:38:56
--- Generated from EDMX file: C:\Users\overload\Documents\GitHub\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
+-- Date Created: 09/24/2014 16:01:02
+-- Generated from EDMX file: C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -204,6 +204,7 @@ ADD CONSTRAINT [FK_UserFriends]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserFriends'
 CREATE INDEX [IX_FK_UserFriends]
@@ -218,6 +219,7 @@ ADD CONSTRAINT [FK_UserFriends1]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserFriends1'
 CREATE INDEX [IX_FK_UserFriends1]
@@ -232,6 +234,7 @@ ADD CONSTRAINT [FK_UserWall]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserWall'
 CREATE INDEX [IX_FK_UserWall]
@@ -246,6 +249,7 @@ ADD CONSTRAINT [FK_PostTags]
     REFERENCES [dbo].[Walls]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PostTags'
 CREATE INDEX [IX_FK_PostTags]
@@ -260,6 +264,7 @@ ADD CONSTRAINT [FK_WallPost]
     REFERENCES [dbo].[Tags]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_WallPost'
 CREATE INDEX [IX_FK_WallPost]
@@ -274,6 +279,7 @@ ADD CONSTRAINT [FK_UserMessage]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserMessage'
 CREATE INDEX [IX_FK_UserMessage]
@@ -288,6 +294,7 @@ ADD CONSTRAINT [FK_UserMessage1]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserMessage1'
 CREATE INDEX [IX_FK_UserMessage1]
@@ -302,6 +309,7 @@ ADD CONSTRAINT [FK_UserTags]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserTags'
 CREATE INDEX [IX_FK_UserTags]
@@ -316,6 +324,7 @@ ADD CONSTRAINT [FK_SubscribedTagsTags]
     REFERENCES [dbo].[Tags]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_SubscribedTagsTags'
 CREATE INDEX [IX_FK_SubscribedTagsTags]
