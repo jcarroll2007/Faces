@@ -34,7 +34,7 @@
 }
 
 #next-button.ng-hide, #previous-button.ng-hide {
-	display: block!important;
+	display: inline!important;
 	opacity: 0;
 }
 
@@ -45,6 +45,7 @@
 #new-user-information-container .input-group-first {
 	margin-top: 0;
 }
+
 
 #new-user-information-container .input-group-last {
 	margin-bottom: 0;
@@ -58,5 +59,6 @@
 	margin-top: .5em;
 	margin-bottom: .5em;
 }
+
 
 

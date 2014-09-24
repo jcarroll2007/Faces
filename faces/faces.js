@@ -1,8 +1,9 @@
-var app = angular.module('Faces', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'Faces_Login', 'Faces_Register']);
+var app = angular.module('Faces', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'Faces_Login', 'Faces_Register', 'tests']);
 
 app.constant('URLs', {
 	LOGIN: "/login",
-	REGISTER: "/register"
+	REGISTER: "/register",
+	TESTS: "/tests"
 });
 
 app.config(['$routeProvider', 'URLs',
@@ -15,6 +16,10 @@ app.config(['$routeProvider', 'URLs',
 		when(URLs.REGISTER, {
 			templateUrl: 'register/register.html',
 			controller: 'RegisterCtrl'
+		}).
+		when(URLs.TESTS, {
+			templateUrl: 'tests/tests.html',
+			controller: 'TestsCtrl'
 		}).
 		otherwise({
 			redirectTo: URLs.LOGIN
