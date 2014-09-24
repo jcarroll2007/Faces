@@ -6,7 +6,8 @@ app.constant('partial_urls', {
     PROFILE_PICTURE: "register/partials/profile_picture.html"
 });
 
-app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', function($scope, partial_urls, $http) {
+app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout',
+    function($scope, partial_urls, $http, $timeout) {
 
     // User Data
     $scope.user = {
