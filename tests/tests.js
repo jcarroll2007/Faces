@@ -37,7 +37,7 @@ app.factory('test_web_services', ['$http', function($http) {
 	};
 
 	test_web_services.test_login = function() {
-		$http.get('http://robertryanmorris.com/services/FaceServices/api/Login', login_data)
+		$http.post('http://robertryanmorris.com/services/FaceServices/api/Login', login_data)
 		.success(function(received) {
 			alert('Login Test Successful:' + received);
 		});

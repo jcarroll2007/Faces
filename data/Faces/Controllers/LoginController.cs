@@ -13,11 +13,10 @@ namespace Faces.Controllers
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();
 
-        public IHttpActionResult Get(string uname, string pass)
+        public IHttpActionResult Login(LoginModel model)
         {
-
             var temp = new UserModel();
-            User user = db.Users.FirstOrDefault(c => c.Email == uname && c.Password == pass);
+            User user = db.Users.FirstOrDefault(c => c.Email == model.uname && c.Password == model.pass);
 
             if (user == null)
             {
@@ -27,8 +26,7 @@ namespace Faces.Controllers
                 temp = ModelFactory.ParseUserEntityToModel(user);
 
             return Ok(temp);
-
         }
-
+       
     }
 }

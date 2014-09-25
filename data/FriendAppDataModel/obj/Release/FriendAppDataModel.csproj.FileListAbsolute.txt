@@ -7,3 +7,4 @@ C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\En
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.dll
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.pdb
+C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.csprojResolveAssemblyReference.cache
