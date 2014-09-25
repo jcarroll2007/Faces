@@ -58,11 +58,23 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout',
         return current_partial_index === last_partial_index ? true : false;
     };
 
+    $scope.fade_out = function() {
+        TweenMax.to($("#current_partial"), 1, {opacity:1});
+    }
+
+    $scope.fade_in = function() {
+        TweenMax.to($("current_partial"), 1, {opacity:0});
+    }
+
     $scope.next_partial = function() {
+       
         $scope.current_partial = $scope.partials[++current_partial_index];
+        
     };
 
     $scope.previous_partial = function() {
+        
         $scope.current_partial = $scope.partials[--current_partial_index];
+        
     };
 }]);
