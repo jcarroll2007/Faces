@@ -6,8 +6,12 @@ app.constant('partial_urls', {
     PROFILE_PICTURE: "register/partials/profile_picture.html"
 });
 
-app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout',
-    function($scope, partial_urls, $http, $timeout) {
+app.constant('headers', {
+    PERSONAL_INFO: "Thanks for joining! Tell us about yourself.",
+});
+
+app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', 'headers',
+    function($scope, partial_urls, $http, $timeout, headers) {
 
     // User Data
     $scope.user = {
@@ -45,6 +49,8 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout',
 
     // This index represents the current partial in $scope.partials that is being used.
     var current_partial_index = 0;
+
+    $scope.register_header = headers.PERSONAL_INFO;
 
     // Current partial to be displayed.
     $scope.current_partial = $scope.partials[current_partial_index];
