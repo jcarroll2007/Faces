@@ -3,19 +3,16 @@
 
 <head>
   <title>Faces</title>
-
-  <script>
-    
-  </script>
 </head>
 
 <body>
   <div id="register-controls-container" >
       <h2>{{ register_header }}</h2>
 
-      <div id="new-user-information-container" >
-          <div ng-include src="current_partial" id="register-partials-view">
-          </div>
+      
+      <div allign="center" id="new-user-information-container" >
+          <div ng-include src="last_partial_used" id="left-container"></div>
+          <div ng-include src="current_partial" id="register-partials-view"></div>
           <div id="buttons-container" class="btn-group btn-group-justified" >
               <button ng-click="previous_partial()" ng-hide="is_first_partial()" ng-disabled="is_first_partial()" id="previous-button" class="faces-btn btn btn-default glyphicon glyphicon-chevron-left"></button>
               <button ng-click="next_partial()" ng-hide="is_last_partial()" ng-disabled="is_last_partial()" id="next-button" class="btn btn-default faces-btn glyphicon glyphicon-chevron-right"></button>

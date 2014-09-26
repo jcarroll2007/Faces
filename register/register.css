@@ -2,27 +2,29 @@
 	position: relative;
 }
 
-.ng-enter{
+#register-partials-view.ng-enter{
   	transition:1.5s;
   	left: 1000px;
     opacity: 0;
 }
 
-.ng-enter-active {
+#register-partials-view.ng-enter-active {
 	left: 0px;
  	opacity: 1;
 }
 
-.ng-leave{
-	transition: 0.7s;
+#register-partials-view.ng-leave{
+	transition: 1.5s;
 	left: 0px;
-	top: -377px;
+	top: -378px;
+	height:0px;
     opacity: 1;
 }
     
-.ng-leave-active {
+#register-partials-view.ng-leave-active {
 	left: -1000px;
-	top: -377px;
+	top: -378px;
+	height: 0px;
 	opacity: 0;
 }
 
@@ -87,6 +89,3 @@
 	margin-top: .5em;
 	margin-bottom: .5em;
 }
-
-
-
