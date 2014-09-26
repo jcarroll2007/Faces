@@ -1,27 +1,27 @@
 <link rel="stylesheet" type="text/css" href="register/register.css">
+<html lang="en" ng-app"FADE">
 
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script>
-		$.noConflict();
-		jQuery(document).ready(function(){
-  			jQuery("button").click(function(){
-  				
-  				
-  			});
-		});
-	</script>
+  <title>Faces</title>
+
+  <script>
+    
+  </script>
 </head>
 
-<div id="register-controls-container" >
-    <h2>{{ register_header }}</h2>
+<body>
+  <div id="register-controls-container" >
+      <h2>{{ register_header }}</h2>
 
-    <div id="new-user-information-container" >
-        <div ng-include src="current_partial" id="register-partials-view"></div>
-        <div id="buttons-container" class="btn-group btn-group-justified" >
-            <button ng-click="previous_partial()" ng-hide="is_first_partial()" ng-disabled="is_first_partial()" id="next-button" class="faces-btn btn btn-default glyphicon glyphicon-chevron-left"></button>
-            <button ng-click="next_partial()" ng-hide="is_last_partial()" ng-disabled="is_lats_partial()" id="previous-button" class="btn btn-default faces-btn glyphicon glyphicon-chevron-right"></button>
-        </div>
-    </div>
+      <div id="new-user-information-container" >
+          <div ng-include src="current_partial" id="register-partials-view">
+          </div>
+          <div id="buttons-container" class="btn-group btn-group-justified" >
+              <button ng-click="previous_partial()" ng-hide="is_first_partial()" ng-disabled="is_first_partial()" id="previous-button" class="faces-btn btn btn-default glyphicon glyphicon-chevron-left"></button>
+              <button ng-click="next_partial()" ng-hide="is_last_partial()" ng-disabled="is_last_partial()" id="next-button" class="btn btn-default faces-btn glyphicon glyphicon-chevron-right"></button>
+          </div>
+      </div>
 
-</div>
+  </div>
+</body>
+</html>

@@ -1,3 +1,31 @@
+.ng-enter, .ng-leave{
+	position: relative;
+}
+
+.ng-enter{
+  	transition:1.5s;
+  	left: 1000px;
+    opacity: 0;
+}
+
+.ng-enter-active {
+	left: 0px;
+ 	opacity: 1;
+}
+
+.ng-leave{
+	transition: 0.7s;
+	left: 0px;
+	top: -377px;
+    opacity: 1;
+}
+    
+.ng-leave-active {
+	left: -1000px;
+	top: -377px;
+	opacity: 0;
+}
+
 .register-input {
 	margin-top: .5em;
 	margin-bottom: .5em;

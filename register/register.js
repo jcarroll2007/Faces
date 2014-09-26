@@ -3,7 +3,7 @@ var  app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate']);
 app.constant('partial_urls', {
     PERSONAL_INFO: "register/partials/personal_info.html",
     ABOUT: "register/partials/about.html",
-    PROFILE_PICTURE: "register/partials/profile_picture.html"
+    PROFILE_PICTURE: "register/partials/profile_picture.html",
 });
 
 app.constant('headers', {
@@ -44,7 +44,7 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', '
     $scope.partials = [
         partial_urls.PERSONAL_INFO,
         partial_urls.ABOUT,
-        partial_urls.PROFILE_PICTURE,
+        partial_urls.PROFILE_PICTURE,        
     ];
 
     // This index represents the current partial in $scope.partials that is being used.
@@ -55,6 +55,11 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', '
     // Current partial to be displayed.
     $scope.current_partial = $scope.partials[current_partial_index];
 
+    $scope.waitFunction= function(milliseconds){
+        milliseconds += new Date().getTime();
+        while (new Date() < milliseconds){}
+    }
+
     $scope.is_first_partial = function() {
        return current_partial_index === 0 ? true : false;
     };
@@ -64,23 +69,11 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', '
         return current_partial_index === last_partial_index ? true : false;
     };
 
-    $scope.fade_out = function() {
-        TweenMax.to($("#current_partial"), 1, {opacity:1});
-    }
-
-    $scope.fade_in = function() {
-        TweenMax.to($("current_partial"), 1, {opacity:0});
-    }
-
-    $scope.next_partial = function() {
-       
-        $scope.current_partial = $scope.partials[++current_partial_index];
-        
+    $scope.previous_partial = function() {  
+        $scope.current_partial = $scope.partials[--current_partial_index];        
     };
 
-    $scope.previous_partial = function() {
-        
-        $scope.current_partial = $scope.partials[--current_partial_index];
-        
+     $scope.next_partial = function() {
+        $scope.current_partial = $scope.partials[++current_partial_index];        
     };
 }]);
