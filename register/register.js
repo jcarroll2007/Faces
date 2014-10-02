@@ -50,12 +50,10 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', '
     // This index represents the current partial in $scope.partials that is being used.
     var current_partial_index = 0;
 
-    var buttonContainer = document.getElementById("buttons-container");
     $scope.register_header = headers.PERSONAL_INFO;
 
     // Current partial to be displayed.
     $scope.current_partial = $scope.partials[current_partial_index];
-    $scope.last_partial_used = null;
 
     $scope.waitFunction= function(milliseconds){
         milliseconds += new Date().getTime();
@@ -77,11 +75,5 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', '
 
      $scope.next_partial = function() {
         $scope.current_partial = $scope.partials[++current_partial_index];
-    };
-
-    $scope.load_next = function(){
-        var deferred = $q.defer();
-        
-        return deferred.promise;
     };
 }]);
