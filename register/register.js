@@ -10,8 +10,8 @@ app.constant('headers', {
     PERSONAL_INFO: "Thanks for joining!",
 });
 
-app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', 'headers',
-    function($scope, partial_urls, $http, $timeout, headers) {
+app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', 'headers',
+    function($scope, partial_urls, $http, headers) {
 
     // User Data
     $scope.user = {
@@ -44,23 +44,17 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', '
     $scope.partials = [
         partial_urls.PERSONAL_INFO,
         partial_urls.ABOUT,
-        partial_urls.PROFILE_PICTURE,        
+        partial_urls.PROFILE_PICTURE,
     ];
 
     // This index represents the current partial in $scope.partials that is being used.
     var current_partial_index = 0;
 
-    var buttonContainer = document.getElementById("buttons-container");
     $scope.register_header = headers.PERSONAL_INFO;
 
     // Current partial to be displayed.
     $scope.current_partial = $scope.partials[current_partial_index];
     $scope.last_partial_used = null;
-
-    $scope.waitFunction= function(milliseconds){
-        milliseconds += new Date().getTime();
-        while (new Date() < milliseconds){}
-    }
 
     $scope.is_first_partial = function() {
        return current_partial_index === 0 ? true : false;
@@ -71,17 +65,11 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', '$timeout', '
         return current_partial_index === last_partial_index ? true : false;
     };
 
-    $scope.previous_partial = function() {  
-        $scope.current_partial = $scope.partials[--current_partial_index];       
+    $scope.previous_partial = function() {
+        $scope.current_partial = $scope.partials[--current_partial_index];
     };
 
      $scope.next_partial = function() {
         $scope.current_partial = $scope.partials[++current_partial_index];
-    };
-
-    $scope.load_next = function(){
-        var deferred = $q.defer();
-        
-        return deferred.promise;
     };
 }]);
