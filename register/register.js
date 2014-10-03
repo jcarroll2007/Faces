@@ -1,17 +1,18 @@
-var  app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate']);
+var  app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate', 'angularFileUpload']);
 
-app.constant('partial_urls', {
+app.constant('partial_file_paths', {
     PERSONAL_INFO: "register/partials/personal_info.html",
     ABOUT: "register/partials/about.html",
-    PROFILE_PICTURE: "register/partials/profile_picture.html",
+    PROFILE_PICTURE: "register/partials/profile_picture.html"
 });
 
 app.constant('headers', {
-    PERSONAL_INFO: "Thanks for joining!",
+    PERSONAL_INFO: "Thanks for joining!"
 });
 
-app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', 'headers',
-    function($scope, partial_urls, $http, headers) {
+app.controller('RegisterCtrl', [
+    '$scope', 'partial_file_paths', 'headers', 'FileUploader',
+    function($scope, partial_file_paths, headers, FileUploader) {
 
     // User Data
     $scope.user = {
@@ -21,10 +22,11 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', 'headers',
         email_verification: "",
         password: "",
         password_verification: "",
-        date_of_birth: ""
+        date_of_birth: "",
+        profile_picture: ""
     };
 
-    // Datepicker Optuons and variables
+    // Birthdate Datepicker Optuons and variables
     $scope.datepicker_opened = false;
 
     $scope.open_datepicker = function($event) {
@@ -39,12 +41,16 @@ app.controller('RegisterCtrl', ['$scope', 'partial_urls', '$http', 'headers',
         startingDay: 1
     };
 
+    // Profile Picture File Uploader instantiation
+    $scope.uploader = new FileUploader();
+
+
     // The register page has several different partials that are used to get the new user's data
     // This is a list of all of them.
     $scope.partials = [
-        partial_urls.PERSONAL_INFO,
-        partial_urls.ABOUT,
-        partial_urls.PROFILE_PICTURE,
+        partial_file_paths.PERSONAL_INFO,
+        partial_file_paths.ABOUT,
+        partial_file_paths.PROFILE_PICTURE,
     ];
 
     // This index represents the current partial in $scope.partials that is being used.
