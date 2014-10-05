@@ -2,12 +2,6 @@
 
 
 <div class="register-profile-picture">
-	<button nv-file-select uploader="uploader" class="faces-btn btn btn-default">Select Profile Picture</button>
-	<input type="file" nv-file-select uploader="uploader"/><br/>
-        <ul>
-            <li ng-repeat="item in uploader.queue">
-                Name: <span ng-bind="item.file.name"></span><br/>
-                <button ng-click="item.upload()">upload</button>
-            </li>
-        </ul>
+	<button class="faces-btn btn btn-default">Select Profile Picture</button>
+	<!-- <input type="file" ng-file-select="onFileSelect($files)">TEST</input> -->
 </div>

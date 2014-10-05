@@ -1,4 +1,4 @@
-var  app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate', 'angularFileUpload']);
+var  app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate']);
 
 app.constant('partial_file_paths', {
     PERSONAL_INFO: "register/partials/personal_info.html",
@@ -11,8 +11,8 @@ app.constant('headers', {
 });
 
 app.controller('RegisterCtrl', [
-    '$scope', 'partial_file_paths', 'headers', 'FileUploader',
-    function($scope, partial_file_paths, headers, FileUploader) {
+    '$scope', 'partial_file_paths', 'headers',
+    function($scope, partial_file_paths, headers) {
 
     // User Data
     $scope.user = {
@@ -42,7 +42,7 @@ app.controller('RegisterCtrl', [
     };
 
     // Profile Picture File Uploader instantiation
-    $scope.uploader = new FileUploader();
+    //$scope.uploader = new FileUploader();
 
 
     // The register page has several different partials that are used to get the new user's data
