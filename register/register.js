@@ -78,3 +78,10 @@ app.controller('RegisterCtrl', [
         $scope.current_partial = $scope.partials[++current_partial_index];
     };
 }]);
+
+app.errorhandler('RegisterCtrl', [
+    '$scope', function($scope){
+
+        
+
+    }]);
