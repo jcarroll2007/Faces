@@ -11,8 +11,8 @@ app.constant('headers', {
 });
 
 app.controller('RegisterCtrl', [
-    '$scope', 'partial_file_paths', 'headers',
-    function($scope, partial_file_paths, headers) {
+    '$scope', 'partial_file_paths', 'headers', '$upload',
+    function($scope, partial_file_paths, headers, $upload) {
 
     // User Data
     $scope.user = {
@@ -42,7 +42,17 @@ app.controller('RegisterCtrl', [
     };
 
     // Profile Picture File Uploader instantiation
-    //$scope.uploader = new FileUploader();
+    $scope.onFileSelect = function(file) {
+        $scope.upload = $upload.upload({
+            url: 'server/upload/url',
+            //data: {myObj: $scope.myModelObj}
+            file: file,
+            //filename: $scope.username + ".jpg" or something, 
+        })
+        .success(function() {
+            console.log('File Uploaded Succesfully');
+        });
+    };
 
 
     // The register page has several different partials that are used to get the new user's data
