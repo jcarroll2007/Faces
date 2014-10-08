@@ -84,14 +84,14 @@ app.controller('RegisterCtrl', [
         $scope.current_partial = $scope.partials[--current_partial_index];
     };
 
-     $scope.next_partial = function() {
+    $scope.next_partial = function() {
         $scope.current_partial = $scope.partials[++current_partial_index];
     };
+
+    $scope.is_empty = function(){
+        if(first_name == null)
+            return true;
+        else
+            return false;
+    }
 }]);
-
-app.errorhandler('RegisterCtrl', [
-    '$scope', function($scope){
-
-        
-
-    }]);

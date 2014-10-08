@@ -4,36 +4,56 @@
     <form name="holderForm">
         <div class="input-group input-group-first">
             <span class="input-group-addon">First Name</span>
-            <input type="text" name="userFNAME" class="form-control" 
+            <input type="text" name="first_name" class="form-control" 
             ng-model="user.first_name" required>
-            <span class="error" ng-show"holderForm.userFNAME.$error.required">A required field</span>
+            <span class="error" ng-change="is_empty()" ng-show="is_empty()">
+                <i class="glyphicon glyphicon-remove"/>
+            </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Last Name</span>
-            <input type="text" class="form-control" ng-model="user.last_name">
+            <input type="text" class="form-control" ng-model="user.last_name" 
+            name="last_name" required>
+            <span type="error" ng-show="holderForm.user.last_name.$error.required">
+                 <i class="glyphicon glyphicon-remove"/>
+            </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Email</span>
-            <input type="email" class="form-control" name="userEmail" 
+            <input type="email" class="form-control" name="email" 
             ng-model="user.email" required>
-            <span type="error" ng-show="holderForm.user.userEmail.$error.email">Enter a valid email</span>
+            <span type="error" ng-show="holderForm.user.email.$error.email">
+                <i class="glyphicon glyphicon-remove"/>
+            </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Re-enter Email</span>
-            <input type="email" class="form-control" ng-model="user.email_verification">
+            <input type="email" class="form-control" ng-model="user.email_verification"
+            name="email_verification" required>
+            <span type="error" ng-show="holderForm.user.email_verification.$error.email">
+                <i class="glyphicon glyphicon-remove"/>
+            </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Password</span>
-            <input type="password" class="form-control" ng-model="user.password">
+            <input type="password" class="form-control" ng-model="user.password"
+            name="password" required>
+            <span type="error" ng-show="holderForm.user.password.$error.required">
+                <i class="glyphicon glyphicon-remove"/>
+            </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Re-enter Password</span>
-            <input type="password" class="form-control" ng-model="user.password_verification">
+            <input type="password" class="form-control" ng-model="user.password_verification"
+            name="password_verification" required>
+            <span type="error" ng-show="holderForm.user.password_verification.required">
+                <i class="glyphicon glyphicon-remove"/>
+            </span>
         </div>
 
         <div class="input-group input-group-last">
