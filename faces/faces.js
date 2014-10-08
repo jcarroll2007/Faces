@@ -1,4 +1,4 @@
-var app = angular.module('Faces', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'Faces_Login', 'Faces_Register', 'tests']);
+var app = angular.module('Faces', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'Faces_Login', 'Faces_Register', 'tests', 'angularFileUpload']);
 
 app.constant('URLs', {
 	LOGIN: "/login",
