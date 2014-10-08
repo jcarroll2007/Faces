@@ -5,8 +5,8 @@
         <div class="input-group input-group-first">
             <span class="input-group-addon">First Name</span>
             <input type="text" name="first_name" class="form-control" 
-            ng-model="user.first_name" required>
-            <span class="error" ng-change="is_empty()" ng-show="is_empty()">
+            ng-model="user.first_name" ng-change="is_empty()">
+            <span class="error" ng-show="$scope.empty" >
                 <i class="glyphicon glyphicon-remove"/>
             </span>
         </div>

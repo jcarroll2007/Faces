@@ -65,6 +65,7 @@ app.controller('RegisterCtrl', [
 
     // This index represents the current partial in $scope.partials that is being used.
     var current_partial_index = 0;
+    var empty = false;
 
     $scope.register_header = headers.PERSONAL_INFO;
 
@@ -89,9 +90,9 @@ app.controller('RegisterCtrl', [
     };
 
     $scope.is_empty = function(){
-        if(first_name == null)
-            return true;
+        if(first_name == "")
+            empty = true;
         else
-            return false;
+            empty = false;
     }
 }]);
