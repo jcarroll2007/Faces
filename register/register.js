@@ -23,6 +23,7 @@ app.controller('RegisterCtrl', [
         password: "",
         password_verification: "",
         date_of_birth: "",
+        about_me: "",
         profile_picture: ""
     };
 

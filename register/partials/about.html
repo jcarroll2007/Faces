@@ -1,3 +1,11 @@
 <link rel="stylesheet" type="text/css" href="register/partials/styles/about.css">
 
-<input placeholder="Tell us about yourself!" id="about-me-input" class="form-control">
+<div id="about-information-conatiner" ng-controller="app">
+	<form name="registerForm" novalidate>
+		<div class="input-group">
+			<textarea ng-model="user.about_me" ng-maxlength="20" placeholder="Tell us about yourself!" id="about-me-input" class="form-control" rows="5"></textarea>
+		</div>
+	</form>
+</div>
+
+	
