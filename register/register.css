@@ -39,6 +39,9 @@
 
 .form-validation-image {
 	display: inline;
+	position: absolute;
+	top: 9px;
+	color: rgb(255,0,0);
 }
 
 #register-input:focus {

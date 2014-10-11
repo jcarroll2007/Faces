@@ -5,53 +5,54 @@
         <div class="input-group input-group-first">
             <span class="input-group-addon">First Name</span>
             <input type="text" name="firstName" class="form-control" ng-model="user.first_name" required/>
-            <div ng-show="registerForm.firstName.$dirty && registerForm.firstName.$invalid">
+            <span type="error" ng-show="registerForm.firstName.$dirty && registerForm.firstName.$invalid">
                 <span ng-show="registerForm.firstName.$error.required" class="glyphicon glyphicon-remove form-validation-image">
                 </span>
-            </div>
+            </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Last Name</span>
             <input type="text" class="form-control" ng-model="user.last_name" name="last_name" required/>
-            <span type="error" ng-show="registerForm.user.last_name.$error.required">
-                 <i class="glyphicon glyphicon-remove"/>
+            <span type="error" ng-show="registerForm.last_name.$dirty && registerForm.last_name.$invalid">
+                <span ng-show="registerForm.last_name.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+                </span>
             </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Email</span>
-            <input type="email" class="form-control" name="email" 
-            ng-model="user.email" required>
-            <span type="error" ng-show="registerForm.user.email.$error.email">
-                <i class="glyphicon glyphicon-remove"/>
+            <input type="email" class="form-control" name="email" ng-model="user.email" required>
+            <span type="error" ng-show="registerForm.email.$dirty && registerForm.email.$invalid">
+                <span ng-show="registerForm.email.$error.email || registerForm.email_verification.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+                </span>
             </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Re-enter Email</span>
-            <input type="email" class="form-control" ng-model="user.email_verification"
-            name="email_verification" required>
-            <span type="error" ng-show="registerForm.user.email_verification.$error.email">
-                <i class="glyphicon glyphicon-remove"/>
+            <input type="email" class="form-control" ng-model="user.email_verification" name="email_verification" required>
+            <span type="error" ng-show="registerForm.email_verification.$dirty && registerForm.email_verification.$invalid">
+                <span ng-show="registerForm.email_verification.$error.email || registerForm.email_verification.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+                </span>
             </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Password</span>
-            <input type="password" class="form-control" ng-model="user.password"
-            name="password" required>
-            <span type="error" ng-show="registerForm.user.password.$error.required">
-                <i class="glyphicon glyphicon-remove"/>
+            <input type="password" class="form-control" ng-model="user.password" name="password" required>
+            <span type="error" ng-show="registerForm.password.$dirty && registerForm.password.$invalid">
+                <span ng-show="registerForm.password.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+                </span>
             </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Re-enter Password</span>
-            <input type="password" class="form-control" ng-model="user.password_verification"
-            name="password_verification" required>
-            <span type="error" ng-show="registerForm.user.password_verification.required">
-                <i class="glyphicon glyphicon-remove"/>
+            <input type="password" class="form-control" ng-model="user.password_verification" name="password_verification" required>
+            <span type="error" ng-show="registerForm.password_verification.$dirty && registerForm.password_verification.$invalid">
+                <span ng-show="registerForm.password_verification.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+                </span>
             </span>
         </div>
 
