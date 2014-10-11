@@ -1,11 +1,23 @@
 <link rel="stylesheet" type="text/css" href="register/partials/styles/about.css">
-
+<!--
 <div id="about-information-conatiner" ng-controller="app">
 	<form name="registerForm" novalidate>
-		<div class="input-group">
-			<textarea ng-model="user.about_me" ng-maxlength="20" placeholder="Tell us about yourself!" id="about-me-input" class="form-control" rows="5"></textarea>
-		</div>
+			<textarea ng-model="user.about_me" ng-maxlength="20" placeholder="Tell us about yourself!" 
+			id="about-me-input" class="form-control" rows="15" name="aboutme"></textarea>
 	</form>
 </div>
+-->
+
+<div ng-app="" class="container">
+  <!-- <div class="input-group input-group-lg col-sm-6"> -->
+   <div class="input-group-addon">Tells us something about you</div> 
+   <textarea id="inputPostMessage" class="form-control input-lg" ng-model="inputMessage" type="text" placeholder="What is your status?" rows="20"></textarea>
+   <div class="input-group-btn">
+     <button id="btnPost" type="button" class="btn btn-success" ng-disabled="inputMessage.length < 5 || inputMessage.length >= 141" ng-class="{'btn-warning': inputMessage.length >= 120, 'btn-danger': inputMessage.length >= 141 }">{{ 140 - inputMessage.length }}</button>
+   </div>   
+  <!-- </div>  --> 
+</div>
+      
+
 
 	
