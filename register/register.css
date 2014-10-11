@@ -37,6 +37,10 @@
 	background-color: rgba(255,255,255,.90);
 }
 
+.form-validation-image {
+	display: inline;
+}
+
 #register-input:focus {
 	background-color: rgba(255,255,255,.95);
 }

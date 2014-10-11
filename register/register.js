@@ -1,4 +1,4 @@
-var  app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate']);
+var app = angular.module('Faces_Register', ['ui.bootstrap', 'ngAnimate']);
 
 app.constant('partial_file_paths', {
     PERSONAL_INFO: "register/partials/personal_info.html",
@@ -88,11 +88,4 @@ app.controller('RegisterCtrl', [
     $scope.next_partial = function() {
         $scope.current_partial = $scope.partials[++current_partial_index];
     };
-
-    $scope.is_empty = function(){
-        if(first_name == "")
-            empty = true;
-        else
-            empty = false;
-    }
 }]);
