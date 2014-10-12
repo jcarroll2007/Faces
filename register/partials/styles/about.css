@@ -2,6 +2,10 @@
 
 }
 
+#about-me-container {
+	position: absolute;
+}
+
 textarea {
     resize: none;
 }
