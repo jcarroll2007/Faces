@@ -4,17 +4,13 @@
 	<div class="form-group">
 		<!--<div class="col-lg-10 col-md-7 col-sm-3">-->
 			<span class="input-group-addon">Tell us something about you...</span>
-
-			<textarea id="inputPostMessage" class="form-control" ng-model="inputMessage" type="text" placeholder="This area is a place for you to express yourself.  Hobbies, social activites, work, play, life, etc..." rows="10" maxlength="140"></textarea>
-
+			<textarea id="inputPostMessage" class="form-control" ng-model="user.about_me" type="text" placeholder="This area is a place for you to express yourself.  Hobbies, social activites, work, play, life, etc..." rows="10" maxlength="140"></textarea>
         	<div class="input-group input-group-first">
 
    				<div class="input-group-btn">
-     				<button id="btnPost" type="button" class="btn btn-success" ng-class="{'btn-warning': inputMessage.length >= 120, 'btn-danger': inputMessage.length >= 141 }">{{ 140 - inputMessage.length }}</button>
-   				</div> 
-   				
+     				<span id="btnPost" type="button" class="btn btn-success" ng-class="{'btn-warning': user.about_me.length >= 120, 'btn-danger': user.about_me.length >= 140 }">{{ 140 - user.about_me.length }}</span>
+   				</div>  				
    			</div> 			
-
    		<!--</div>-->
     </div> 
 </div>

@@ -44,5 +44,6 @@ namespace FriendAppDataModel
         public virtual ICollection<Message> SentMessages { get; set; }
         public virtual ICollection<Message> receivedMessages { get; set; }
         public virtual ICollection<SubscribedTags> SubscribedTags { get; set; }
+        public virtual UserTokens UserToken { get; set; }
     }
 }

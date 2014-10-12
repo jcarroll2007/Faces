@@ -29,6 +29,7 @@ namespace Faces.Models
         public string AboutMe { get; set; }
         public string Gender { get; set; }
         public string State { get; set; }
+        public string Token { get; set; }
         public List<FriendModel> Friends { get; set; }
     }
 }

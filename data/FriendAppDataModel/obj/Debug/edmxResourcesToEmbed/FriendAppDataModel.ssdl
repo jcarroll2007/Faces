@@ -8,6 +8,7 @@
     <EntitySet Name="WallPostTagsTables" EntityType="FriendAppDataModel.Store.WallPostTagsTables" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Messages" EntityType="FriendAppDataModel.Store.Messages" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SubscribedTags" EntityType="FriendAppDataModel.Store.SubscribedTags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserTokens" EntityType="FriendAppDataModel.Store.UserTokens" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserFriends" Association="FriendAppDataModel.Store.UserFriends">
       <End Role="User" EntitySet="Users" />
       <End Role="Friends" EntitySet="Friends" />
@@ -43,6 +44,10 @@
     <AssociationSet Name="SubscribedTagsTags" Association="FriendAppDataModel.Store.SubscribedTagsTags">
       <End Role="SubscribedTags" EntitySet="SubscribedTags" />
       <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserTokens" Association="FriendAppDataModel.Store.UserUserTokens">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserTokens" EntitySet="UserTokens" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -116,6 +121,13 @@
     <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Tag_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="UserFriends">
     <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
@@ -222,6 +234,18 @@
       </Principal>
       <Dependent Role="SubscribedTags">
         <PropertyRef Name="Tag_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserUserTokens">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="UserTokens" Type="FriendAppDataModel.Store.UserTokens" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserTokens">
+        <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
