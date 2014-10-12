@@ -1,7 +1,12 @@
 <link rel="stylesheet" type="text/css" href="register/partials/styles/profile_picture.css">
 
 
-<div class="register-profile-picture">
-	<button class="faces-btn btn btn-default">Select Profile Picture</button>
-	<button ng-file-select="onFileSelect($files)">TEST</button>
+<div id="register-profile-picture">
+	<button class="faces-btn btn btn-default" ng-file-select="onFileSelect($files)">Select Profile Picture</button>
+	<div id="register-image-container">
+		<div id="profile-picture-placeholder">
+			<p>Your profile picture will be displayed here.</p>
+		</div>
+		<img ng-if="user.profile_picture" ng-src="{{IMAGES_URL + user.profile_picture}}" id="register-profile-picture" />
+	</div>
 </div>

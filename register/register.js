@@ -6,13 +6,9 @@ app.constant('partial_file_paths', {
     PROFILE_PICTURE: "register/partials/profile_picture.html"
 });
 
-app.constant('headers', {
-    PERSONAL_INFO: "Thanks for joining!"
-});
-
 app.controller('RegisterCtrl', [
-    '$scope', 'partial_file_paths', 'headers', '$upload',
-    function($scope, partial_file_paths, headers, $upload) {
+    '$scope', 'partial_file_paths', '$upload',
+    function($scope, partial_file_paths, $upload) {
 
     // User Data
     $scope.user = {
@@ -55,6 +51,17 @@ app.controller('RegisterCtrl', [
         });
     };
 
+    $scope.registration_complete = function() {
+        alert('Not implemented');
+    };
+
+
+
+   /*
+    * The following code controls the partial  that is displayed in the ng-include
+    * div on the register page. It also handles the changing of the partials. 
+    * Partials Include: personal_info.html, about.html, profile_picture.html
+    */
 
     // The register page has several different partials that are used to get the new user's data
     // This is a list of all of them.
@@ -67,8 +74,6 @@ app.controller('RegisterCtrl', [
     // This index represents the current partial in $scope.partials that is being used.
     var current_partial_index = 0;
     var empty = false;
-
-    $scope.register_header = headers.PERSONAL_INFO;
 
     // Current partial to be displayed.
     $scope.current_partial = $scope.partials[current_partial_index];
