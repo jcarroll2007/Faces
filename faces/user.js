@@ -1,4 +1,4 @@
-var app = angular.module('user', []);
+var app = angular.module('User', []);
 
 app.factory('UserService', [function() {
 	return {
@@ -17,9 +17,9 @@ app.factory('UserService', [function() {
 }]);
 
 app.service('user', function() {
-	this.firstName;
-	this.lastName;
-	this.email;
+	this.firstName = "Jordan";
+	this.lastName = "Carroll";
+	this.email = "jcarroll2007@gmail.com";
 	this.password;
 	this.dateOfBirth;
 	this.aboutUser;

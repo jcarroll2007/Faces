@@ -1,9 +1,11 @@
-var app = angular.module('Faces', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'Faces_Login', 'Faces_Register', 'tests', 'angularFileUpload']);
+var app = angular.module('Faces',
+	['ngRoute', 'ngAnimate', 'ui.bootstrap', 'Faces_Login', 'Faces_Register', 'Faces_Me', 'tests', 'angularFileUpload', 'User']);
 
 app.constant('URLs', {
 	LOGIN: "/login",
 	REGISTER: "/register",
-	TESTS: "/tests"
+	TESTS: "/tests",
+	ME: "/me"
 });
 
 app.config(['$routeProvider', 'URLs',
@@ -20,6 +22,10 @@ app.config(['$routeProvider', 'URLs',
 		when(URLs.TESTS, {
 			templateUrl: 'tests/tests.html',
 			controller: 'TestsCtrl'
+		}).
+		when(URLs.ME, {
+			templateUrl: 'me/me.html',
+			controller: 'MeCtrl'
 		}).
 		otherwise({
 			redirectTo: URLs.LOGIN
