@@ -8,3 +8,13 @@ C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\bin\Release\En
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.dll
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.pdb
 C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.dll.config
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.pdb
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.SqlServer.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.xml
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.SqlServer.xml
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.pdb

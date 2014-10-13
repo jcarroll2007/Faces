@@ -15,8 +15,8 @@ app.factory('test_web_services', ['$http', function($http) {
 	var test_web_services = {};
 
 	var new_user_info = {
-		Email: "test@test.com",
-		Password: "password",
+		Email: "ryanmorris793@gmail.com",
+		Password: "123",
 		ProfilePicture: null,
 		FirstName: "Jon",
 		LastName: "Doe",
@@ -27,6 +27,7 @@ app.factory('test_web_services', ['$http', function($http) {
 		AboutMe: "This is my autobiography.",
 		Gender: "M",
 		State: "GA",
+		Token: [ ],
 		Friends: [ ]
 	};
 

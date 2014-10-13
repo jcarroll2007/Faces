@@ -97,6 +97,7 @@ namespace Faces.Controllers
             {
                 return BadRequest(ModelState);
             }
+            
 
             db.Users.Add(user);
             db.SaveChanges();
@@ -113,6 +114,8 @@ namespace Faces.Controllers
             {
                 return NotFound();
             }
+
+
 
             db.Users.Remove(user);
             db.SaveChanges();

@@ -126,8 +126,8 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Token" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <Association Name="UserFriends">
     <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />

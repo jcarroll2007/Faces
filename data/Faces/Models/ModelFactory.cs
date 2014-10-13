@@ -24,8 +24,10 @@ namespace Faces.Models
             userModelTemp.AccountType = entity.AccountType;
             userModelTemp.Gender = entity.Gender;
             userModelTemp.AboutMe = entity.AboutMe;
-            userModelTemp.Token = entity.UserToken.Token;
             userModelTemp.ProfilePicture = entity.ProfilePicture;
+
+            if(entity.UserToken != null)
+            userModelTemp.Token = entity.UserToken.Token;
 
             foreach (var u in entity.Friends)
             {
@@ -52,8 +54,10 @@ namespace Faces.Models
             userEntityTemp.AccountType = model.AccountType;
             userEntityTemp.Gender = model.Gender;
             userEntityTemp.AboutMe = model.AboutMe;
-            userEntityTemp.UserToken.Token = model.Token;
             userEntityTemp.ProfilePicture = model.ProfilePicture;
+
+            if(model.Token != null)
+            userEntityTemp.UserToken.Token = model.Token;
 
             foreach (var u in model.Friends)
             {

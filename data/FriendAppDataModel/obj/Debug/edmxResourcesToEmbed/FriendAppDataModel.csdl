@@ -258,13 +258,13 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Token" Type="String" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Token" Type="String" Nullable="true" />
     <NavigationProperty Name="User" Relationship="FriendAppDataModel.UserUserTokens" FromRole="UserTokens" ToRole="User" />
   </EntityType>
   <Association Name="UserUserTokens">
     <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
-    <End Type="FriendAppDataModel.UserTokens" Role="UserTokens" Multiplicity="1" />
+    <End Type="FriendAppDataModel.UserTokens" Role="UserTokens" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="Id" />

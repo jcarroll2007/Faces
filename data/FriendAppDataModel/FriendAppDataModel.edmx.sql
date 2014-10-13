@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/12/2014 11:28:01
+-- Date Created: 10/13/2014 16:09:45
 -- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
@@ -44,8 +44,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SubscribedTagsTags]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SubscribedTags] DROP CONSTRAINT [FK_SubscribedTagsTags];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UserUserTokens]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserTokens] DROP CONSTRAINT [FK_UserUserTokens];
+IF OBJECT_ID(N'[dbo].[FK_UserTokensUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserTokens] DROP CONSTRAINT [FK_UserTokensUser];
 GO
 
 -- --------------------------------------------------
@@ -155,8 +155,8 @@ GO
 
 -- Creating table 'UserTokens'
 CREATE TABLE [dbo].[UserTokens] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Token] nvarchar(max)  NOT NULL
+    [Id] int  NOT NULL,
+    [Token] nvarchar(max)  NULL
 );
 GO
 
