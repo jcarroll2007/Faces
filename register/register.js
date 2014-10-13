@@ -62,14 +62,14 @@ app.controller('RegisterCtrl', [
     };
 
     $scope.email_verified = function(){
-        if ($scope.email == $scope.email_verification)
+        if ($scope.user.email == $scope.user.email_verification)
             return true;
         else
             return false;
     }
 
     $scope.password_verified = function(){
-        if ($scope.password == $scope.password_verification)
+        if ($scope.user.password == $scope.user.password_verification)
             return true;
         else 
             return false;

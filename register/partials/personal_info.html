@@ -27,11 +27,11 @@
 
         <div class="input-group">
             <span class="input-group-addon">Email</span>
-            <input type="email" class="form-control" ng-minlength="1" name="email" ng-model="user.email" required>
+            <input type="email" class="form-control" name="email" ng-model="user.email" required>
             <span type="error" ng-show="registerForm.email.$dirty">
                 <span ng-show="registerForm.email.$error.email || registerForm.email.$error.required" class="glyphicon glyphicon-remove form-validation-wrong">
                 </span>
-                <span ng-show"!registerForm.email.$error.email && !registerForm.email.$error.required" ng-disabled="registerForm.email.$error.minlength" class="glyphicon glyphicon-ok form-validation-right">
+                <span ng-show="!registerForm.email.$error.email && !registerForm.email.$error.required" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
         </div>
@@ -49,11 +49,11 @@
 
         <div class="input-group">
             <span class="input-group-addon">Password</span>
-            <input type="password" class="form-control" ng-model="user.password" name="password" required>
+            <input type="password" class="form-control" minlength="6" ng-model="user.password" name="password" required>
             <span type="error" ng-show="registerForm.password.$dirty">
-                <span ng-show="registerForm.password.$error.required" class="glyphicon glyphicon-remove form-validation-wrong">
+                <span ng-show="registerForm.password.$error.required || registerForm.password.$error.minlength" class="glyphicon glyphicon-remove form-validation-wrong">
                 </span>
-                <span ng-show="!registerForm.password.$error.required" class="glyphicon glyphicon-ok form-validation-right">
+                <span ng-show="!registerForm.password.$error.required && !registerForm.password.$error.minlength" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
         </div>
