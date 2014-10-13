@@ -53,6 +53,12 @@ app.controller('RegisterCtrl', [
 
     $scope.registration_complete = function() {
         alert('Not implemented');
+
+       /*
+        *
+        * Steps for implementation, include user, call user.
+        *
+        */
     };
 
 
