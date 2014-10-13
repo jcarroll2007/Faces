@@ -55,7 +55,19 @@ app.controller('RegisterCtrl', [
         alert('Not implemented');
     };
 
+    $scope.email_verified = function(){
+        if ($scope.email == $scope.email_verification)
+            return true;
+        else
+            return false;
+    }
 
+    $scope.password_verified = function(){
+        if ($scope.password == $scope.password_verification)
+            return true;
+        else 
+            return false;
+    }
 
    /*
     * The following code controls the partial  that is displayed in the ng-include
@@ -73,7 +85,7 @@ app.controller('RegisterCtrl', [
 
     // This index represents the current partial in $scope.partials that is being used.
     var current_partial_index = 0;
-    var empty = false;
+    var is_complete = false;
 
     // Current partial to be displayed.
     $scope.current_partial = $scope.partials[current_partial_index];

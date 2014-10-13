@@ -37,11 +37,18 @@
 	background-color: rgba(255,255,255,.90);
 }
 
-.form-validation-image {
+.form-validation-wrong {
 	display: inline;
 	position: absolute;
 	top: 9px;
 	color: rgb(255,0,0);
+}
+
+.form-validation-right {
+	display: inline;
+	position: absolute;;
+	top: 9px;
+	color: rgb(0,255,0);
 }
 
 #register-input:focus {

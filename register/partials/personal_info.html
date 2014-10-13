@@ -4,27 +4,34 @@
     <form name="registerForm" novalidate>
         <div class="input-group input-group-first">
             <span class="input-group-addon">First Name</span>
-            <input type="text" name="firstName" class="form-control" ng-model="user.first_name" required/>
-            <span type="error" ng-show="registerForm.firstName.$dirty && registerForm.firstName.$invalid">
-                <span ng-show="registerForm.firstName.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+            <input type="text" name="firstName" class="form-control" ng-minlength="1" ng-model="user.first_name" required/>
+            <span ng-show="registerForm.firstName.$dirty">
+                <span ng-show="registerForm.firstName.$error.required" class="glyphicon glyphicon-remove form-validation-wrong">
+                </span>            
+                <span ng-show="!registerForm.firstName.$error.minlength && !registerForm.firstName.$error.required" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
+            
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Last Name</span>
-            <input type="text" class="form-control" ng-model="user.last_name" name="last_name" required/>
-            <span type="error" ng-show="registerForm.last_name.$dirty && registerForm.last_name.$invalid">
-                <span ng-show="registerForm.last_name.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+            <input type="text" class="form-control" ng-minlength="1" ng-model="user.last_name" name="last_name" required/>
+            <span ng-show="registerForm.last_name.$dirty">
+                <span ng-show="registerForm.last_name.$error.required" class="glyphicon glyphicon-remove form-validation-wrong">
+                </span>            
+                <span ng-show="!registerForm.last_name.$error.minlength && !registerForm.last_name.$error.required" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
         </div>
 
         <div class="input-group">
             <span class="input-group-addon">Email</span>
-            <input type="email" class="form-control" name="email" ng-model="user.email" required>
-            <span type="error" ng-show="registerForm.email.$dirty && registerForm.email.$invalid">
-                <span ng-show="registerForm.email.$error.email || registerForm.email_verification.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+            <input type="email" class="form-control" ng-minlength="1" name="email" ng-model="user.email" required>
+            <span type="error" ng-show="registerForm.email.$dirty">
+                <span ng-show="registerForm.email.$error.email || registerForm.email.$error.required" class="glyphicon glyphicon-remove form-validation-wrong">
+                </span>
+                <span ng-show"!registerForm.email.$error.email && !registerForm.email.$error.required" ng-disabled="registerForm.email.$error.minlength" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
         </div>
@@ -32,8 +39,10 @@
         <div class="input-group">
             <span class="input-group-addon">Re-enter Email</span>
             <input type="email" class="form-control" ng-model="user.email_verification" name="email_verification" required>
-            <span type="error" ng-show="registerForm.email_verification.$dirty && registerForm.email_verification.$invalid">
-                <span ng-show="registerForm.email_verification.$error.email || registerForm.email_verification.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+            <span type="error" ng-show="registerForm.email_verification.$dirty">
+                <span ng-show="registerForm.email_verification.$error.email || registerForm.email_verification.$error.required || !email_verified()" class="glyphicon glyphicon-remove form-validation-wrong">
+                </span>
+                <span ng-show="!registerForm.email_verification.$error.email && !registerForm.email_verification.$error.required && email_verified()" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
         </div>
@@ -41,8 +50,10 @@
         <div class="input-group">
             <span class="input-group-addon">Password</span>
             <input type="password" class="form-control" ng-model="user.password" name="password" required>
-            <span type="error" ng-show="registerForm.password.$dirty && registerForm.password.$invalid">
-                <span ng-show="registerForm.password.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+            <span type="error" ng-show="registerForm.password.$dirty">
+                <span ng-show="registerForm.password.$error.required" class="glyphicon glyphicon-remove form-validation-wrong">
+                </span>
+                <span ng-show="!registerForm.password.$error.required" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
         </div>
@@ -50,17 +61,25 @@
         <div class="input-group">
             <span class="input-group-addon">Re-enter Password</span>
             <input type="password" class="form-control" ng-model="user.password_verification" name="password_verification" required>
-            <span type="error" ng-show="registerForm.password_verification.$dirty && registerForm.password_verification.$invalid">
-                <span ng-show="registerForm.password_verification.$error.required" class="glyphicon glyphicon-remove form-validation-image">
+            <span type="error" ng-show="registerForm.password_verification.$dirty">
+                <span ng-show="registerForm.password_verification.$error.required || !password_verified()" class="glyphicon glyphicon-remove form-validation-wrong">
+                </span>
+                <span ng-show="!registerForm.password_verification.$error.required && password_verified()" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
         </div>
 
         <div class="input-group input-group-last">
             <span class="input-group-addon">Birthdate</span>
-            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="user.date_of_birth" is-open="datepicker_opened" datepicker-options="date_options" ng-required="true" close-text="Close"/>
+            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="user.date_of_birth" is-open="datepicker_opened" datepicker-options="date_options" ng-required="true" name="birthDate" close-text="Close"/>
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open_datepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <span type="error" ng-show="registerForm.birthDate.$dirty">
+                <span ng-show="registerForm.birthDate.$error.required" class="glyphicon glyphicon-remove form-validation-wrong">
+                </span>
+                <span ng-show="!registerForm.birthday.$error.required" class="glyphicon glyphicon-ok form-validation-right">
+                </span>
             </span>
         </div>
     </form>
