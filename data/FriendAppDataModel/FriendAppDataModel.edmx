@@ -13,6 +13,7 @@
     <EntitySet Name="WallPostTagsTables" EntityType="FriendAppDataModel.Store.WallPostTagsTables" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Messages" EntityType="FriendAppDataModel.Store.Messages" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SubscribedTags" EntityType="FriendAppDataModel.Store.SubscribedTags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserTokens" EntityType="FriendAppDataModel.Store.UserTokens" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserFriends" Association="FriendAppDataModel.Store.UserFriends">
       <End Role="User" EntitySet="Users" />
       <End Role="Friends" EntitySet="Friends" />
@@ -48,6 +49,10 @@
     <AssociationSet Name="SubscribedTagsTags" Association="FriendAppDataModel.Store.SubscribedTagsTags">
       <End Role="SubscribedTags" EntitySet="SubscribedTags" />
       <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserTokens" Association="FriendAppDataModel.Store.UserUserTokens">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserTokens" EntitySet="UserTokens" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -121,6 +126,13 @@
     <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Tag_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="UserFriends">
     <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
@@ -230,6 +242,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="UserUserTokens">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="UserTokens" Type="FriendAppDataModel.Store.UserTokens" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserTokens">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -278,6 +302,11 @@
             <End Role="SubscribedTags" EntitySet="SubscribedTags" />
             <End Role="Tags" EntitySet="Tags" />
           </AssociationSet>
+          <EntitySet Name="UserTokens" EntityType="FriendAppDataModel.UserTokens" />
+          <AssociationSet Name="UserUserTokens" Association="FriendAppDataModel.UserUserTokens">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserTokens" EntitySet="UserTokens" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -302,6 +331,7 @@
           <NavigationProperty Name="SentMessages" Relationship="FriendAppDataModel.UserMessage" FromRole="User" ToRole="Message" />
           <NavigationProperty Name="receivedMessages" Relationship="FriendAppDataModel.UserMessage1" FromRole="User" ToRole="Message" />
           <NavigationProperty Name="SubscribedTags" Relationship="FriendAppDataModel.UserTags" FromRole="User" ToRole="SubscribedTags" />
+          <NavigationProperty Name="UserToken" Relationship="FriendAppDataModel.UserUserTokens" FromRole="User" ToRole="UserTokens" />
         </EntityType>
         <EntityType Name="Friends">
           <Key>
@@ -482,6 +512,26 @@
           <End Type="FriendAppDataModel.SubscribedTags" Role="SubscribedTags" Multiplicity="1" />
           <End Type="FriendAppDataModel.Tags" Role="Tags" Multiplicity="1" />
         </Association>
+        <EntityType Name="UserTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="FriendAppDataModel.UserUserTokens" FromRole="UserTokens" ToRole="User" />
+        </EntityType>
+        <Association Name="UserUserTokens">
+          <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
+          <End Type="FriendAppDataModel.UserTokens" Role="UserTokens" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTokens">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -563,6 +613,14 @@
         <MappingFragment StoreEntitySet="SubscribedTags">
           <ScalarProperty Name="TagId" ColumnName="TagId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTokens">
+      <EntityTypeMapping TypeName="IsTypeOf(FriendAppDataModel.UserTokens)">
+        <MappingFragment StoreEntitySet="UserTokens">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

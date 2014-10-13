@@ -83,6 +83,9 @@
     <Compile Include="User.cs">
       <DependentUpon>FriendAppDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserTokens.cs">
+      <DependentUpon>FriendAppDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Wall.cs">
       <DependentUpon>FriendAppDataModel.tt</DependentUpon>
     </Compile>

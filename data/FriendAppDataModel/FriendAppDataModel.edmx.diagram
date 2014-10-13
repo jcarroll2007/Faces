@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="896eb75c250446a394887196bf35d144" Name="Diagram1" >
+      <Diagram DiagramId="896eb75c250446a394887196bf35d144" Name="Diagram1" ZoomLevel="81" >
         <EntityTypeShape EntityType="FriendAppDataModel.User" Width="1.5" PointX="2.625" PointY="0.5" />
         <EntityTypeShape EntityType="FriendAppDataModel.Friends" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="FriendAppDataModel.UserFriends" />
@@ -21,6 +21,8 @@
         <EntityTypeShape EntityType="FriendAppDataModel.SubscribedTags" Width="1.5" PointX="4.75" PointY="3" />
         <AssociationConnector Association="FriendAppDataModel.UserTags" />
         <AssociationConnector Association="FriendAppDataModel.SubscribedTagsTags" />
+        <EntityTypeShape EntityType="FriendAppDataModel.UserTokens" Width="1.5" PointX="0.5" PointY="4" />
+        <AssociationConnector Association="FriendAppDataModel.UserUserTokens" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

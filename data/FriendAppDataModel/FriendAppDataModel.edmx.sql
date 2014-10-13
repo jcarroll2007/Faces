@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/24/2014 16:01:02
--- Generated from EDMX file: C:\Users\scoobydoo\Documents\GitHub\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
+-- Date Created: 10/12/2014 11:28:01
+-- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -44,6 +44,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SubscribedTagsTags]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SubscribedTags] DROP CONSTRAINT [FK_SubscribedTagsTags];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UserUserTokens]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserTokens] DROP CONSTRAINT [FK_UserUserTokens];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -69,6 +72,9 @@ IF OBJECT_ID(N'[dbo].[Messages]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[SubscribedTags]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SubscribedTags];
+GO
+IF OBJECT_ID(N'[dbo].[UserTokens]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserTokens];
 GO
 
 -- --------------------------------------------------
@@ -147,6 +153,13 @@ CREATE TABLE [dbo].[SubscribedTags] (
 );
 GO
 
+-- Creating table 'UserTokens'
+CREATE TABLE [dbo].[UserTokens] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Token] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -191,6 +204,12 @@ GO
 ALTER TABLE [dbo].[SubscribedTags]
 ADD CONSTRAINT [PK_SubscribedTags]
     PRIMARY KEY CLUSTERED ([TagId] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserTokens'
+ALTER TABLE [dbo].[UserTokens]
+ADD CONSTRAINT [PK_UserTokens]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -330,6 +349,15 @@ GO
 CREATE INDEX [IX_FK_SubscribedTagsTags]
 ON [dbo].[SubscribedTags]
     ([Tag_Id]);
+GO
+
+-- Creating foreign key on [Id] in table 'UserTokens'
+ALTER TABLE [dbo].[UserTokens]
+ADD CONSTRAINT [FK_UserUserTokens]
+    FOREIGN KEY ([Id])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- --------------------------------------------------
