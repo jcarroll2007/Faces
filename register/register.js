@@ -18,6 +18,10 @@ app.controller('RegisterCtrl', [
         email_verification: "",
         password: "",
         password_verification: "",
+        city: "",
+        state: "",
+        phone: "",
+        gender: "",
         date_of_birth: "",
         about_me: "",
         profile_picture: ""

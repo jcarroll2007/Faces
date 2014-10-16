@@ -16,14 +16,14 @@
 #register-partials-view.ng-leave{
 	transition: 1.5s;
 	left: 0px;
-	top: -378px;
+	top: -560px;
 	height:0px;
     opacity: 1;
 }
     
 #register-partials-view.ng-leave-active {
 	left: -1000px;
-	top: -378px;
+	top: -560px;
 	height: 0px;
 	opacity: 0;
 }
@@ -83,7 +83,7 @@
 }
 
 #register-partials-view {
-	height: 27em;
+	height: 40em;
 }
 
 #new-user-information-container .input-group-first {
@@ -92,7 +92,7 @@
 
 
 #new-user-information-container .input-group-last {
-	margin-bottom: 0;
+	margin-bottom: ;
 }
 
 #new-user-information-container .input-group-addon {

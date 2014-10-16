@@ -21,6 +21,10 @@ app.service('user', function() {
 	this.lastName = "Carroll";
 	this.email = "jcarroll2007@gmail.com";
 	this.password;
+	this.city;
+	this.state;
+	this.phone;
+	this.gender;
 	this.dateOfBirth;
 	this.aboutUser;
 	this.profilePictureUrl;

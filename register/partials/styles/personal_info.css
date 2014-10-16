@@ -1,3 +1,9 @@
 #personal-information-container {
 	position: absolute;
 }
+
+select {
+	display: inline;
+	position: absolute;
+	height: 34px;
+}
