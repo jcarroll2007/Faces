@@ -72,8 +72,8 @@
         <div class="input-group">
             <span class="input-group-addon">City & State</span>
             <input type="text" class="form-control form-city" ng-model="user.city" name="city"  ng-minlength="4">
-            <select class="input-group-addon" name="state" ng-model="user.state">
-                <option value="AL">AL</option>
+            <select name="state" ng-model="user.state">
+                <option value="AL" selected>AL</option>
                 <option value="AK">AK</option>
                 <option value="AZ">AZ</option>
                 <option value="AR">AR</option>
@@ -125,10 +125,10 @@
                 <option value="WI">WI</option>
                 <option value="WY">WY</option>
             </select>
-            <span type="error" ng-show="registerForm.city.$dirty">
-                <span ng-show="registerForm.city.$error.minlength || user.city.length == 0" class="glyphicon glyphicon-remove form-validation-wrong">
+            <span type="error" ng-show="registerForm.city.$dirty || registerForm.state.$dirty">
+                <span ng-show="registerForm.city.$error.minlength || user.city.length == 0 || user.state == null" class="glyphicon glyphicon-remove form-validation-wrong">
                 </span>
-                <span ng-show="!registerForm.city.$error.minlength && user.city.length != 0" class="glyphicon glyphicon-ok form-validation-right">
+                <span ng-show="!registerForm.city.$error.minlength && user.city.length != 0 && user.state != null" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>
         </div>
@@ -136,10 +136,10 @@
         <div class="input-group">
             <span class="input-group-addon">Phone</span>
             <input type="text" class="form-control" ng-model="user.phone" name="phone" ng-minlength="10" ng-maxlength="10" maxlength="10">
-            <span type="error" ng-show="registerForm.state.$dirty">
-                <span ng-show="registerForm.phone.$error.minlength || registerForm.phone.$error.maxlength" class="glyphicon glyphicon-remove form-validation-wrong">
+            <span type="error" ng-show="registerForm.phone.$dirty">
+                <span ng-show="registerForm.phone.$error.minlength || user.phone.length == 0" class="glyphicon glyphicon-remove form-validation-wrong">
                 </span>
-                <span ng-show="!registerForm.phone.$error.minlength" class="glyphicon glyphicon-ok form-validation-right">
+                <span ng-show="!registerForm.phone.$error.minlength && user.phone.length != 0" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span> 
         </div>
@@ -148,34 +148,26 @@
             <span class="input-group-addon">Gender</span>
             <section>
                 <label style="margin-left: 2em; margin-right: 2em;">Male
-                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" value="male">
+                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" ng-value="male">
                 </label>
                 <label style="margin-left: 2em; margin-right: 2em;">Female
-                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" value="female">
+                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" ng-value="female">
                 </label>
                 <label style="margin-left: 2em; margin-right: 2em;">Other
-                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" value="other">
+                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" ng-value="other">
                 </label>
-            </section>
-            <span type="error" ng-show="registerForm.state.$dirty">
-                <span ng-show="user.gender.length == 0" class="glyphicon glyphicon-remove form-validation-wrong">
-                </span>
-                <span ng-show="user.gender.length > 0" class="glyphicon glyphicon-ok form-validation-right">
-                </span>
-            </span>
-            
+            </section>          
         </div>
         
 
         <div class="input-group input-group-last">
             <span class="input-group-addon">Birthdate</span>
-            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="user.date_of_birth" is-open="datepicker_opened" datepicker-options="date_options" ng-required="true" name="birthDate" close-text="Close"/>
+            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="user.date_of_birth" is-open="datepicker_opened" datepicker-options="date_options" ng-required="true" name="birthDate" close-text="Close"
+            disabled/>
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open_datepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
             <span type="error" ng-show="registerForm.birthDate.$dirty">
-                <span ng-show="registerForm.birthDate.$error.required" class="glyphicon glyphicon-remove form-validation-wrong">
-                </span>
                 <span ng-show="!registerForm.birthday.$error.required" class="glyphicon glyphicon-ok form-validation-right">
                 </span>
             </span>

@@ -6,5 +6,6 @@ select {
 	display: inline;
 	position: absolute;
 	height: 34px;
+	left: 581px;
+	z-index: 2;
 }
-

@@ -19,9 +19,9 @@ app.controller('RegisterCtrl', [
         password: "",
         password_verification: "",
         city: "",
-        state: "",
+        state: null,
         phone: "",
-        gender: "",
+        gender: null,
         date_of_birth: "",
         about_me: "",
         profile_picture: ""
