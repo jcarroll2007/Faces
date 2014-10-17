@@ -72,7 +72,7 @@
         <div class="input-group">
             <span class="input-group-addon">City & State</span>
             <input type="text" class="form-control form-city" ng-model="user.city" name="city"  ng-minlength="4">
-            <select name="state" ng-model="user.state">
+            <select class="input-group-addon" name="state" ng-model="user.state">
                 <option value="AL">AL</option>
                 <option value="AK">AK</option>
                 <option value="AZ">AZ</option>
@@ -144,27 +144,27 @@
             </span> 
         </div>
         
-            <div class="input-group">
-                <span class="input-group-addon">Gender</span>
-                <section>
-                    <label>
-                        <input type="radio" class="form-control form-radio" ng-model="user.gender" name="genderSelect" value="male">Male
-                    </label>
-                    <label>
-                        <input type="radio" class="form-control form-radio" ng-model="user.gender" name="genderSelect" value="female">Female
-                    </label>
-                    <label>
-                        <input type="radio" class="form-control form-radio" ng-model="user.gender" name="genderSelect" value="other">Other
-                    </label>
-                </section>
-                <span type="error" ng-show="registerForm.state.$dirty">
-                    <span ng-show="user.gender.length == 0" class="glyphicon glyphicon-remove form-validation-wrong">
-                    </span>
-                    <span ng-show="user.gender.length > 0" class="glyphicon glyphicon-ok form-validation-right">
-                    </span>
+        <div class="input-group">
+            <span class="input-group-addon">Gender</span>
+            <section>
+                <label style="margin-left: 2em; margin-right: 2em;">Male
+                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" value="male">
+                </label>
+                <label style="margin-left: 2em; margin-right: 2em;">Female
+                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" value="female">
+                </label>
+                <label style="margin-left: 2em; margin-right: 2em;">Other
+                    <input type="radio" class="form-radio" ng-model="user.gender" name="genderSelect" value="other">
+                </label>
+            </section>
+            <span type="error" ng-show="registerForm.state.$dirty">
+                <span ng-show="user.gender.length == 0" class="glyphicon glyphicon-remove form-validation-wrong">
                 </span>
-                
-            </div>
+                <span ng-show="user.gender.length > 0" class="glyphicon glyphicon-ok form-validation-right">
+                </span>
+            </span>
+            
+        </div>
         
 
         <div class="input-group input-group-last">
