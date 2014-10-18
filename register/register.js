@@ -43,6 +43,7 @@ app.controller('RegisterCtrl', [
     };
 
     // Profile Picture File Uploader instantiation
+    //path: pictures/profile
     $scope.onFileSelect = function(file) {
         $scope.upload = $upload.upload({
             url: 'server/upload/url',
