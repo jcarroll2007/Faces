@@ -22,6 +22,7 @@ namespace FriendAppDataModel
             this.SentMessages = new HashSet<Message>();
             this.receivedMessages = new HashSet<Message>();
             this.SubscribedTags = new HashSet<SubscribedTags>();
+            this.Comments = new HashSet<Comments>();
         }
     
         public int Id { get; set; }
@@ -45,5 +46,6 @@ namespace FriendAppDataModel
         public virtual ICollection<Message> receivedMessages { get; set; }
         public virtual ICollection<SubscribedTags> SubscribedTags { get; set; }
         public virtual UserTokens UserToken { get; set; }
+        public virtual ICollection<Comments> Comments { get; set; }
     }
 }

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/13/2014 16:09:45
--- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
+-- Date Created: 10/24/2014 09:59:52
+-- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -44,8 +44,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SubscribedTagsTags]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SubscribedTags] DROP CONSTRAINT [FK_SubscribedTagsTags];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UserTokensUser]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserTokens] DROP CONSTRAINT [FK_UserTokensUser];
+IF OBJECT_ID(N'[dbo].[FK_UserUserTokens]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserTokens] DROP CONSTRAINT [FK_UserUserTokens];
 GO
 
 -- --------------------------------------------------
@@ -160,6 +160,16 @@ CREATE TABLE [dbo].[UserTokens] (
 );
 GO
 
+-- Creating table 'Comments'
+CREATE TABLE [dbo].[Comments] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [CommentText] nvarchar(1000)  NOT NULL,
+    [CommentDatetime] datetime  NOT NULL,
+    [UserId] int  NOT NULL,
+    [WallId] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -209,6 +219,12 @@ GO
 -- Creating primary key on [Id] in table 'UserTokens'
 ALTER TABLE [dbo].[UserTokens]
 ADD CONSTRAINT [PK_UserTokens]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Comments'
+ALTER TABLE [dbo].[Comments]
+ADD CONSTRAINT [PK_Comments]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -358,6 +374,36 @@ ADD CONSTRAINT [FK_UserUserTokens]
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [UserId] in table 'Comments'
+ALTER TABLE [dbo].[Comments]
+ADD CONSTRAINT [FK_CommentsUser]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CommentsUser'
+CREATE INDEX [IX_FK_CommentsUser]
+ON [dbo].[Comments]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [WallId] in table 'Comments'
+ALTER TABLE [dbo].[Comments]
+ADD CONSTRAINT [FK_CommentsWall]
+    FOREIGN KEY ([WallId])
+    REFERENCES [dbo].[Walls]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CommentsWall'
+CREATE INDEX [IX_FK_CommentsWall]
+ON [dbo].[Comments]
+    ([WallId]);
 GO
 
 -- --------------------------------------------------

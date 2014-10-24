@@ -23,6 +23,9 @@
         <AssociationConnector Association="FriendAppDataModel.SubscribedTagsTags" />
         <EntityTypeShape EntityType="FriendAppDataModel.UserTokens" Width="1.5" PointX="0.5" PointY="4" />
         <AssociationConnector Association="FriendAppDataModel.UserUserTokens" />
+        <EntityTypeShape EntityType="FriendAppDataModel.Comments" Width="1.5" PointX="2.375" PointY="6.125" />
+        <AssociationConnector Association="FriendAppDataModel.CommentsUser" />
+        <AssociationConnector Association="FriendAppDataModel.CommentsWall" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
