@@ -5,6 +5,16 @@
 		<h2 id="me-username-heading">{{user.firstName}} {{user.lastName}}</h2>
 	</div>
 	<div class="me-section-border">
-		<img id="me-profile-picture" src="static/photos/{{user.firstName}}{{user.lastName}}.jpg">
+		<img id="me-profile-picture" ng-src="{{user.profilePictureUrl}}">
+		<div id="user-information-container">
+			From:
+			<p>{{user.city}}, {{user.state}}</p>
+			Phone:
+			<p>{{user.phone}}</p>
+			Birthday:
+			<p>{{user.dateOfBirth}}</p>
+			About:
+			<p>{{user.aboutMe}} </p>
+		</div>
 	</div>
 </div>

@@ -14,17 +14,18 @@
 }
 
 #me-profile-picture {
+	display: inline;
+
 	margin-right: auto;
-	margin-top: 2em;
-	margin-bottom: 2em;
 	margin-left: 2em;
+	margin-top: 2em;
 
 	border-style: solid;
 	border-width: .25em;
 	border-color: #1F2B50;
 	border-radius: 1em;
 
-	width: 15em;
+	width: 25%;
 	height: auto;
 }
 
@@ -37,4 +38,10 @@
 	/* background-color: #94B8FF; */
 	margin-top: .25em;
 	margin-bottom: .25em;
+}
+
+#user-information-container {
+	display: inline-block;
+	text-align: center;
+	margin: 0  auto;
 }
