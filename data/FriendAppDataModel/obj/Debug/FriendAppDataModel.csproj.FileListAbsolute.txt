@@ -36,3 +36,13 @@ C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\D
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.SqlServer.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.pdb
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Debug\FriendAppDataModel.dll.config
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Debug\FriendAppDataModel.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Debug\FriendAppDataModel.pdb
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.xml
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.pdb
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\obj\Debug\FriendAppDataModel.csprojResolveAssemblyReference.cache

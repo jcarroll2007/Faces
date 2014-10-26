@@ -32,6 +32,8 @@ namespace Faces
             Mapper.CreateMap<UserModel, User>();
             Mapper.CreateMap<Friends, FriendModel>();
             Mapper.CreateMap<FriendModel, Friends>();
+            Mapper.CreateMap<CommentModel, Comments>();
+            Mapper.CreateMap<Comments, CommentModel>();
         }
     }
 }

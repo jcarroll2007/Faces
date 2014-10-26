@@ -23,7 +23,14 @@ namespace Faces.Controllers
                 return BadRequest();
             }
             else
+            {
+                var token = new TokenModel(user);
+                token.CreateToken();
                 temp = ModelFactory.ParseUserEntityToModel(user);
+            }
+                
+
+            
 
             return Ok(temp);
         }

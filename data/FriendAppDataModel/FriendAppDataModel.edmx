@@ -14,6 +14,7 @@
     <EntitySet Name="Messages" EntityType="FriendAppDataModel.Store.Messages" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SubscribedTags" EntityType="FriendAppDataModel.Store.SubscribedTags" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserTokens" EntityType="FriendAppDataModel.Store.UserTokens" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="FriendAppDataModel.Store.Comments" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserFriends" Association="FriendAppDataModel.Store.UserFriends">
       <End Role="User" EntitySet="Users" />
       <End Role="Friends" EntitySet="Friends" />
@@ -53,6 +54,14 @@
     <AssociationSet Name="UserUserTokens" Association="FriendAppDataModel.Store.UserUserTokens">
       <End Role="User" EntitySet="Users" />
       <End Role="UserTokens" EntitySet="UserTokens" />
+    </AssociationSet>
+    <AssociationSet Name="CommentsUser" Association="FriendAppDataModel.Store.CommentsUser">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="CommentsWall" Association="FriendAppDataModel.Store.CommentsWall">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="Wall" EntitySet="Walls" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -133,6 +142,16 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Token" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommentText" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="CommentDatetime" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="WallId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="UserFriends">
     <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
@@ -251,6 +270,30 @@
       </Principal>
       <Dependent Role="UserTokens">
         <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentsUser">
+    <End Role="Comments" Type="FriendAppDataModel.Store.Comments" Multiplicity="*" />
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentsWall">
+    <End Role="Comments" Type="FriendAppDataModel.Store.Comments" Multiplicity="*" />
+    <End Role="Wall" Type="FriendAppDataModel.Store.Walls" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Wall">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="WallId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -668,6 +711,17 @@
         <MappingFragment StoreEntitySet="UserTokens">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Token" ColumnName="Token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(FriendAppDataModel.Comments)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          <ScalarProperty Name="CommentDatetime" ColumnName="CommentDatetime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="WallId" ColumnName="WallId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

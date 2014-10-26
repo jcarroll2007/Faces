@@ -87,6 +87,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(FriendAppDataModel.Comments)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          <ScalarProperty Name="CommentDatetime" ColumnName="CommentDatetime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="WallId" ColumnName="WallId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="SubscribedTagsTags" TypeName="FriendAppDataModel.SubscribedTagsTags" StoreEntitySet="SubscribedTags">
       <EndProperty Name="Tags">
         <ScalarProperty Name="Id" ColumnName="Tag_Id" />

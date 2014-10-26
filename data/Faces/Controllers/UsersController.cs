@@ -97,12 +97,27 @@ namespace Faces.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             
+            if (db.Users.Where(c => c.Email == user.Email).Any())
+            {
+                return Ok<string> ("Email already exist");
+            }
+     
 
             db.Users.Add(user);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            var tempToken = new UserTokens();
+            tempToken.User = user;
+            tempToken.Token = "";
+            db.UserTokens.Add(tempToken);
+            db.SaveChanges();
+
+            var tempUser = new UserModel();
+            tempUser = ModelFactory.ParseUserEntityToModel(user);
+
+            return CreatedAtRoute("DefaultApi", new { id = tempUser.Id }, tempUser);
         }
 
         // DELETE: api/Users/5

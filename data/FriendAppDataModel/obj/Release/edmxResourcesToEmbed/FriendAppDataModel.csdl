@@ -49,6 +49,15 @@
       <End Role="User" EntitySet="Users" />
       <End Role="UserTokens" EntitySet="UserTokens" />
     </AssociationSet>
+    <EntitySet Name="Comments" EntityType="FriendAppDataModel.Comments" />
+    <AssociationSet Name="CommentsUser" Association="FriendAppDataModel.CommentsUser">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="CommentsWall" Association="FriendAppDataModel.CommentsWall">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="Wall" EntitySet="Walls" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="User">
     <Key>
@@ -74,6 +83,7 @@
     <NavigationProperty Name="receivedMessages" Relationship="FriendAppDataModel.UserMessage1" FromRole="User" ToRole="Message" />
     <NavigationProperty Name="SubscribedTags" Relationship="FriendAppDataModel.UserTags" FromRole="User" ToRole="SubscribedTags" />
     <NavigationProperty Name="UserToken" Relationship="FriendAppDataModel.UserUserTokens" FromRole="User" ToRole="UserTokens" />
+    <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsUser" FromRole="User" ToRole="Comments" />
   </EntityType>
   <EntityType Name="Friends">
     <Key>
@@ -133,6 +143,7 @@
     <Property Name="Picture" Type="String" Nullable="true" Unicode="false" />
     <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="PostTags" Relationship="FriendAppDataModel.PostTags" FromRole="Wall" ToRole="WallPostTagsTable" />
+    <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsWall" FromRole="Wall" ToRole="Comments" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
@@ -271,6 +282,42 @@
       </Principal>
       <Dependent Role="UserTokens">
         <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommentText" Type="String" Nullable="false" MaxLength="1000" />
+    <Property Name="CommentDatetime" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="FriendAppDataModel.CommentsUser" FromRole="Comments" ToRole="User" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Wall" Relationship="FriendAppDataModel.CommentsWall" FromRole="Comments" ToRole="Wall" />
+    <Property Name="WallId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="CommentsUser">
+    <End Type="FriendAppDataModel.Comments" Role="Comments" Multiplicity="*" />
+    <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentsWall">
+    <End Type="FriendAppDataModel.Comments" Role="Comments" Multiplicity="*" />
+    <End Type="FriendAppDataModel.Wall" Role="Wall" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Wall">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="WallId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

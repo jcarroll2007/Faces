@@ -34,6 +34,11 @@ namespace Faces.Models
                 userModelTemp.Friends.Add(ParseFriendEntityToModel(u));
             }
 
+            foreach (var u in entity.Comments)
+            {
+                userModelTemp.Comments.Add(ParseCommentEntityToModel(u));
+            }
+
             return userModelTemp;
 
         }
@@ -64,6 +69,11 @@ namespace Faces.Models
                 userEntityTemp.Friends.Add(ParseFriendModelToEntiy(u));
             }
 
+            foreach (var u in model.Comments)
+            {
+                userEntityTemp.Comments.Add(ParseCommentModelToEntity(u));
+            }
+
             return userEntityTemp;
         }
 
@@ -72,7 +82,6 @@ namespace Faces.Models
             var model = new FriendModel();
             model.Status = entity.Status;
             model.ActionDate = entity.ActionDate;
-
             model.Id = entity.FriendId;
             model.Email = entity.Friend.Email;
             model.ProfilePicture = entity.Friend.ProfilePicture;
@@ -85,10 +94,33 @@ namespace Faces.Models
             var entity = new Friends();
             entity.Status = model.Status;
             entity.ActionDate = model.ActionDate;
-
             entity.Id = model.Id;
             entity.Friend.Email = model.Email;
             entity.Friend.ProfilePicture = model.ProfilePicture;
+
+            return entity;
+        }
+
+        private static CommentModel ParseCommentEntityToModel(Comments u)
+        {
+            var model = new CommentModel();
+            model.Id = u.Id;
+            model.CommentText = u.CommentText;
+            model.CommentDatetime = u.CommentDatetime;
+            model.UserId = u.UserId;
+            model.WallId = u.WallId;
+
+            return model;
+        }
+
+        private static Comments ParseCommentModelToEntity(CommentModel model)
+        {
+            var entity = new Comments();
+            entity.Id = model.Id;
+            entity.CommentText = model.CommentText;
+            entity.CommentDatetime = model.CommentDatetime;
+            entity.UserId = model.UserId;
+            entity.WallId = model.WallId;
 
             return entity;
         }

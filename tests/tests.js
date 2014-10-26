@@ -26,9 +26,7 @@ app.factory('test_web_services', ['$http', function($http) {
 		AccountType: 1,
 		AboutMe: "This is my autobiography.",
 		Gender: "M",
-		State: "GA",
-		Token: [ ],
-		Friends: [ ]
+		State: "GA"
 	};
 
 

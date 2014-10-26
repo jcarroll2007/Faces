@@ -18,3 +18,13 @@ C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\bin\R
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.csprojResolveAssemblyReference.cache
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.pdb
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.dll.config
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Release\FriendAppDataModel.pdb
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.SqlServer.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.xml
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\bin\Release\EntityFramework.SqlServer.xml
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\obj\Release\FriendAppDataModel.pdb

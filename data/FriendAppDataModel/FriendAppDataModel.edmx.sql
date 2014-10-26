@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/24/2014 09:59:52
+-- Date Created: 10/26/2014 14:27:40
 -- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
@@ -47,6 +47,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_UserUserTokens]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[UserTokens] DROP CONSTRAINT [FK_UserUserTokens];
 GO
+IF OBJECT_ID(N'[dbo].[FK_CommentsUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_CommentsUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CommentsWall]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_CommentsWall];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -75,6 +81,9 @@ IF OBJECT_ID(N'[dbo].[SubscribedTags]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserTokens]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserTokens];
+GO
+IF OBJECT_ID(N'[dbo].[Comments]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Comments];
 GO
 
 -- --------------------------------------------------

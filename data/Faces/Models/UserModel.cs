@@ -14,10 +14,10 @@ namespace Faces.Models
         public UserModel()
         {
             Friends = new List<FriendModel>();
+            Comments = new List<CommentModel>();
         }
 
         public int Id { get; set; }
-        [Index("IsUnique=true")]
         public string Email { get; set; }
         public string Password { get; set; }
         public string ProfilePicture { get; set; }
@@ -32,5 +32,6 @@ namespace Faces.Models
         public string State { get; set; }
         public string Token { get; set; }
         public List<FriendModel> Friends { get; set; }
+        public List<CommentModel> Comments { get; set; }
     }
 }
