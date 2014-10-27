@@ -46,10 +46,10 @@ app.controller('RegisterCtrl', [
     //path: pictures/profile
     $scope.onFileSelect = function(file) {
         $scope.upload = $upload.upload({
-            url: 'server/upload/url',
-            //data: {myObj: $scope.myModelObj}
+            url: 'pictures/profile',
+            data: {myObj: $scope.myModelObj},
             file: file,
-            //filename: $scope.username + ".jpg" or something, 
+            filename: $scope.username + ".jpg" 
         })
         .success(function() {
             console.log('File Uploaded Succesfully');
