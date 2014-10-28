@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/26/2014 14:27:40
+-- Date Created: 10/27/2014 22:00:50
 -- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
@@ -124,7 +124,8 @@ CREATE TABLE [dbo].[Walls] (
     [UserId] int  NOT NULL,
     [Message] nvarchar(max)  NOT NULL,
     [Picture] varchar(max)  NULL,
-    [PostTime] datetime  NOT NULL
+    [PostTime] datetime  NOT NULL,
+    [Poster] int  NOT NULL
 );
 GO
 
@@ -413,6 +414,21 @@ GO
 CREATE INDEX [IX_FK_CommentsWall]
 ON [dbo].[Comments]
     ([WallId]);
+GO
+
+-- Creating foreign key on [Poster] in table 'Walls'
+ALTER TABLE [dbo].[Walls]
+ADD CONSTRAINT [FK_WallUser]
+    FOREIGN KEY ([Poster])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_WallUser'
+CREATE INDEX [IX_FK_WallUser]
+ON [dbo].[Walls]
+    ([Poster]);
 GO
 
 -- --------------------------------------------------

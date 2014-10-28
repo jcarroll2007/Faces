@@ -162,6 +162,7 @@
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\WallModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

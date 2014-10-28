@@ -26,6 +26,7 @@
         <EntityTypeShape EntityType="FriendAppDataModel.Comments" Width="1.5" PointX="2.375" PointY="6.125" />
         <AssociationConnector Association="FriendAppDataModel.CommentsUser" />
         <AssociationConnector Association="FriendAppDataModel.CommentsWall" />
+        <AssociationConnector Association="FriendAppDataModel.WallUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

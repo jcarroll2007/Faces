@@ -63,6 +63,10 @@
       <End Role="Comments" EntitySet="Comments" />
       <End Role="Wall" EntitySet="Walls" />
     </AssociationSet>
+    <AssociationSet Name="WallUser" Association="FriendAppDataModel.Store.WallUser">
+      <End Role="Wall" EntitySet="Walls" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -101,6 +105,7 @@
     <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Picture" Type="varchar(max)" Nullable="true" />
     <Property Name="PostTime" Type="datetime" Nullable="false" />
+    <Property Name="Poster" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
@@ -297,6 +302,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="WallUser">
+    <End Role="Wall" Type="FriendAppDataModel.Store.Walls" Multiplicity="*" />
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Wall">
+        <PropertyRef Name="Poster" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -359,6 +376,10 @@
             <End Role="Comments" EntitySet="Comments" />
             <End Role="Wall" EntitySet="Walls" />
           </AssociationSet>
+          <AssociationSet Name="WallUser" Association="FriendAppDataModel.WallUser">
+            <End Role="Wall" EntitySet="Walls" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -385,6 +406,7 @@
           <NavigationProperty Name="SubscribedTags" Relationship="FriendAppDataModel.UserTags" FromRole="User" ToRole="SubscribedTags" />
           <NavigationProperty Name="UserToken" Relationship="FriendAppDataModel.UserUserTokens" FromRole="User" ToRole="UserTokens" />
           <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsUser" FromRole="User" ToRole="Comments" />
+          <NavigationProperty Name="PostedOnWall" Relationship="FriendAppDataModel.WallUser" FromRole="User" ToRole="Wall" />
         </EntityType>
         <EntityType Name="Friends">
           <Key>
@@ -445,6 +467,8 @@
           <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="PostTags" Relationship="FriendAppDataModel.PostTags" FromRole="Wall" ToRole="WallPostTagsTable" />
           <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsWall" FromRole="Wall" ToRole="Comments" />
+          <NavigationProperty Name="PosterId" Relationship="FriendAppDataModel.WallUser" FromRole="Wall" ToRole="User" />
+          <Property Name="Poster" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Tags">
           <Key>
@@ -622,6 +646,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="WallUser">
+          <End Type="FriendAppDataModel.Wall" Role="Wall" Multiplicity="*" />
+          <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wall">
+              <PropertyRef Name="Poster" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -666,6 +702,7 @@
           <ScalarProperty Name="Message" ColumnName="Message" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -25,9 +25,11 @@ namespace FriendAppDataModel
         public string Message { get; set; }
         public string Picture { get; set; }
         public System.DateTime PostTime { get; set; }
+        public int Poster { get; set; }
     
         public virtual User User { get; set; }
         public virtual ICollection<WallPostTagsTable> PostTags { get; set; }
         public virtual ICollection<Comments> Comments { get; set; }
+        public virtual User PosterId { get; set; }
     }
 }
