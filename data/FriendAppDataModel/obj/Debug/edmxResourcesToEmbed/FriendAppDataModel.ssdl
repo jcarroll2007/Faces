@@ -58,6 +58,10 @@
       <End Role="Comments" EntitySet="Comments" />
       <End Role="Wall" EntitySet="Walls" />
     </AssociationSet>
+    <AssociationSet Name="WallUser" Association="FriendAppDataModel.Store.WallUser">
+      <End Role="Wall" EntitySet="Walls" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -96,6 +100,7 @@
     <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Picture" Type="varchar(max)" Nullable="true" />
     <Property Name="PostTime" Type="datetime" Nullable="false" />
+    <Property Name="Poster" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
@@ -289,6 +294,18 @@
       </Principal>
       <Dependent Role="Comments">
         <PropertyRef Name="WallId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WallUser">
+    <End Role="Wall" Type="FriendAppDataModel.Store.Walls" Multiplicity="*" />
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Wall">
+        <PropertyRef Name="Poster" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

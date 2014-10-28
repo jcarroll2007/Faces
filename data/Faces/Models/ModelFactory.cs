@@ -34,10 +34,10 @@ namespace Faces.Models
                 userModelTemp.Friends.Add(ParseFriendEntityToModel(u));
             }
 
-            foreach (var u in entity.Comments)
-            {
-                userModelTemp.Comments.Add(ParseCommentEntityToModel(u));
-            }
+            //foreach (var u in entity.Comments)
+            //{
+            //    userModelTemp.Comments.Add(ParseCommentEntityToModel(u));
+            //}
 
             return userModelTemp;
 
@@ -69,10 +69,10 @@ namespace Faces.Models
                 userEntityTemp.Friends.Add(ParseFriendModelToEntiy(u));
             }
 
-            foreach (var u in model.Comments)
-            {
-                userEntityTemp.Comments.Add(ParseCommentModelToEntity(u));
-            }
+            //foreach (var u in model.Comments)
+            //{
+            //    userEntityTemp.Comments.Add(ParseCommentModelToEntity(u));
+            //}
 
             return userEntityTemp;
         }
@@ -98,6 +98,37 @@ namespace Faces.Models
             entity.Friend.Email = model.Email;
             entity.Friend.ProfilePicture = model.ProfilePicture;
 
+            return entity;
+        }
+
+        private static WallModel ParseWallEntityToModel(Wall u)
+        {
+            var model = new WallModel();
+            model.Id = u.Id;
+            model.UserId = u.UserId;
+            model.PosterId = u.PosterId;
+            model.Message = u.Message;
+            model.Picture = u.Picture;
+            model.PostTime = u.PostTime;
+
+            foreach (var m in u.PostTags)
+            {
+                WallPostTagsTable temp = new WallPostTagsTable();
+                temp = m;
+                model.PostTags.Add(temp.Tag);
+            }
+
+            foreach (var m in u.Comments)
+            {
+                model.Comments.Add(ParseCommentEntityToModel(m));
+            }
+
+            return model;
+        }
+
+        private static Wall ParseWallModelToEntity(WallModel model)
+        {
+            var entity = new Wall();
             return entity;
         }
 

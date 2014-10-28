@@ -39,6 +39,7 @@
           <ScalarProperty Name="Message" ColumnName="Message" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+          <ScalarProperty Name="PosterId" ColumnName="Poster" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

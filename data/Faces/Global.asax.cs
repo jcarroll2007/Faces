@@ -34,6 +34,8 @@ namespace Faces
             Mapper.CreateMap<FriendModel, Friends>();
             Mapper.CreateMap<CommentModel, Comments>();
             Mapper.CreateMap<Comments, CommentModel>();
+            Mapper.CreateMap<WallModel, Wall>();
+            Mapper.CreateMap<Wall, WallModel>();
         }
     }
 }

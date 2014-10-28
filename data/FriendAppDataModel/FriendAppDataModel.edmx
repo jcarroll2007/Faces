@@ -467,8 +467,8 @@
           <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="PostTags" Relationship="FriendAppDataModel.PostTags" FromRole="Wall" ToRole="WallPostTagsTable" />
           <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsWall" FromRole="Wall" ToRole="Comments" />
-          <NavigationProperty Name="PosterId" Relationship="FriendAppDataModel.WallUser" FromRole="Wall" ToRole="User" />
-          <Property Name="Poster" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WhoPosted" Relationship="FriendAppDataModel.WallUser" FromRole="Wall" ToRole="User" />
+          <Property Name="PosterId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Tags">
           <Key>
@@ -654,7 +654,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Wall">
-              <PropertyRef Name="Poster" />
+              <PropertyRef Name="PosterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -702,7 +702,7 @@
           <ScalarProperty Name="Message" ColumnName="Message" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="PostTime" ColumnName="PostTime" />
-          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="PosterId" ColumnName="Poster" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
