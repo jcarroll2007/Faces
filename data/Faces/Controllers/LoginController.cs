@@ -29,9 +29,6 @@ namespace Faces.Controllers
                 temp = ModelFactory.ParseUserEntityToModel(user);
             }
                 
-
-            
-
             return Ok(temp);
         }
        
