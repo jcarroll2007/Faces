@@ -1,5 +1,15 @@
-var app = angular.module('Faces',
-	['ngRoute', 'ngAnimate', 'ui.bootstrap', 'Faces_Login', 'Faces_Register', 'Faces_Me', 'tests', 'angularFileUpload', 'User']);
+var app = angular.module('Faces', [
+	'ngRoute',
+	'ngAnimate',
+	'ui.bootstrap',
+	'angularFileUpload',
+	'Faces_Login',
+	'Faces_Register',
+	'Faces_Me',
+	'tests',
+	'User',
+	'post'
+	]);
 
 app.constant('URLs', {
 	LOGIN: "/login",

@@ -1,18 +1,60 @@
-angular.module('post', [user])
+angular.module('post', [])
 
-	.directive('post', function() {
+	.directive('wallPost', function() {
 		return {
-
+			templateUrl: 'post/post.html',
+			controller: 'postCtrl',
+			link: function(attrs, scope, element) {
+				console.log(attrs);
+			},
 		};
 	})
-	.controller('postCtrl', ['$scope', function($scope, creator) {
+
+	.controller('postCtrl', ['$scope', function($scope) {
 
 	}])
-	.factory('post', function() {
-		var post = {};
 
-		post.creator = {
-			name: creator.firstName + " " + creator.lastName,
-			profilePictureUrl: creator.profilePictureUrl;			
+	.factory('post', [function() {
+		function post(creator, imageUrl, textContent, comments) {
+
+			this.creator = {
+				name: creator.firstName + " " + creator.lastName,
+				profilePictureUrl: creator.profilePictureUrl
+			};
+
+			this.imageUrl = imageUrl || "";
+
+			this.textContent = textContent || "";
+
+			this.comments = comments || [];
+
+			this.addComment = function(comment) {
+				comments.push(comment);
+			};
+		}
+
+		return post;
+	}])
+
+	.directive('comment', function() {
+		return {
+			templateUrl:'post.html',
+			controller: 'commentCtrl'
 		};
-	});
+	})
+
+	.controller('commentCtrl', function(scope, attrs, element) {
+		$scope.text = attrs.comment.textContent;
+	})
+
+	.factory('comment', [function(creator, textContent, post_id) {
+		var comment = {};
+
+		comment.creator = {
+			name: creator.firstName + " " + creator.lastName
+		};
+
+		comment.textContent = textContent;
+
+		comment.post_id = post_id;
+	}]);

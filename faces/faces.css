@@ -15,6 +15,11 @@
 	color: #FFFFFF;
 }
 
+.faces-container {
+	max-width: 60em;
+	width: 95%;
+}
+
 body {
 	/* background: url("/home/waterfall.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;

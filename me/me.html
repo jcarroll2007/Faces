@@ -1,12 +1,17 @@
 <link rel="stylesheet" type="text/css" href="me/me.css">
 
-<div id="me-container">
-	<div class="me-section-border">
-		<h2 id="me-username-heading">{{user.firstName}} {{user.lastName}}</h2>
+<div class="container-fluid faces-container">
+	<div class="row row-border">
+		<div class="me-section-border">
+			<h2 id="me-username-heading">{{user.firstName}} {{user.lastName}}</h2>
+		</div>
 	</div>
-	<div class="me-section-border">
-		<img id="me-profile-picture" ng-src="{{user.profilePictureUrl}}">
-		<div id="user-information-container">
+
+	<div class="row row-border">
+		<div class="col-md-3 col-md-pull-9">
+			<img ng-src="{{user.profilePictureUrl}}">
+		</div>
+		<div  class="col-md-9">
 			From:
 			<p>{{user.city}}, {{user.state}}</p>
 			Phone:
@@ -17,4 +22,47 @@
 			<p>{{user.aboutMe}} </p>
 		</div>
 	</div>
+
+	<div class="row row-border">
+		<div class="me-button-container col-xs-6">
+			<button class="btn btn-default faces-btn glyphicon glyphicon-align-left" title="New Post"></button>
+		</div>
+		<div class="me-button-container col-xs-6">
+			<button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo"></button>
+		</div>
+	</div>
 </div>
+
+<!-- <div id="me-container">
+	<div class="container">
+		<div class="me-section-border row">
+			<h2 id="me-username-heading">{{user.firstName}} {{user.lastName}}</h2>
+		</div>
+		<div class="me-section-border row">
+			<img id="me-profile-picture" ng-src="{{user.profilePictureUrl}}">
+			<div id="user-information-container">
+				From:
+				<p>{{user.city}}, {{user.state}}</p>
+				Phone:
+				<p>{{user.phone}}</p>
+				Birthday:
+				<p>{{user.dateOfBirth}}</p>
+				About:
+				<p>{{user.aboutMe}} </p>
+			</div>
+		</div>
+
+		<div class="me-section-border row">
+			<div class="me-button-container col-md-6">
+				<button class="btn btn-default faces-btn glyphicon glyphicon-align-left" title="New Post"></button>
+			</div>
+			<div class="me-button-container col-md-6">
+				<button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo"></button>
+			</div>
+		</div>
+
+		<div ng-repeat="post in posts">
+			<div class="me-section-border row">{{post.textContent}}</div>
+		</div>
+	</div>
+</div> -->
