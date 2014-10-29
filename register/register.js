@@ -29,13 +29,13 @@ app.controller('RegisterCtrl', [
     };
 
 
- 
+ //http://robertryanmorris.com/FacesWebApp/Pictures/Profile
   $scope.onFileSelect = function($files) {
     //$files: an array of files selected, each file has name, size, and type.
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];
       $scope.upload = $upload.upload({
-        url: 'http://robertryanmorris.com/FacesWebApp/Pictures/Profile/', //upload.php script, node.js route, or servlet url
+        url: 'http://robertryanmorris.com/FacesWebApp/Pictures', //upload.php script, node.js route, or servlet url
         method: 'POST',
         //data: {myObj: $scope.myModelObj},
         file: file,

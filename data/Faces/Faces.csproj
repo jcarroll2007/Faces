@@ -147,6 +147,7 @@
     <Compile Include="Controllers\FriendsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProfilePictureController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UsersTESTController.cs" />
