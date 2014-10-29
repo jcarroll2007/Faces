@@ -11,12 +11,19 @@
 	text-align: center;
 }
 
+#profilePic{
+	
+}
+
 .profile-picture-lg {
 	border-style: solid;
 	border-width: .25em;
 	border-color: #1F2B50;
 	border-radius: 1em;
-
+min-height: 5em;
+	min-width: 7em;
+	max-width: 20em;
+	max-height: 20em;
 	min-width: 10em;
 }
 

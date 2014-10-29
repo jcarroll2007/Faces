@@ -1,7 +1,13 @@
 var app = angular.module('Faces_Me', []);
 
-app.controller('MeCtrl' , ['$scope', 'user', 'post',
-	function($scope, user, post) {
+app.controller('MeCtrl' , ['$scope', '$window', 'user', 'post',
+	function($scope, $window, user, post) {
+		var w = angular.element($window);
+		
+		w.bind('resize', function () {
+			console.log('resize');
+		});
+
 		$scope.user = user.user;
 
 		$scope.posts = [];
