@@ -28,14 +28,16 @@ app.controller('RegisterCtrl', [
         profile_picture: ""
     };
 
-    var MyCtrl = [ '$scope', '$upload', function($scope, $upload) {
+
+ 
   $scope.onFileSelect = function($files) {
     //$files: an array of files selected, each file has name, size, and type.
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];
       $scope.upload = $upload.upload({
-        url: 'server/upload/url', //upload.php script, node.js route, or servlet url
-        data: {myObj: $scope.myModelObj},
+        url: 'http://robertryanmorris.com/FacesWebApp/Pictures/Profile/', //upload.php script, node.js route, or servlet url
+        method: 'POST',
+        //data: {myObj: $scope.myModelObj},
         file: file,
       }).progress(function(evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
@@ -45,7 +47,9 @@ app.controller('RegisterCtrl', [
       });
     }
   };
-}];
+
+
+
 
     // Birthdate Datepicker Optuons and variables
     $scope.datepicker_opened = false;
@@ -61,12 +65,12 @@ app.controller('RegisterCtrl', [
         formatYear: 'yy',
         startingDay: 1
     };
-
+/*
     // Profile Picture File Uploader instantiation
-    //path: pictures/profile
+    //path: http://robertryanmorris.com/Pictures/Profile
     $scope.onFileSelect = function(file) {
         $scope.upload = $upload.upload({
-            url: 'pictures/profile',
+            url: 'http://robertryanmorris.com/Pictures/Profile',
             data: {myObj: $scope.myModelObj},
             file: file,
             filename: $scope.username + ".jpg" 
@@ -75,6 +79,7 @@ app.controller('RegisterCtrl', [
             console.log('File Uploaded Succesfully');
         });
     };
+    */
 
     $scope.registration_complete = function() {
         alert('Not implemented');
