@@ -17,11 +17,11 @@ app.factory('test_web_services', ['$http', function($http) {
 	var new_user_info = {
 		Email: "ryanmorris793@gmail.com",
 		Password: "123",
-		ProfilePicture: null,
-		FirstName: "Jon",
-		LastName: "Doe",
+		//ProfilePicture: null,
+		firstname: "Jon",
+		lastname: "Doe",
 		Phone: "5554870000",
-		DateOfBirth: "1980-01-01",
+		DateOfBirth: "1980-01-01", // 04/03/1984
 		City: "Atlanta",
 		AccountType: 1,
 		AboutMe: "This is my autobiography.",

@@ -101,7 +101,7 @@ namespace Faces.Controllers
             
             if (db.Users.Where(c => c.Email == user.Email).Any())
             {
-                return Ok<string> ("Email already exist");
+                return BadRequest("Email already exist"); //Ok<string> ("Email already exist");
             }
      
 
