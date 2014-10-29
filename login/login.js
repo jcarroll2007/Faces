@@ -4,12 +4,15 @@ app.controller('LoginCtrl', ['$scope', 'routing', 'URLs', '$http',
 	function($scope, routing, URLs, $http) {
 
 		$scope.credentials = {
-			username: "",
-			password: ""
+			uname: "",
+			pass: ""
 		};
 
 		$scope.log_in = function() {
-			alert('You really want to sign in? Too bad.. haven\'t implemented that yet.');
+			$http.post('http://robertryanmorris.com/services/FaceServices/api/Login', $scope.credentials)
+			.success(function(received) {
+				console.log('Login Successful:' + received);
+			});
 		};
 
 		$scope.register = function() {

@@ -43,6 +43,7 @@ app.factory('test_web_services', ['$http', function($http) {
 	};
 
 	test_web_services.add_test_user = function() {
+		console.log(new_user_info);
 		$http.post('http://robertryanmorris.com/services/FaceServices/api/Users', new_user_info)
 		.success(function(received) {
 			alert('Add user test Successful:' + received);

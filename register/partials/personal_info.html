@@ -162,7 +162,7 @@
 
         <div class="input-group input-group-last">
             <span class="input-group-addon">Birthdate</span>
-            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="user.date_of_birth" is-open="datepicker_opened" datepicker-options="date_options" ng-required="true" name="birthDate" close-text="Close"
+            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="user.date_of_birth" is-open="$parent.datepicker_opened" datepicker-options="date_options" ng-required="true" name="birthDate" close-text="Close"
             disabled/>
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open_datepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>

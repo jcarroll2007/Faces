@@ -2,7 +2,7 @@ var app = angular.module('Faces_Me', []);
 
 app.controller('MeCtrl' , ['$scope', 'user', 'post',
 	function($scope, user, post) {
-		$scope.user = user;
+		$scope.user = user.user;
 
 		$scope.posts = [];
 

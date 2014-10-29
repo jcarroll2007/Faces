@@ -3,23 +3,21 @@
 <div class="container-fluid faces-container">
 	<div class="row row-border">
 		<div class="me-section-border">
-			<h2 id="me-username-heading">{{user.firstName}} {{user.lastName}}</h2>
+			<h2 id="me-username-heading">{{user.FirstName}} {{user.LastName}}</h2>
 		</div>
 	</div>
 
 	<div class="row row-border">
-		<div class="col-md-3 col-md-pull-9">
-			<img ng-src="{{user.profilePictureUrl}}">
-		</div>
-		<div  class="col-md-9">
+		<img class="col-xs-3" ng-src="{{user.ProfilePicture}}">
+		<div class="col-md-9">
 			From:
-			<p>{{user.city}}, {{user.state}}</p>
+			<p>{{user.City}}, {{user.State}}</p>
 			Phone:
-			<p>{{user.phone}}</p>
+			<p>{{user.Phone}}</p>
 			Birthday:
-			<p>{{user.dateOfBirth}}</p>
+			<p>{{user.DateOfBirth}}</p>
 			About:
-			<p>{{user.aboutMe}} </p>
+			<p>{{user.AboutMe}} </p>
 		</div>
 	</div>
 

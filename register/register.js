@@ -8,8 +8,8 @@ app.constant('partial_file_paths', {
 });
 
 app.controller('RegisterCtrl', [
-    '$scope', 'partial_file_paths', '$upload',
-    function($scope, partial_file_paths, $upload) {
+    '$scope', 'partial_file_paths', '$upload', 'registration',
+    function($scope, partial_file_paths, $upload, registration) {
 
     // User Data
     $scope.user = {
@@ -28,29 +28,6 @@ app.controller('RegisterCtrl', [
         profile_picture: ""
     };
 
-
- //http://robertryanmorris.com/FacesWebApp/Pictures/Profile
-  $scope.onFileSelect = function($files) {
-    //$files: an array of files selected, each file has name, size, and type.
-    for (var i = 0; i < $files.length; i++) {
-      var file = $files[i];
-      $scope.upload = $upload.upload({
-        url: 'http://robertryanmorris.com/FacesWebApp/Pictures', //upload.php script, node.js route, or servlet url
-        method: 'POST',
-        //data: {myObj: $scope.myModelObj},
-        file: file,
-      }).progress(function(evt) {
-        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-      }).success(function(data, status, headers, config) {
-        // file is uploaded successfully
-        console.log(data);
-      });
-    }
-  };
-
-
-
-
     // Birthdate Datepicker Optuons and variables
     $scope.datepicker_opened = false;
 
@@ -65,6 +42,9 @@ app.controller('RegisterCtrl', [
         formatYear: 'yy',
         startingDay: 1
     };
+
+    //http://robertryanmorris.com/FacesWebApp/Pictures/Profile
+
 /*
     // Profile Picture File Uploader instantiation
     //path: http://robertryanmorris.com/Pictures/Profile
@@ -82,28 +62,22 @@ app.controller('RegisterCtrl', [
     */
 
     $scope.registration_complete = function() {
-        alert('Not implemented');
-
-       /*
-        *
-        * Steps for implementation, include user, call user.
-        *
-        */
+        registration.addNewUser($scope.user);
     };
 
     $scope.email_verified = function(){
-        if ($scope.user.email == $scope.user.email_verification)
+        if ($scope.user.email === $scope.user.email_verification)
             return true;
         else
             return false;
-    }
+    };
 
     $scope.password_verified = function(){
-        if ($scope.user.password == $scope.user.password_verification)
+        if ($scope.user.password === $scope.user.password_verification)
             return true;
-        else 
+        else
             return false;
-    }
+    };
 
    /*
     * The following code controls the partial  that is displayed in the ng-include
@@ -143,3 +117,24 @@ app.controller('RegisterCtrl', [
         $scope.current_partial = $scope.partials[++current_partial_index];
     };
 }]);
+
+app.service('registration', function($http, user) {
+    this.addNewUser = function(new_user) {
+        user.user.FirstName = new_user.first_name;
+        user.user.LastName = new_user.last_name;
+        user.user.Email =  new_user.email;
+        user.user.Password = new_user.password;
+        user.user.Phone = new_user.phone;
+        user.user.DateOfBirth = new_user.date_of_birth;
+        user.user.City = new_user.city;
+        user.user.State = new_user.state;
+        user.user.AboutMe = new_user.about_me;
+
+        console.log(user.user);
+
+        $http.post('http://robertryanmorris.com/services/FaceServices/api/Users', user.user)
+        .success(function(data) {
+            console.log('New user created succesfully.' + data);
+        });
+    };
+});

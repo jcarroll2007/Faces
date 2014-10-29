@@ -3,11 +3,11 @@
 <div id="home-controls-container" >
 	<h1>Faces</h1>
 	<div id="user-credentials" >
-		<input ng-model="credentials.username" placeholder="Username" id="username-input" class="form-control">
-		<input ng-model="credentials.password" placeholder="Password" type="password" id="password-input" class="form-control">
+		<input ng-model="credentials.uname" placeholder="Username" id="username-input" class="form-control">
+		<input ng-model="credentials.pass" placeholder="Password" type="password" id="password-input" class="form-control">
 		<div id="buttons-container" class="btn-group btn-group-justified" >
 			<button ng-click="register()" id="register-button" class="faces-btn btn btn-default">Register</button>
-			<button ng-click="test_ajax()" id="log-in-button" class="btn btn-default faces-btn">Log In</button>
+			<button ng-click="log_in()" id="log-in-button" class="btn btn-default faces-btn">Log In</button>
 		</div>
 	</div>
 </div>
