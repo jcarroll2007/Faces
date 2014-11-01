@@ -21,12 +21,16 @@
         <EntityTypeShape EntityType="FriendAppDataModel.SubscribedTags" Width="1.5" PointX="4.75" PointY="3" />
         <AssociationConnector Association="FriendAppDataModel.UserTags" />
         <AssociationConnector Association="FriendAppDataModel.SubscribedTagsTags" />
-        <EntityTypeShape EntityType="FriendAppDataModel.UserTokens" Width="1.5" PointX="0.5" PointY="4" />
+        <EntityTypeShape EntityType="FriendAppDataModel.UserTokens" Width="1.5" PointX="0.5" PointY="3.125" />
         <AssociationConnector Association="FriendAppDataModel.UserUserTokens" />
         <EntityTypeShape EntityType="FriendAppDataModel.Comments" Width="1.5" PointX="2.375" PointY="6.125" />
         <AssociationConnector Association="FriendAppDataModel.CommentsUser" />
         <AssociationConnector Association="FriendAppDataModel.CommentsWall" />
         <AssociationConnector Association="FriendAppDataModel.WallUser" />
+        <EntityTypeShape EntityType="FriendAppDataModel.ProfilePictures" Width="1.5" PointX="0.5" PointY="5.125" />
+        <AssociationConnector Association="FriendAppDataModel.UserProfilePictures" />
+        <EntityTypeShape EntityType="FriendAppDataModel.WallPictures" Width="1.5" PointX="4.75" PointY="8.625" />
+        <AssociationConnector Association="FriendAppDataModel.WallWallPictures" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

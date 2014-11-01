@@ -10,6 +10,8 @@
     <EntitySet Name="SubscribedTags" EntityType="FriendAppDataModel.Store.SubscribedTags" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserTokens" EntityType="FriendAppDataModel.Store.UserTokens" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Comments" EntityType="FriendAppDataModel.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProfilePictures" EntityType="FriendAppDataModel.Store.ProfilePictures" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WallPictures" EntityType="FriendAppDataModel.Store.WallPictures" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserFriends" Association="FriendAppDataModel.Store.UserFriends">
       <End Role="User" EntitySet="Users" />
       <End Role="Friends" EntitySet="Friends" />
@@ -62,6 +64,14 @@
       <End Role="Wall" EntitySet="Walls" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <AssociationSet Name="UserProfilePictures" Association="FriendAppDataModel.Store.UserProfilePictures">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ProfilePictures" EntitySet="ProfilePictures" />
+    </AssociationSet>
+    <AssociationSet Name="WallWallPictures" Association="FriendAppDataModel.Store.WallWallPictures">
+      <End Role="Wall" EntitySet="Walls" />
+      <End Role="WallPictures" EntitySet="WallPictures" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -70,7 +80,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ProfilePicture" Type="varchar(max)" Nullable="true" />
     <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Phone" Type="nvarchar(max)" Nullable="true" />
@@ -100,7 +109,7 @@
     <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Picture" Type="varchar(max)" Nullable="true" />
     <Property Name="PostTime" Type="datetime" Nullable="false" />
-    <Property Name="Poster" Type="int" Nullable="false" />
+    <Property Name="PosterId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
@@ -152,6 +161,22 @@
     <Property Name="CommentDatetime" Type="datetime" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="WallId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfilePictures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Picture" Type="varbinary(max)" Nullable="true" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WallPictures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Picture" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Wall_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="UserFriends">
     <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
@@ -305,7 +330,31 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Wall">
-        <PropertyRef Name="Poster" />
+        <PropertyRef Name="PosterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserProfilePictures">
+    <End Role="User" Type="FriendAppDataModel.Store.Users" Multiplicity="1" />
+    <End Role="ProfilePictures" Type="FriendAppDataModel.Store.ProfilePictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProfilePictures">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WallWallPictures">
+    <End Role="Wall" Type="FriendAppDataModel.Store.Walls" Multiplicity="1" />
+    <End Role="WallPictures" Type="FriendAppDataModel.Store.WallPictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wall">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WallPictures">
+        <PropertyRef Name="Wall_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

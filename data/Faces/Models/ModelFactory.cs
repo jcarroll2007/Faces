@@ -24,7 +24,7 @@ namespace Faces.Models
             userModelTemp.AccountType = entity.AccountType;
             userModelTemp.Gender = entity.Gender;
             userModelTemp.AboutMe = entity.AboutMe;
-            userModelTemp.ProfilePicture = entity.ProfilePicture;
+            //userModelTemp.ProfilePicture = entity.ProfilePicture;
 
             if(entity.UserToken != null)
             userModelTemp.Token = entity.UserToken.Token;
@@ -34,10 +34,10 @@ namespace Faces.Models
                 userModelTemp.Friends.Add(ParseFriendEntityToModel(u));
             }
 
-            //foreach (var u in entity.Comments)
-            //{
-            //    userModelTemp.Comments.Add(ParseCommentEntityToModel(u));
-            //}
+            foreach (var w in entity.Post)
+            {
+                userModelTemp.Post.Add(ParseWallEntityToModel(w));
+            }
 
             return userModelTemp;
 
@@ -59,7 +59,7 @@ namespace Faces.Models
             userEntityTemp.AccountType = model.AccountType;
             userEntityTemp.Gender = model.Gender;
             userEntityTemp.AboutMe = model.AboutMe;
-            userEntityTemp.ProfilePicture = model.ProfilePicture;
+            //userEntityTemp.ProfilePicture = model.ProfilePicture;
 
             if(model.Token != null)
             userEntityTemp.UserToken.Token = model.Token;
@@ -69,10 +69,10 @@ namespace Faces.Models
                 userEntityTemp.Friends.Add(ParseFriendModelToEntiy(u));
             }
 
-            //foreach (var u in model.Comments)
-            //{
-            //    userEntityTemp.Comments.Add(ParseCommentModelToEntity(u));
-            //}
+            foreach (var w in model.Post)
+            {
+                userEntityTemp.Post.Add(ParseWallModelToEntity(w));
+            }
 
             return userEntityTemp;
         }
@@ -84,7 +84,7 @@ namespace Faces.Models
             model.ActionDate = entity.ActionDate;
             model.Id = entity.FriendId;
             model.Email = entity.Friend.Email;
-            model.ProfilePicture = entity.Friend.ProfilePicture;
+            //model.ProfilePicture = entity.Friend.ProfilePicture;
 
             return model;
         }
@@ -96,7 +96,7 @@ namespace Faces.Models
             entity.ActionDate = model.ActionDate;
             entity.Id = model.Id;
             entity.Friend.Email = model.Email;
-            entity.Friend.ProfilePicture = model.ProfilePicture;
+            //entity.Friend.ProfilePicture = model.ProfilePicture;
 
             return entity;
         }
@@ -129,6 +129,25 @@ namespace Faces.Models
         private static Wall ParseWallModelToEntity(WallModel model)
         {
             var entity = new Wall();
+            entity.Id = model.Id;
+            entity.UserId = model.Id;
+            entity.PosterId = model.Id;
+            entity.Message = model.Message;
+            entity.Picture = model.Picture;
+            entity.PostTime = model.PostTime;
+
+            foreach (var m in model.PostTags)
+            {
+                WallPostTagsTable temp = new WallPostTagsTable();
+                temp.Tag = m;
+                entity.PostTags.Add(temp);
+            }
+
+            foreach (var c in model.Comments)
+            {
+                entity.Comments.Add(ParseCommentModelToEntity(c));
+            }
+
             return entity;
         }
 

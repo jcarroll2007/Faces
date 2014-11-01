@@ -15,7 +15,6 @@ namespace Faces.Models
         {
             Friends = new List<FriendModel>();
             Post = new List<WallModel>();
-            //Comments = new List<CommentModel>();
         }
 
         public int Id { get; set; }
@@ -34,6 +33,6 @@ namespace Faces.Models
         public string Token { get; set; }
         public List<FriendModel> Friends { get; set; }
         public List<WallModel> Post { get; set; }
-       // public List<CommentModel> Comments { get; set; }
+       
     }
 }

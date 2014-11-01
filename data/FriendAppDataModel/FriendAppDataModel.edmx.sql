@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/27/2014 22:00:50
--- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
+-- Date Created: 11/01/2014 17:25:09
+-- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -53,6 +53,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_CommentsWall]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_CommentsWall];
 GO
+IF OBJECT_ID(N'[dbo].[FK_WallUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Walls] DROP CONSTRAINT [FK_WallUser];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -95,7 +98,6 @@ CREATE TABLE [dbo].[Users] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Email] nvarchar(max)  NOT NULL,
     [Password] nvarchar(max)  NOT NULL,
-    [ProfilePicture] varchar(max)  NULL,
     [FirstName] nvarchar(max)  NOT NULL,
     [LastName] nvarchar(max)  NOT NULL,
     [Phone] nvarchar(max)  NULL,
@@ -125,7 +127,7 @@ CREATE TABLE [dbo].[Walls] (
     [Message] nvarchar(max)  NOT NULL,
     [Picture] varchar(max)  NULL,
     [PostTime] datetime  NOT NULL,
-    [Poster] int  NOT NULL
+    [PosterId] int  NOT NULL
 );
 GO
 
@@ -177,6 +179,22 @@ CREATE TABLE [dbo].[Comments] (
     [CommentDatetime] datetime  NOT NULL,
     [UserId] int  NOT NULL,
     [WallId] int  NOT NULL
+);
+GO
+
+-- Creating table 'ProfilePictures'
+CREATE TABLE [dbo].[ProfilePictures] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Picture] varbinary(max)  NULL,
+    [User_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'WallPictures'
+CREATE TABLE [dbo].[WallPictures] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Picture] varbinary(max)  NOT NULL,
+    [Wall_Id] int  NOT NULL
 );
 GO
 
@@ -235,6 +253,18 @@ GO
 -- Creating primary key on [Id] in table 'Comments'
 ALTER TABLE [dbo].[Comments]
 ADD CONSTRAINT [PK_Comments]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ProfilePictures'
+ALTER TABLE [dbo].[ProfilePictures]
+ADD CONSTRAINT [PK_ProfilePictures]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'WallPictures'
+ALTER TABLE [dbo].[WallPictures]
+ADD CONSTRAINT [PK_WallPictures]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -416,10 +446,10 @@ ON [dbo].[Comments]
     ([WallId]);
 GO
 
--- Creating foreign key on [Poster] in table 'Walls'
+-- Creating foreign key on [PosterId] in table 'Walls'
 ALTER TABLE [dbo].[Walls]
 ADD CONSTRAINT [FK_WallUser]
-    FOREIGN KEY ([Poster])
+    FOREIGN KEY ([PosterId])
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -428,7 +458,37 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_WallUser'
 CREATE INDEX [IX_FK_WallUser]
 ON [dbo].[Walls]
-    ([Poster]);
+    ([PosterId]);
+GO
+
+-- Creating foreign key on [User_Id] in table 'ProfilePictures'
+ALTER TABLE [dbo].[ProfilePictures]
+ADD CONSTRAINT [FK_UserProfilePictures]
+    FOREIGN KEY ([User_Id])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserProfilePictures'
+CREATE INDEX [IX_FK_UserProfilePictures]
+ON [dbo].[ProfilePictures]
+    ([User_Id]);
+GO
+
+-- Creating foreign key on [Wall_Id] in table 'WallPictures'
+ALTER TABLE [dbo].[WallPictures]
+ADD CONSTRAINT [FK_WallWallPictures]
+    FOREIGN KEY ([Wall_Id])
+    REFERENCES [dbo].[Walls]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_WallWallPictures'
+CREATE INDEX [IX_FK_WallWallPictures]
+ON [dbo].[WallPictures]
+    ([Wall_Id]);
 GO
 
 -- --------------------------------------------------

@@ -3,8 +3,8 @@ angular.module('myApp', ['angularFileUpload']);
 
 app.constant('partial_file_paths', {
     PERSONAL_INFO: "register/partials/personal_info.html",
-    ABOUT: "register/partials/about.html",
-    PROFILE_PICTURE: "register/partials/profile_picture.html"
+    ABOUT: "register/partials/about.html"
+    //PROFILE_PICTURE: "register/partials/profile_picture.html"
 });
 
 app.controller('RegisterCtrl', [
@@ -90,7 +90,7 @@ app.controller('RegisterCtrl', [
     $scope.partials = [
         partial_file_paths.PERSONAL_INFO,
         partial_file_paths.ABOUT,
-        partial_file_paths.PROFILE_PICTURE,
+        //partial_file_paths.PROFILE_PICTURE,
     ];
 
     // This index represents the current partial in $scope.partials that is being used.

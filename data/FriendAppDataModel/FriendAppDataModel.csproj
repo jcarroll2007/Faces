@@ -76,6 +76,9 @@
     <Compile Include="Message.cs">
       <DependentUpon>FriendAppDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProfilePictures.cs">
+      <DependentUpon>FriendAppDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubscribedTags.cs">
       <DependentUpon>FriendAppDataModel.tt</DependentUpon>
@@ -90,6 +93,9 @@
       <DependentUpon>FriendAppDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Wall.cs">
+      <DependentUpon>FriendAppDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WallPictures.cs">
       <DependentUpon>FriendAppDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="WallPostTagsTable.cs">
