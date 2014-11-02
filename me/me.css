@@ -1,3 +1,7 @@
+.ng-enter, .ng-leave{
+	position: relative;
+}
+
 #me-container {
 	display: block;
 	width: 95%;
@@ -11,20 +15,64 @@
 	text-align: center;
 }
 
-#profilePic{
-	
-}
-
 .profile-picture-lg {
 	border-style: solid;
-	border-width: .25em;
+	border-width: .15em;
 	border-color: #1F2B50;
-	border-radius: 1em;
-min-height: 5em;
-	min-width: 7em;
-	max-width: 20em;
-	max-height: 20em;
+	border-radius: .4em;
+	border-left: 1em;
+	border-top: 1px;
+	border-bottom-width: .01em;
+	min-height: 7em;
 	min-width: 10em;
+	max-width: 20em;	
+	max-height: 20em;	
+}
+
+#user_photo {
+
+}
+
+textarea{
+	resize: none;
+	overflow: auto;
+}
+
+#postBox.ng-leave{
+	opacity: 1;
+	height: 0px;
+}
+
+#postBox.ng-leave-active {
+	opacity: 0;
+	height: 0px;
+}
+
+#pictureBox.ng-enter{
+	opacity: 0;
+	height: 0px;
+}
+
+#post_div.ng-enter {
+	transition: 1.5s;
+	opacity: 0;
+	height: 0px;
+}
+
+#post_div.ng-enter-active {
+	opacity: 1;
+	height: 100%;
+}
+
+#post_div.ng-leave {
+	transition: 1.5s;
+	opacity: 1;
+	height: 100%;
+}
+
+#post_div.ng-leave-active {
+	opacity: 0;
+	height: 0px;
 }
 
 .row-border {
