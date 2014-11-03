@@ -1,7 +1,16 @@
+<!--
 <div id="buttons-container" class="btn-group btn-group-justified" >
 
     <button ng-click="test_login()">Test Login</button>
 
     <button ng-click="test_create_new_user()">Test Create New User</button>
 
+
+    <button ng-file-select="test_picture_upload(file)" enctype="multipart/form-data">Select Profile Picture</button>
+
+</div>
+-->
+<div ng-controller="TestsCtrl">
+	<input type="file" file-model="myFile" />
+	<button ng-click="uploadFile()">upload me</button>
 </div>
