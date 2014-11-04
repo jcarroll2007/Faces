@@ -19,10 +19,7 @@
 			About:
 			<p>{{user.AboutMe}} </p>
 		</div>
-	</div>
-
-	<div id="friends_div" class="row row-border">
-	</div>
+	</div>	
 
 	<div id="action_div" class="row row-border">
 		<div class="me-button-container col-xs-6">
@@ -31,11 +28,6 @@
 		<div class="me-button-container col-xs-6">
 			<button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo" ng-click="pictureBoxState()"></button>
 		</div>
-	</div>
-
-	<div id="post_div" class="row row-border" ng-show="revealPostBox || revealPictureBox">
-		<textarea id="postBox" class="form-control" ng-hide="!revealPostBox" placeholder="Tell the world how you feel!"></textarea>
-		<input id="pictureBox" type="file" ng-show="revealPictureBox"/>
 	</div>
 </div>
 
