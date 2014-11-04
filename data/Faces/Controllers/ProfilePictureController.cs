@@ -25,8 +25,8 @@ namespace Faces.Controllers
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
-
-            string root = HttpContext.Current.Server.MapPath("~/App_Data");
+            //~/App_Data    ~/App_Data/profile
+            string root = HttpContext.Current.Server.MapPath("~/App_Data/profile");
             var provider = new MultipartFormDataStreamProvider(root);
 
             try
@@ -37,8 +37,30 @@ namespace Faces.Controllers
                 // This illustrates how to get the file names.
                 foreach (MultipartFileData file in provider.FileData)
                 {
-                    Trace.WriteLine(file.Headers.ContentDisposition.FileName);
-                    Trace.WriteLine("Server file path: " + file.LocalFileName);
+                    string filename = file.Headers.ContentDisposition.Name;
+                    if(filename.StartsWith("\"") && filename.EndsWith("\""))
+                    {
+                        filename = filename.Trim('"');
+                    }
+                    if(filename.Contains(@"/") || filename.Contains(@"\"))
+                    {
+                        filename = Path.GetFileName(filename);
+                    }
+
+                    filename += ".jpeg";
+
+                    if (File.Exists(Path.Combine(root, filename).ToString()))
+                    {
+                        File.Delete(Path.Combine(root, filename).ToString());
+                    }
+
+                    File.Move(file.LocalFileName, Path.Combine(root, filename));
+                   
+                    return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(root, filename).ToString());
+
+                    //Trace.WriteLine(file.Headers.ContentDisposition.FileName);
+                    //Trace.WriteLine("Server file path: " + file.LocalFileName);
+                    
                 }
                 return Request.CreateResponse(HttpStatusCode.OK);
             }

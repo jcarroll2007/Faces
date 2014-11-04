@@ -19,7 +19,8 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl){
         var fd = new FormData();
-        fd.append('file', file);
+        var filename = 'customFileName';
+        fd.append(filename, file);
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
@@ -36,7 +37,7 @@ myApp.controller('TestsCtrl', ['$scope', 'fileUpload', function($scope, fileUplo
     $scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "http://localhost:49517/api/ProfilePicture";
+        var uploadUrl = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
     
