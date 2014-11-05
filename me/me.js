@@ -1,36 +1,54 @@
 var app = angular.module('Faces_Me', ['ui.bootstrap', 'ngAnimate']);
 
-app.controller('MeCtrl' , ['$scope', '$window', 'user', 'post',
-	function($scope, $window, user, post) {
-		
-		$scope.user = user.user;
+app.controller('MeCtrl' , ['$scope', '$window', 'user', 'post', '$modal',
+    function($scope, $window, user, post, $modal) {
+        
+        $scope.user = user.user;
 
-		$scope.posts = [];
+        $scope.posts = [];
+        //$scope.testPost = new post(user, '', 'This is my wall post', $scope.testComments);
+        //$scope.posts.push($scope.testPost);
+        $scope.newPostContent = "";
 
-		$scope.testComments = [];
+        $scope.addPosts = function(posts) {
+            $scope.posts.concat(posts);
+        };
 
-		//$scope.testPost = new post(user, '', 'This is my wall post', $scope.testComments);
+        $scope.createNewPost = function (size) {
 
-		//$scope.posts.push($scope.testPost);
+            var modalInstance = $modal.open({
+              templateUrl: 'post/newPost.html',
+              controller: 'newPostModalCtrl',
+              size: size,
+              resolve: {
+                items: function () {
+                  return $scope.items;
+                }
+              }
+            });
 
-		$scope.addPosts = function(posts) {
-			$scope.posts.concat(posts);
-		};
+            modalInstance.result.then(function (newPostContent) {
+                console.log(newPostContent);
+            });
+        };
 
-		var revealPostBox = false;
-		var revealPictureBox = false;
-
-		$scope.postBoxState = function(){
-			$scope.revealPostBox = !$scope.revealPostBox;
-			$scope.revealPictureBox = false;
-		}
-
-		$scope.pictureBoxState = function(){
-			$scope.revealPictureBox = !$scope.revealPictureBox;
-			$scope.revealPostBox = false;
-		}
-
-		$scope.newPost = function(){
-
-		}
+        $scope.modalOk = function() {
+            modalInstance.close();
+            console.log('newPostContent');
+        };
 }]);
+
+app.controller('newPostModalCtrl', function($scope, $modalInstance) {
+    $scope.newPostContent = "";
+
+    $scope.test = "This is a test.";
+
+    $scope.ok = function () {
+        console.log($scope);
+        $modalInstance.close($scope.newPostContent);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});
