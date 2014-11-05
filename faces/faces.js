@@ -16,7 +16,8 @@ app.constant('URLs', {
 	REGISTER: "/register",
 	TESTS: "/tests",
 	ME: "/me",
-	SEARCH: "/search"
+	SEARCH: "/search",
+	FRIEND: "/friend"
 });
 
 app.config(['$routeProvider', 'URLs',
@@ -41,6 +42,10 @@ app.config(['$routeProvider', 'URLs',
 		when(URLs.SEARCH, {
 			templateUrl: 'search/search.html',
 			controller: 'SearchCtrl'
+		}).
+		when(URLs.FRIEND, {
+			templateUrl: 'friend/friend.html',
+			controller: "FriendsCtrl"
 		}).
 		otherwise({
 			redirectTo: URLs.LOGIN
