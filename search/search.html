@@ -1,0 +1,33 @@
+<link rel="stylesheet" type="text/css" href="search/search.css">
+
+<div ng-controller="SearchCtrl" class="container-fluid faces-container">
+	<div id="heading_div" class="row row-border">
+		<div class="search-section-border">
+			<h2 id="search-heading">Search Results</h2>
+		</div>
+	</div>
+
+	<div id="resultsDiv" class="row row-border" align="center">
+		<table id="resultsGrid">
+		     <tr id="resultsHeader">
+		   		<th>User</th>
+		    	<th>Post</th>
+		    	<th>Tags</th>
+		     </tr>
+		     <tr id="resultItems"> 
+		     	<td ng-repeat="users in $scope.userResults">{{ users }}</td>
+		       	<td ng-repeat="posts in $scope.postResults">{{ posts }}</td>
+		       	<td ng-repeat="tags in $scope.tagsResults">{{ tags }}</td>
+		     </tr>
+		</table>			
+	</div>
+
+	<div id="resultButtonsDiv" class="row row-border" align="center">
+		<form id="new-search-form">
+			<div class="form-group">
+              <input type="text" class="form-control" action="#/search" placeholder="Search">
+            </div>			
+				<button id="researchButton" class="btn btn-default faces-btn glyphicon glyphicon-search" type="submit" title="Search"></button>						
+		</form>
+	</div>	
+</div>

@@ -62,6 +62,16 @@
       <End Role="Wall" EntitySet="Walls" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="ProfilePictures" EntityType="FriendAppDataModel.ProfilePictures" />
+    <AssociationSet Name="UserProfilePictures" Association="FriendAppDataModel.UserProfilePictures">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ProfilePictures" EntitySet="ProfilePictures" />
+    </AssociationSet>
+    <EntitySet Name="WallPictures" EntityType="FriendAppDataModel.WallPictures" />
+    <AssociationSet Name="WallWallPictures" Association="FriendAppDataModel.WallWallPictures">
+      <End Role="Wall" EntitySet="Walls" />
+      <End Role="WallPictures" EntitySet="WallPictures" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="User">
     <Key>
@@ -72,7 +82,6 @@
     <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Friends" Relationship="FriendAppDataModel.UserFriends" FromRole="User" ToRole="Friends" />
     <NavigationProperty Name="FriendRequest" Relationship="FriendAppDataModel.UserFriends1" FromRole="User" ToRole="Friends" />
-    <Property Name="ProfilePicture" Type="String" Nullable="true" Unicode="false" MaxLength="Max" />
     <NavigationProperty Name="Post" Relationship="FriendAppDataModel.UserWall" FromRole="User" ToRole="Wall" />
     <Property Name="FirstName" Type="String" Nullable="false" />
     <Property Name="LastName" Type="String" Nullable="false" />
@@ -89,6 +98,7 @@
     <NavigationProperty Name="UserToken" Relationship="FriendAppDataModel.UserUserTokens" FromRole="User" ToRole="UserTokens" />
     <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsUser" FromRole="User" ToRole="Comments" />
     <NavigationProperty Name="PostedOnWall" Relationship="FriendAppDataModel.WallUser" FromRole="User" ToRole="Wall" />
+    <NavigationProperty Name="UserProfilePicture" Relationship="FriendAppDataModel.UserProfilePictures" FromRole="User" ToRole="ProfilePictures" />
   </EntityType>
   <EntityType Name="Friends">
     <Key>
@@ -151,6 +161,7 @@
     <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsWall" FromRole="Wall" ToRole="Comments" />
     <NavigationProperty Name="WhoPosted" Relationship="FriendAppDataModel.WallUser" FromRole="Wall" ToRole="User" />
     <Property Name="PosterId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WallPicture" Relationship="FriendAppDataModel.WallWallPictures" FromRole="Wall" ToRole="WallPictures" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
@@ -339,5 +350,29 @@
         <PropertyRef Name="PosterId" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProfilePictures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Picture" Type="Binary" Nullable="true" />
+    <NavigationProperty Name="User" Relationship="FriendAppDataModel.UserProfilePictures" FromRole="ProfilePictures" ToRole="User" />
+  </EntityType>
+  <Association Name="UserProfilePictures">
+    <End Type="FriendAppDataModel.User" Role="User" Multiplicity="1" />
+    <End Type="FriendAppDataModel.ProfilePictures" Role="ProfilePictures" Multiplicity="0..1" />
+  </Association>
+  <EntityType Name="WallPictures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Picture" Type="Binary" Nullable="false" />
+    <NavigationProperty Name="Wall" Relationship="FriendAppDataModel.WallWallPictures" FromRole="WallPictures" ToRole="Wall" />
+  </EntityType>
+  <Association Name="WallWallPictures">
+    <End Type="FriendAppDataModel.Wall" Role="Wall" Multiplicity="1" />
+    <End Type="FriendAppDataModel.WallPictures" Role="WallPictures" Multiplicity="0..1" />
   </Association>
 </Schema>

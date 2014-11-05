@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="friend/friend.css">
+
+<div ng-controller="FriendsCtrl" class="container-fluid faces-container" id="friend-controls-container">
+
+	<div id="name_div" class="row row-border">
+		<div class="user-section-border">
+			<h2 id="friend-username-heading">{{friend.FirstName}} {{friend.LastName}}</h2>
+		</div>
+	</div>
+
+	<div id="info_div" class="row row-border">
+		<img id="friend_photo" class="col-xs-3 profile-picture-lg" ng-src="{{friend.ProfilePicture}}">
+		<div class="col-md-9">
+			From:
+			<p>{{friend.City}}, {{friend.State}}</p>
+			Phone:
+			<p>{{friend.Phone}}</p>
+			Birthday:
+			<p>{{friend.DateOfBirth}}</p>
+			About:
+			<p>{{friend.AboutMe}} </p>
+		</div>
+	</div>	
+
+	<div id="action_div" class="row row-border">
+		
+	</div>	
+
+</div>

@@ -65,25 +65,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2014 18:00:46</publishTime>
     </File>
     <File Include="bin/Faces.dll">
-      <publishTime>10/31/2014 11:10:04</publishTime>
+      <publishTime>11/04/2014 13:19:39</publishTime>
     </File>
     <File Include="bin/FriendAppDataModel.dll">
-      <publishTime>10/31/2014 11:10:03</publishTime>
+      <publishTime>11/03/2014 13:25:24</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>09/15/2014 17:51:56</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>09/15/2014 17:51:49</publishTime>
+      <publishTime>11/03/2014 11:22:46</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>09/15/2014 17:51:56</publishTime>
+      <publishTime>11/03/2014 11:22:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>11/03/2014 11:22:46</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>09/15/2014 17:51:55</publishTime>
     </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>11/03/2014 11:22:46</publishTime>
+    </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>09/15/2014 17:51:57</publishTime>
+      <publishTime>11/03/2014 11:22:46</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
       <publishTime>09/15/2014 17:51:57</publishTime>
@@ -137,7 +143,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2014 17:51:42</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>09/17/2014 21:16:01</publishTime>
+      <publishTime>11/03/2014 11:23:10</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>09/15/2014 17:51:48</publishTime>
@@ -182,7 +188,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2014 17:51:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/26/2014 12:51:50</publishTime>
+      <publishTime>11/03/2014 13:25:31</publishTime>
     </File>
   </ItemGroup>
 </Project>

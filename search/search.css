@@ -1,0 +1,36 @@
+.ng-enter, .ng-leave{
+	position: relative;
+}
+
+#search-control-container {
+	display: block;
+	width: 95%;
+	max-width: 60em;
+}
+
+#search-heading {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.row-border {
+	border-style: solid;
+	border-width: .2em;
+	border-color: #1F2B50;
+	border-radius: .5em;	
+	margin-top: .25em;
+	margin-bottom: .25em;
+}
+
+.search-button-container {
+	text-align: center;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: .5em;
+}

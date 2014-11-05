@@ -16,10 +16,21 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
+myApp.directive('lazyLoad', function($timeout) {
+    return {
+        restrict:'A',
+        scope: {},
+        link: function(scope, elem, attrs) {
+            $timeout(function(){ elem.attr('src', attrs.llSrc) });
+        },
+    }
+});
+
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl){
         var fd = new FormData();
-        fd.append('file', file);
+        var filename = 'customFileName';
+        fd.append(filename, file);
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
@@ -31,12 +42,13 @@ myApp.service('fileUpload', ['$http', function ($http) {
     }
 }]);
 
+
 myApp.controller('TestsCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
     
     $scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "http://localhost:49517/api/ProfilePicture";
+        var uploadUrl = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
     

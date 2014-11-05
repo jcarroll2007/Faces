@@ -29,7 +29,7 @@
         <AssociationConnector Association="FriendAppDataModel.WallUser" />
         <EntityTypeShape EntityType="FriendAppDataModel.ProfilePictures" Width="1.5" PointX="0.5" PointY="5.125" />
         <AssociationConnector Association="FriendAppDataModel.UserProfilePictures" />
-        <EntityTypeShape EntityType="FriendAppDataModel.WallPictures" Width="1.5" PointX="4.75" PointY="8.625" />
+        <EntityTypeShape EntityType="FriendAppDataModel.WallPictures" Width="1.5" PointX="6.875" PointY="7.375" />
         <AssociationConnector Association="FriendAppDataModel.WallWallPictures" />
       </Diagram>
     </edmx:Diagrams>
