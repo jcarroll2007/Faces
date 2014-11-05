@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/01/2014 17:25:09
+-- Date Created: 11/05/2014 11:07:00
 -- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
@@ -56,6 +56,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_WallUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Walls] DROP CONSTRAINT [FK_WallUser];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UserProfilePictures]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProfilePictures] DROP CONSTRAINT [FK_UserProfilePictures];
+GO
+IF OBJECT_ID(N'[dbo].[FK_WallWallPictures]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[WallPictures] DROP CONSTRAINT [FK_WallWallPictures];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -88,6 +94,12 @@ GO
 IF OBJECT_ID(N'[dbo].[Comments]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Comments];
 GO
+IF OBJECT_ID(N'[dbo].[ProfilePictures]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProfilePictures];
+GO
+IF OBJECT_ID(N'[dbo].[WallPictures]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[WallPictures];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -106,7 +118,8 @@ CREATE TABLE [dbo].[Users] (
     [AccountType] int  NOT NULL,
     [AboutMe] nvarchar(max)  NULL,
     [Gender] char(1)  NOT NULL,
-    [State] char(2)  NOT NULL
+    [State] char(2)  NOT NULL,
+    [ProfilePictureUrl] nvarchar(max)  NOT NULL
 );
 GO
 

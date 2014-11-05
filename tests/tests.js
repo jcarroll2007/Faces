@@ -16,6 +16,16 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
+myApp.directive('lazyLoad', function($timeout) {
+    return {
+        restrict:'A',
+        scope: {},
+        link: function(scope, elem, attrs) {
+            $timeout(function(){ elem.attr('src', attrs.llSrc) });
+        },
+    }
+});
+
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl){
         var fd = new FormData();
@@ -31,6 +41,7 @@ myApp.service('fileUpload', ['$http', function ($http) {
         });
     }
 }]);
+
 
 myApp.controller('TestsCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
     

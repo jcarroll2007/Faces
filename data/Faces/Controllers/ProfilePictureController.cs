@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -70,14 +71,18 @@ namespace Faces.Controllers
             }
         }
 
-        //[HttpPost]
-        //public IHttpActionResult Upload(HttpPostedFileBase file)
-        //{
-        //    var filename = Path.GetFileName(file.FileName);
-        //    var path = Path.Combine("", filename);
-        //    file.SaveAs(path);
+        [HttpGet]
+        public HttpResponseMessage Get(String path)
+        {
+            var fileStream = new FileStream(path, FileMode.Open);
+            var resp = new HttpResponseMessage()
+            {
+                Content = new StreamContent(fileStream)
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
 
-        //    return Ok(path);
-        //}
+            return resp;
+        }
+
     }
 }

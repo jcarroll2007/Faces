@@ -38,6 +38,7 @@ namespace FriendAppDataModel
         public string AboutMe { get; set; }
         public string Gender { get; set; }
         public string State { get; set; }
+        public string ProfilePictureUrl { get; set; }
     
         public virtual ICollection<Friends> Friends { get; set; }
         public virtual ICollection<Friends> FriendRequest { get; set; }
