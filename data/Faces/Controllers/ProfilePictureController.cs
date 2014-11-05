@@ -1,4 +1,5 @@
-﻿using FriendAppDataModel;
+﻿using Faces.Models;
+using FriendAppDataModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,10 +15,26 @@ using System.Web.Http.Cors;
 
 namespace Faces.Controllers
 {
+    
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProfilePictureController : ApiController
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();
+
+
+        [System.Web.Http.AcceptVerbs("GET")]
+        [System.Web.Http.HttpGet]
+        public HttpResponseMessage Get(String path)
+        {
+            var fileStream = new FileStream(path, FileMode.Open);
+            var resp = new HttpResponseMessage()
+            {
+                Content = new StreamContent(fileStream)
+            };
+            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
+
+            return resp;
+        }
 
         public async Task<HttpResponseMessage> PostFormData()
         {
@@ -71,18 +88,7 @@ namespace Faces.Controllers
             }
         }
 
-        [HttpGet]
-        public HttpResponseMessage Get(String path)
-        {
-            var fileStream = new FileStream(path, FileMode.Open);
-            var resp = new HttpResponseMessage()
-            {
-                Content = new StreamContent(fileStream)
-            };
-            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
 
-            return resp;
-        }
 
     }
 }

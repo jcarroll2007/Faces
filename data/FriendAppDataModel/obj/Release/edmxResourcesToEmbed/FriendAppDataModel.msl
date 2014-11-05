@@ -16,6 +16,7 @@
           <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ProfilePictureUrl" ColumnName="ProfilePictureUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

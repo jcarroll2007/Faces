@@ -16,15 +16,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-myApp.directive('lazyLoad', function($timeout) {
-    return {
-        restrict:'A',
-        scope: {},
-        link: function(scope, elem, attrs) {
-            $timeout(function(){ elem.attr('src', attrs.llSrc) });
-        },
-    }
-});
+
 
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl){
@@ -43,7 +35,7 @@ myApp.service('fileUpload', ['$http', function ($http) {
 }]);
 
 
-myApp.controller('TestsCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
+myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', function($scope, fileUpload, $http){
     
     $scope.uploadFile = function(){
         var file = $scope.myFile;

@@ -170,6 +170,7 @@
     <Compile Include="Models\FriendModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
+    <Compile Include="Models\PictureModel.cs" />
     <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\WallModel.cs" />
