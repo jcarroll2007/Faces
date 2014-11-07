@@ -18,10 +18,11 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 
 
 
-myApp.service('fileUpload', ['$http', function ($http) {
+myApp.service('fileUpload',  ['$http', function ($http) {
+    
     this.uploadFileToUrl = function(file, uploadUrl){
         var fd = new FormData();
-        var filename = 'customFileName';
+        var filename = 'customeImageName';
         fd.append(filename, file);
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
@@ -32,10 +33,29 @@ myApp.service('fileUpload', ['$http', function ($http) {
         .error(function(){
         });
     }
+    
+
 }]);
 
 
-myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', function($scope, fileUpload, $http){
+myApp.service('getImage', ['$http', function($http){
+
+    this.getFileFromPath = function(imagePath){
+    	var iPath = "D:\\Hosting\\11030611\\html\\services\\faceservices\\App_Data\\profile\\customeImageName.jpeg";
+    	$http.get(imagePath, {
+    		params: {
+    			path: iPath
+    		}
+    	}).success(function (data,status){
+    		
+    	});
+    }
+
+
+}]);
+
+
+myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', 'getImage', function($scope, fileUpload, $http, getImage){
     
     $scope.uploadFile = function(){
         var file = $scope.myFile;
@@ -43,6 +63,13 @@ myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', function($scope,
         var uploadUrl = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
+
+
+    $scope.getImage = function(){
+    	var imagePath = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
+    	getImage.getFileFromPath(imagePath);
+    };
+    
     
 }]);
 
