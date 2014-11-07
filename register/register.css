@@ -2,28 +2,54 @@
 	position: relative;
 }
 
-#register-partials-view.ng-enter{
+#info.ng-enter{
+  	transition:1.5s;
+  	left: -1000px;
+    opacity: 0;
+}
+
+#info.ng-enter-active {
+	left: 0px;
+ 	opacity: 1;
+}
+
+#info.ng-leave{
+	transition: 1.5s;
+	left: 0px;
+	top: -460px;
+	height:0px;
+    opacity: 1;
+}
+    
+#info.ng-leave-active {
+	left: 1000px;
+	top: -460px;
+	height: 0px;
+	opacity: 0;
+}
+
+#about.ng-enter{
   	transition:1.5s;
   	left: 1000px;
     opacity: 0;
 }
 
-#register-partials-view.ng-enter-active {
+#about.ng-enter-active {
 	left: 0px;
  	opacity: 1;
 }
 
-#register-partials-view.ng-leave{
+#about.ng-leave{
 	transition: 1.5s;
 	left: 0px;
-	top: -560px;
+	top: -308px;
 	height:0px;
     opacity: 1;
 }
     
-#register-partials-view.ng-leave-active {
+#about.ng-leave-active {
 	left: -1000px;
-	top: -560px;
+	top: -308px;
 	height: 0px;
 	opacity: 0;
 }
