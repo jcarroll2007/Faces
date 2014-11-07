@@ -99,6 +99,7 @@
     <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsUser" FromRole="User" ToRole="Comments" />
     <NavigationProperty Name="PostedOnWall" Relationship="FriendAppDataModel.WallUser" FromRole="User" ToRole="Wall" />
     <NavigationProperty Name="UserProfilePicture" Relationship="FriendAppDataModel.UserProfilePictures" FromRole="User" ToRole="ProfilePictures" />
+    <Property Name="ProfilePictureUrl" Type="String" Nullable="false" />
   </EntityType>
   <EntityType Name="Friends">
     <Key>

@@ -203,8 +203,6 @@ C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\Faces\obj\Debug\Faces.csprojResolveAssemblyReference.cache
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\Faces\obj\Debug\Faces.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\Faces\data\Faces\obj\Debug\Faces.pdb
-C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\obj\Debug\Faces.csprojResolveAssemblyReference.cache
-C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\obj\Debug\Faces.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\AutoMapper.Net4.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\Faces.dll.config
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\Faces.dll
@@ -217,7 +215,9 @@ C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\Microsoft.Web.Infrastructure.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\Newtonsoft.Json.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Net.Http.Formatting.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Cors.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Helpers.dll
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Http.Cors.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Http.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Http.WebHost.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Mvc.dll
@@ -233,8 +233,9 @@ C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\EntityFramework.SqlServer.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\Newtonsoft.Json.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Net.Http.Formatting.xml
-C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Helpers.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Http.xml
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Http.Cors.xml
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Helpers.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Http.WebHost.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Mvc.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Optimization.xml
@@ -243,7 +244,6 @@ C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.WebPages.Deployment.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.WebPages.Razor.xml
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\Antlr3.Runtime.pdb
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\obj\Debug\Faces.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\obj\Debug\Faces.dll
 C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\obj\Debug\Faces.pdb
-C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Cors.dll
-C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Http.Cors.dll
-C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\Faces\bin\System.Web.Http.Cors.xml
