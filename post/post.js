@@ -14,28 +14,32 @@ angular.module('post', [])
 
 	}])
 
+	// .factory('post', [function() {
+	// 	function post(creator, imageUrl, textContent, comments, tags) {
+
+	// 		this.creator = {
+	// 			name: creator.firstName + " " + creator.lastName,
+	// 			profilePictureUrl: creator.profilePictureUrl
+	// 		};
+
+	// 		this.imageUrl = imageUrl || "";
+
+	// 		this.textContent = textContent || "";
+
+	// 		this.comments = comments || [];
+
+	// 		this.addComment = function(comment) {
+	// 			comments.push(comment);
+	// 		};
+	// 	}
+
+	// 	return post;
+	// }])
 	.factory('post', [function() {
-		function post(creator, imageUrl, textContent, comments) {
+		return function(creator, imageUrl, textContent, comments, tags) {
 
-			this.creator = {
-				name: creator.firstName + " " + creator.lastName,
-				profilePictureUrl: creator.profilePictureUrl
-			};
-
-			this.imageUrl = imageUrl || "";
-
-			this.textContent = textContent || "";
-
-			this.comments = comments || [];
-
-			this.addComment = function(comment) {
-				comments.push(comment);
-			};
 		}
-
-		return post;
 	}])
-
 	.directive('comment', function() {
 		return {
 			templateUrl:'post.html',
