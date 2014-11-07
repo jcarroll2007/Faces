@@ -32,9 +32,11 @@ app.controller('MeCtrl' , ['$scope', '$window', 'user', 'post', '$modal',
             });
         };
 
+        
+
         $scope.modalOk = function() {
             modalInstance.close();
-            console.log('newPostContent');
+            console.log('');
         };
 }]);
 
