@@ -26,8 +26,12 @@
 			<button class="btn btn-default faces-btn glyphicon glyphicon-align-left" title="New Post" ng-click="createNewPost()"></button>
 		</div>
 		<div class="me-button-container col-xs-6">
-			<button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo" ng-click="pictureBoxState()"></button>
+			<button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo" ng-click=""></button>
 		</div>
+	</div>
+
+	<div ng-repeat="post in posts">
+		<div class="me-section-border row">{{post.Message}}</div>
 	</div>
 </div>
 

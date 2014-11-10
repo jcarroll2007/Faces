@@ -38,7 +38,7 @@ angular.module('post', [])
 	.factory('post', [function() {
 		return function(creator, imageUrl, textContent, comments, tags) {
 
-		}
+		};
 	}])
 	.directive('comment', function() {
 		return {

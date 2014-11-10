@@ -11,6 +11,8 @@ var app = angular.module('Faces', [
 	'post'
 	]);
 
+
+
 app.constant('URLs', {
 	LOGIN: "/login",
 	REGISTER: "/register",
@@ -61,3 +63,39 @@ app.factory('routing', ['$location', function($location) {
 
 	return routing;
 }]);
+
+app.controller('FacesCtrl', ['$scope', '$window', '$modal',
+	function($scope, $window, $modal){
+		$scope.searchContent = "";
+
+		$scope.search = function(size){
+            var modalInstance = $modal.open({
+              templateUrl: 'search/search.html',
+              controller: 'searchModalCtrl',
+              size: size,
+              resolve: {
+                items: function () {
+                  return $scope.items;
+                }
+              }
+            });
+
+            modalInstance.result.then(function (searchContent) {
+                console.log(searchContent);
+            });
+        }
+    }
+]);
+
+app.controller('searchModalCtrl', function($scope, $modalInstance){
+    $scope.searchContent = "";
+
+    $scope.ok = function () {
+        console.log($scope);
+        $modalInstance.close($scope.searchContent);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});
