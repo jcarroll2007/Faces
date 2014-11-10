@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FriendAppDataModel;
+using System.Web.Http.Cors;
 
 namespace Faces.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class WallPostTagsTablesController : ApiController
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();

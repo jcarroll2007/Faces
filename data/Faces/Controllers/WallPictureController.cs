@@ -1,8 +1,6 @@
-﻿using Faces.Models;
-using FriendAppDataModel;
+﻿using FriendAppDataModel;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,9 +13,8 @@ using System.Web.Http.Cors;
 
 namespace Faces.Controllers
 {
-    
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ProfilePictureController : ApiController
+    public class WallPictureController : ApiController
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();
 
@@ -44,7 +41,7 @@ namespace Faces.Controllers
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
             //    ~/App_Data/profile
-            string root = HttpContext.Current.Server.MapPath("~/App_Data/profile");
+            string root = HttpContext.Current.Server.MapPath("~/App_Data/wall");
             //string root = HttpContext.Current.Server.MapPath("~/App_Data");
             var provider = new MultipartFormDataStreamProvider(root);
 
@@ -57,16 +54,16 @@ namespace Faces.Controllers
                 foreach (MultipartFileData file in provider.FileData)
                 {
                     string filename = file.Headers.ContentDisposition.Name;
-                    if(filename.StartsWith("\"") && filename.EndsWith("\""))
+                    if (filename.StartsWith("\"") && filename.EndsWith("\""))
                     {
                         filename = filename.Trim('"');
                     }
-                    if(filename.Contains(@"/") || filename.Contains(@"\"))
+                    if (filename.Contains(@"/") || filename.Contains(@"\"))
                     {
                         filename = Path.GetFileName(filename);
                     }
 
-                    var userId = Convert.ToInt32(filename);
+                    var wallId = Convert.ToInt32(filename);
                     filename += ".jpeg";
 
                     if (File.Exists(Path.Combine(root, filename).ToString()))
@@ -76,15 +73,15 @@ namespace Faces.Controllers
 
                     File.Move(file.LocalFileName, Path.Combine(root, filename));
 
-                    var user = db.Users.Where(c => c.Id == userId).FirstOrDefault();
-                    user.ProfilePicture = Path.Combine(root, filename);
+                    var wall = db.Walls.Where(c => c.Id == wallId).FirstOrDefault();
+                    wall.Picture = Path.Combine(root, filename);
                     db.SaveChanges();
-                   
+
                     return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(root, filename).ToString());
 
                     //Trace.WriteLine(file.Headers.ContentDisposition.FileName);
                     //Trace.WriteLine("Server file path: " + file.LocalFileName);
-                    
+
                 }
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
@@ -93,8 +90,5 @@ namespace Faces.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
-
-
-
     }
 }

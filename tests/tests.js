@@ -18,11 +18,11 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 
 
 
-myApp.service('fileUpload',  ['$http', function ($http) {
-    
+myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl){
         var fd = new FormData();
-        var filename = 'customeImageName';
+        var filename = '1';
+        fd.userId = '2';
         fd.append(filename, file);
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
@@ -33,8 +33,6 @@ myApp.service('fileUpload',  ['$http', function ($http) {
         .error(function(){
         });
     }
-    
-
 }]);
 
 
@@ -60,7 +58,7 @@ myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', 'getImage', func
     $scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
+        var uploadUrl = "http://localhost:49517/api/ProfilePicture";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
 

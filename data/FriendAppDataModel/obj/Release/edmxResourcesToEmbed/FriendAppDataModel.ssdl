@@ -84,12 +84,12 @@
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Phone" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
-    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
     <Property Name="AccountType" Type="int" Nullable="false" />
     <Property Name="AboutMe" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Gender" Type="char" Nullable="false" MaxLength="1" />
-    <Property Name="State" Type="char" Nullable="false" MaxLength="2" />
-    <Property Name="ProfilePictureUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gender" Type="char" Nullable="true" MaxLength="1" />
+    <Property Name="State" Type="char" Nullable="true" MaxLength="2" />
+    <Property Name="ProfilePicture" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Friends">
     <Key>

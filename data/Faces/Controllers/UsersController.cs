@@ -10,9 +10,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using FriendAppDataModel;
 using Faces.Models;
+using System.Web.Http.Cors;
 
 namespace Faces.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();

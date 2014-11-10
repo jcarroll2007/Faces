@@ -24,7 +24,7 @@ namespace Faces.Models
             userModelTemp.AccountType = entity.AccountType;
             userModelTemp.Gender = entity.Gender;
             userModelTemp.AboutMe = entity.AboutMe;
-            //userModelTemp.ProfilePicture = entity.ProfilePicture;
+            userModelTemp.ProfilePicture = entity.ProfilePicture;
 
             if(entity.UserToken != null)
             userModelTemp.Token = entity.UserToken.Token;
@@ -59,7 +59,7 @@ namespace Faces.Models
             userEntityTemp.AccountType = model.AccountType;
             userEntityTemp.Gender = model.Gender;
             userEntityTemp.AboutMe = model.AboutMe;
-            //userEntityTemp.ProfilePicture = model.ProfilePicture;
+            userEntityTemp.ProfilePicture = model.ProfilePicture;
 
             if(model.Token != null)
             userEntityTemp.UserToken.Token = model.Token;
@@ -84,7 +84,7 @@ namespace Faces.Models
             model.ActionDate = entity.ActionDate;
             model.Id = entity.FriendId;
             model.Email = entity.Friend.Email;
-            //model.ProfilePicture = entity.Friend.ProfilePicture;
+            model.ProfilePicture = entity.Friend.ProfilePicture;
 
             return model;
         }
@@ -96,12 +96,12 @@ namespace Faces.Models
             entity.ActionDate = model.ActionDate;
             entity.Id = model.Id;
             entity.Friend.Email = model.Email;
-            //entity.Friend.ProfilePicture = model.ProfilePicture;
+            entity.Friend.ProfilePicture = model.ProfilePicture;
 
             return entity;
         }
 
-        private static WallModel ParseWallEntityToModel(Wall u)
+        public static WallModel ParseWallEntityToModel(Wall u)
         {
             var model = new WallModel();
             model.Id = u.Id;
@@ -126,7 +126,7 @@ namespace Faces.Models
             return model;
         }
 
-        private static Wall ParseWallModelToEntity(WallModel model)
+        public static Wall ParseWallModelToEntity(WallModel model)
         {
             var entity = new Wall();
             entity.Id = model.Id;
@@ -151,7 +151,7 @@ namespace Faces.Models
             return entity;
         }
 
-        private static CommentModel ParseCommentEntityToModel(Comments u)
+        public static CommentModel ParseCommentEntityToModel(Comments u)
         {
             var model = new CommentModel();
             model.Id = u.Id;
@@ -163,7 +163,7 @@ namespace Faces.Models
             return model;
         }
 
-        private static Comments ParseCommentModelToEntity(CommentModel model)
+        public static Comments ParseCommentModelToEntity(CommentModel model)
         {
             var entity = new Comments();
             entity.Id = model.Id;

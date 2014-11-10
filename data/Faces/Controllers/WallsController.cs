@@ -9,18 +9,28 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FriendAppDataModel;
+using Faces.Models;
+using System.Web.Http.Cors;
 
 namespace Faces.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class WallsController : ApiController
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();
 
         // GET: api/Walls
-        public IQueryable<Wall> GetWalls()
+        public List<WallModel> GetWalls()
         {
-            return db.Walls;
+            var temp = new List<WallModel>(db.Walls.ToList().Select(c => ModelFactory.ParseWallEntityToModel(c)));
+            return temp;
         }
+
+        // GET: api/Walls
+        //public IQueryable<Wall> GetWalls()
+        //{
+        //    return db.Walls;
+        //}
 
         // GET: api/Walls/5
         [ResponseType(typeof(Wall))]

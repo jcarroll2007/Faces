@@ -87,11 +87,11 @@
     <Property Name="LastName" Type="String" Nullable="false" />
     <Property Name="Phone" Type="String" Nullable="true" />
     <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
-    <Property Name="City" Type="String" Nullable="false" />
+    <Property Name="City" Type="String" Nullable="true" />
     <Property Name="AccountType" Type="Int32" Nullable="false" />
     <Property Name="AboutMe" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
-    <Property Name="Gender" Type="String" Nullable="false" FixedLength="true" MaxLength="1" Unicode="false" />
-    <Property Name="State" Type="String" Nullable="false" FixedLength="true" MaxLength="2" Unicode="false" />
+    <Property Name="Gender" Type="String" Nullable="true" FixedLength="true" MaxLength="1" Unicode="false" />
+    <Property Name="State" Type="String" Nullable="true" FixedLength="true" MaxLength="2" Unicode="false" />
     <NavigationProperty Name="SentMessages" Relationship="FriendAppDataModel.UserMessage" FromRole="User" ToRole="Message" />
     <NavigationProperty Name="receivedMessages" Relationship="FriendAppDataModel.UserMessage1" FromRole="User" ToRole="Message" />
     <NavigationProperty Name="SubscribedTags" Relationship="FriendAppDataModel.UserTags" FromRole="User" ToRole="SubscribedTags" />
@@ -99,7 +99,7 @@
     <NavigationProperty Name="Comments" Relationship="FriendAppDataModel.CommentsUser" FromRole="User" ToRole="Comments" />
     <NavigationProperty Name="PostedOnWall" Relationship="FriendAppDataModel.WallUser" FromRole="User" ToRole="Wall" />
     <NavigationProperty Name="UserProfilePicture" Relationship="FriendAppDataModel.UserProfilePictures" FromRole="User" ToRole="ProfilePictures" />
-    <Property Name="ProfilePictureUrl" Type="String" Nullable="false" />
+    <Property Name="ProfilePicture" Type="String" Nullable="true" />
   </EntityType>
   <EntityType Name="Friends">
     <Key>
