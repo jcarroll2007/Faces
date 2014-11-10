@@ -5,8 +5,7 @@ app.controller('MeCtrl' , [
 	function($scope, $window, user, post, $modal, WallPostService) {
 	$scope.user = user.user;
 	$scope.posts = [];
-	//$scope.testPost = new post(user, '', 'This is my wall post', $scope.testComments);
-	//$scope.posts.push($scope.testPost);
+
 	$scope.createNewPost = function (size) {
 		var modalInstance = $modal.open({
 			templateUrl: 'post/newPost.html',
@@ -17,13 +16,12 @@ app.controller('MeCtrl' , [
 		modalInstance.result.then(function (newPostContent) {
 			console.log(newPostContent);
 			var post = {
-				UserId: "",
+				UserId: 1,
 				Message: newPostContent,
 				Picture: "",
-				PostTime: "",
-				PosterId: ""
+				PostTime: new Date(),
+				PosterId: 1
 			};
-			$scope.posts.push(post);
 			WallPostService.post(post).success(function(response) {
 				console.log(response);
 			});
@@ -33,15 +31,12 @@ app.controller('MeCtrl' , [
 
 app.service('WallPostService', function($http) {
 	this.post = function(post) {
-		return $http.post('http://robertryanmorris.com/services/FaceServices/api/walls', post, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-		});
+		return $http.post('http://robertryanmorris.com/services/FaceServices/api/walls', post);
 	};
 
-	this.getAll = function() {
-		return $http.get('url');
-	} ;
+	this.getAll = function(user) {
+		return $http.get('http://robertryanmorris.com/services/FaceServices/api/walls', user.UserId);
+	};
 });
 
 app.controller('newPostModalCtrl', function($scope, $modalInstance) {

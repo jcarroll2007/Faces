@@ -53,7 +53,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="#/me">Profile</a></li>
-            <li><a href="#">Bulletin Board</a></li>
           </ul>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -63,11 +62,10 @@
           </form>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#/tests">Testing</a></li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown">Jordan Carroll<span class="caret"></span></a>
+            <li class="dropdown" ng-show="activeUser.FirstName">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#/me">{{activeUser.FirstName}} {{activeUser.LastName}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">Sign-out</a></li>
-                <li><a href="#/">Settings</a>
               </ul>
             </li>
           </ul>
