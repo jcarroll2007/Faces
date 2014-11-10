@@ -58,7 +58,7 @@ myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', 'getImage', func
     $scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "http://localhost:49517/api/ProfilePicture";
+        var uploadUrl = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
         fileUpload.uploadFileToUrl(file, uploadUrl);
     };
 

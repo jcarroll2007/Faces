@@ -131,7 +131,8 @@ app.service('registration', function($http, user) {
         user.user.AboutMe = new_user.about_me;
 
         console.log(user.user);
-
+//http://localhost:49517/
+//http://robertryanmorris.com/services/FaceServices/api/Users
         $http.post('http://robertryanmorris.com/services/FaceServices/api/Users', user.user)
         .success(function(data) {
             console.log('New user created succesfully.' + data);
