@@ -49,6 +49,5 @@ namespace FriendAppDataModel
         public virtual UserTokens UserToken { get; set; }
         public virtual ICollection<Comments> Comments { get; set; }
         public virtual ICollection<Wall> PostedOnWall { get; set; }
-        public virtual ProfilePictures UserProfilePicture { get; set; }
     }
 }

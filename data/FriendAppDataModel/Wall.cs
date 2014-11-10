@@ -31,6 +31,5 @@ namespace FriendAppDataModel
         public virtual ICollection<WallPostTagsTable> PostTags { get; set; }
         public virtual ICollection<Comments> Comments { get; set; }
         public virtual User WhoPosted { get; set; }
-        public virtual WallPictures WallPicture { get; set; }
     }
 }

@@ -33,17 +33,23 @@ namespace Faces.Controllers
         //}
 
         // GET: api/Walls/5
-        [ResponseType(typeof(Wall))]
-        public IHttpActionResult GetWall(int id)
+        public List<WallModel> GetWalls(int id)
         {
-            Wall wall = db.Walls.Find(id);
-            if (wall == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(wall);
+            var temp = new List<WallModel>(db.Walls.ToList().Select(c => ModelFactory.ParseWallEntityToModel(c)).Where(c =>
+                c.UserId == id));
+            return temp;
         }
+        //[ResponseType(typeof(Wall))]
+        //public IHttpActionResult GetWall(int id)
+        //{
+        //    Wall wall = db.Walls.Find(id);
+        //    if (wall == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(wall);
+        //}
 
         // PUT: api/Walls/5
         [ResponseType(typeof(void))]

@@ -29,6 +29,7 @@ namespace Faces.Models
             if(entity.UserToken != null)
             userModelTemp.Token = entity.UserToken.Token;
 
+
             foreach (var u in entity.Friends)
             {
                 userModelTemp.Friends.Add(ParseFriendEntityToModel(u));

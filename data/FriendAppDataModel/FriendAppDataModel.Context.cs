@@ -34,7 +34,5 @@ namespace FriendAppDataModel
         public virtual DbSet<SubscribedTags> SubscribedTags { get; set; }
         public virtual DbSet<UserTokens> UserTokens { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
-        public virtual DbSet<ProfilePictures> ProfilePictures { get; set; }
-        public virtual DbSet<WallPictures> WallPictures { get; set; }
     }
 }

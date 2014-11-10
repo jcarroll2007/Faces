@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/10/2014 12:34:59
+-- Date Created: 11/10/2014 13:43:17
 -- Generated from EDMX file: C:\inetpub\wwwroot\PROJECTS\DIGITALINVENTORS\MySite\robertryanmorris\FacesWebApp\Faces\data\FriendAppDataModel\FriendAppDataModel.edmx
 -- --------------------------------------------------
 
@@ -56,12 +56,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_WallUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Walls] DROP CONSTRAINT [FK_WallUser];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UserProfilePictures]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProfilePictures] DROP CONSTRAINT [FK_UserProfilePictures];
-GO
-IF OBJECT_ID(N'[dbo].[FK_WallWallPictures]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[WallPictures] DROP CONSTRAINT [FK_WallWallPictures];
-GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -93,12 +87,6 @@ IF OBJECT_ID(N'[dbo].[UserTokens]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Comments]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Comments];
-GO
-IF OBJECT_ID(N'[dbo].[ProfilePictures]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ProfilePictures];
-GO
-IF OBJECT_ID(N'[dbo].[WallPictures]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[WallPictures];
 GO
 
 -- --------------------------------------------------
@@ -195,22 +183,6 @@ CREATE TABLE [dbo].[Comments] (
 );
 GO
 
--- Creating table 'ProfilePictures'
-CREATE TABLE [dbo].[ProfilePictures] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Picture] varbinary(max)  NULL,
-    [User_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'WallPictures'
-CREATE TABLE [dbo].[WallPictures] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Picture] varbinary(max)  NOT NULL,
-    [Wall_Id] int  NOT NULL
-);
-GO
-
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -266,18 +238,6 @@ GO
 -- Creating primary key on [Id] in table 'Comments'
 ALTER TABLE [dbo].[Comments]
 ADD CONSTRAINT [PK_Comments]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'ProfilePictures'
-ALTER TABLE [dbo].[ProfilePictures]
-ADD CONSTRAINT [PK_ProfilePictures]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'WallPictures'
-ALTER TABLE [dbo].[WallPictures]
-ADD CONSTRAINT [PK_WallPictures]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -472,36 +432,6 @@ GO
 CREATE INDEX [IX_FK_WallUser]
 ON [dbo].[Walls]
     ([PosterId]);
-GO
-
--- Creating foreign key on [User_Id] in table 'ProfilePictures'
-ALTER TABLE [dbo].[ProfilePictures]
-ADD CONSTRAINT [FK_UserProfilePictures]
-    FOREIGN KEY ([User_Id])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserProfilePictures'
-CREATE INDEX [IX_FK_UserProfilePictures]
-ON [dbo].[ProfilePictures]
-    ([User_Id]);
-GO
-
--- Creating foreign key on [Wall_Id] in table 'WallPictures'
-ALTER TABLE [dbo].[WallPictures]
-ADD CONSTRAINT [FK_WallWallPictures]
-    FOREIGN KEY ([Wall_Id])
-    REFERENCES [dbo].[Walls]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_WallWallPictures'
-CREATE INDEX [IX_FK_WallWallPictures]
-ON [dbo].[WallPictures]
-    ([Wall_Id]);
 GO
 
 -- --------------------------------------------------
