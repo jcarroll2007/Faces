@@ -39,21 +39,21 @@ myApp.service('fileUpload', ['$http', function ($http) {
 myApp.service('getImage', ['$http', function($http){
 
     this.getFileFromPath = function(imagePath){
-    	var iPath = "D:\\Hosting\\11030611\\html\\services\\faceservices\\App_Data\\profile\\customeImageName.jpeg";
-    	$http.get(imagePath, {
-    		params: {
-    			path: iPath
-    		}
-    	}).success(function (data,status){
-    		
-    	});
-    }
-
-
+        var iPath = "D:\\Hosting\\11030611\\html\\services\\faceservices\\App_Data\\profile\\customeImageName.jpeg";
+        $http.get(imagePath, {
+            params: {
+                path: iPath
+            }
+        }).success(function (data,status){
+            
+        });
+    };
 }]);
 
 
-myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', 'getImage', function($scope, fileUpload, $http, getImage){
+myApp.controller('TestsCtrl', [
+    '$scope', 'fileUpload', '$http', 'getImage', 'user',
+    function($scope, fileUpload, $http, getImage, user){
     
     $scope.uploadFile = function(){
         var file = $scope.myFile;
@@ -64,10 +64,26 @@ myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', 'getImage', func
 
 
     $scope.getImage = function(){
-    	var imagePath = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
-    	getImage.getFileFromPath(imagePath);
+        var imagePath = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
+        getImage.getFileFromPath(imagePath);
     };
     
+    var testUser = {};
+    testUser.Email = "ryanmorris793@gmail.com";
+    testUser.Password = "123";
+    testUser.ProfilePicture = "static/photos/jordancarroll.jpg";
+    testUser.FirstName = "Jon";
+    testUser.LastName = "Doe";
+    testUser.Phone = "5554870000";
+    testUser.DateOfBirth = "1980-01-01";
+    testUser.City = "Atlanta";
+    testUser.AccountType = 1;
+    testUser.AboutMe = "user is my autobiography.";
+    testUser.Gender = "M";
+    testUser.State = "GA";
+    $scope.loginTestUser = function() {
+        user.user = testUser;
+    };
     
 }]);
 
@@ -75,70 +91,70 @@ myApp.controller('TestsCtrl', ['$scope', 'fileUpload', '$http', 'getImage', func
 var app = angular.module('tests', []);
 
 app.controller('TestsCtrl', ['test_web_services', '$scope','$upload' , function(test_web_services, $scope, $upload) {
-	$scope.test_login = function() {
-		test_web_services.test_login();
-	};
+    $scope.test_login = function() {
+        test_web_services.test_login();
+    };
 
-	$scope.test_create_new_user = function() {
-		test_web_services.add_test_user();
-	};
+    $scope.test_create_new_user = function() {
+        test_web_services.add_test_user();
+    };
 
-	$scope.test_picture_upload = function(file) {
-		test_web_services.onFileSelect();
-	}
+    $scope.test_picture_upload = function(file) {
+        test_web_services.onFileSelect();
+    }
 }]);
 
 
 app.factory('test_web_services', ['$http', function($http) {
-	var test_web_services = {};
+    var test_web_services = {};
 
-	var new_user_info = {
-		Email: "ryanmorris793@gmail.com",
-		Password: "123",
-		//ProfilePicture: null,
-		firstname: "Jon",
-		lastname: "Doe",
-		Phone: "5554870000",
-		DateOfBirth: "1980-01-01", // 04/03/1984
-		City: "Atlanta",
-		AccountType: 1,
-		AboutMe: "This is my autobiography.",
-		Gender: "M",
-		State: "GA"
-	};
+    var new_user_info = {
+        Email: "ryanmorris793@gmail.com",
+        Password: "123",
+        //ProfilePicture: null,
+        firstname: "Jon",
+        lastname: "Doe",
+        Phone: "5554870000",
+        DateOfBirth: "1980-01-01", // 04/03/1984
+        City: "Atlanta",
+        AccountType: 1,
+        AboutMe: "This is my autobiography.",
+        Gender: "M",
+        State: "GA"
+    };
 
 
-	var login_data = {
-		uname: "ryanmorris793@gmail.com",
-		pass:"123"
-	};
+    var login_data = {
+        uname: "ryanmorris793@gmail.com",
+        pass:"123"
+    };
 
-	test_web_services.test_login = function() {
-		$http.post('http://localhost:49517/api/Login', login_data)
-		.success(function(received) {
-			alert('Login Test Successful:' + received);
-		});
-	};
+    test_web_services.test_login = function() {
+        $http.post('http://localhost:49517/api/Login', login_data)
+        .success(function(received) {
+            alert('Login Test Successful:' + received);
+        });
+    };
 
-	test_web_services.add_test_user = function() {
-		console.log(new_user_info);
-		$http.post('http://robertryanmorris.com/services/FaceServices/api/Users', new_user_info)
-		.success(function(received) {
-			alert('Add user test Successful:' + received);
-		});
-	};
+    test_web_services.add_test_user = function() {
+        console.log(new_user_info);
+        $http.post('http://robertryanmorris.com/services/FaceServices/api/Users', new_user_info)
+        .success(function(received) {
+            alert('Add user test Successful:' + received);
+        });
+    };
 
-	
+    
     test_web_services.onFileSelect = function(file) { 
-    	var fd = new FormData();
-    	fd.append("file", file);
-    	$http.post('http://localhost:49517/api/ProfilePicture', fd, {
-    		transformRequest: angular.identity,
-    		headers: {'Content-Type': undefined }
-    	})};
+        var fd = new FormData();
+        fd.append("file", file);
+        $http.post('http://localhost:49517/api/ProfilePicture', fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined }
+        })};
         
     
 
-	return test_web_services;
+    return test_web_services;
 }]);
 */

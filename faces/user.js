@@ -18,7 +18,7 @@ app.factory('UserService', [function() {
 
 app.service('user', function() {
 
-    
+    this.user = {};
 
     
      // Test Code
@@ -37,19 +37,19 @@ app.service('user', function() {
     "development after I graduate.";
     this.profilePicture = "static/photos/jordancarroll.jpg";*/
 
-    this.user = {};
-    this.user.Email = "ryanmorris793@gmail.com";
-    this.user.Password = "123";
-    this.user.ProfilePicture = "static/photos/jordancarroll.jpg";
-    this.user.FirstName = "Jon";
-    this.user.LastName = "Doe";
-    this.user.Phone = "5554870000";
-    this.user.DateOfBirth = "1980-01-01";
-    this.user.City = "Atlanta";
-    this.user.AccountType = 1;
-    this.user.AboutMe = "user is my autobiography.";
-    this.user.Gender = "M";
-    this.user.State = "GA";
+    // this.user = {};
+    // this.user.Email = "ryanmorris793@gmail.com";
+    // this.user.Password = "123";
+    // this.user.ProfilePicture = "static/photos/jordancarroll.jpg";
+    // this.user.FirstName = "Jon";
+    // this.user.LastName = "Doe";
+    // this.user.Phone = "5554870000";
+    // this.user.DateOfBirth = "1980-01-01";
+    // this.user.City = "Atlanta";
+    // this.user.AccountType = 1;
+    // this.user.AboutMe = "user is my autobiography.";
+    // this.user.Gender = "M";
+    // this.user.State = "GA";
      
 
     /*this.firstName;
