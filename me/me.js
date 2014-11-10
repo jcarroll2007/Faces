@@ -27,6 +27,23 @@ app.controller('MeCtrl' , [
 			});
 		});
 	};
+
+	$scope.postNewPicture = function(size) {
+		var modalInstance = $modal.open({
+			templateUrl: 'picturePost/picturePost.html',
+			controller: 'newPictureModalCtrl',
+			size: size,
+		});
+
+		modalInstance.result.then(function (newPictureContent) {
+			//console.log(newPostContent);
+			var newPicture = newPictureContent;
+			$scope.posts.push(newPicture);
+			WallPostService.post(newPicture).success(function(response) {
+				console.log(response);
+			});
+		});
+	};
 }]);
 
 app.service('WallPostService', function($http) {
@@ -41,6 +58,19 @@ app.service('WallPostService', function($http) {
 
 app.controller('newPostModalCtrl', function($scope, $modalInstance) {
 	$scope.post = {};
+
+	$scope.ok = function () {
+		console.log($scope);
+		$modalInstance.close($scope.post.content);
+	};
+
+	$scope.cancel = function () {
+		$modalInstance.dismiss('cancel');
+	};
+});
+
+app.controller('newPictureModalCtrl', function($scope, $modalInstance) {
+	$scope.newPicture = "";
 
 	$scope.ok = function () {
 		console.log($scope);
