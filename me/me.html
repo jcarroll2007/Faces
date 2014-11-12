@@ -7,18 +7,24 @@
 		</div>
 	</div>
 
-	<div id="info_div" class="row row-border">
+	<div id="info_div" class="row row-border">		
 		<img id="user_photo" class="col-xs-3 profile-picture-lg" ng-src="{{user.ProfilePicture}}">
+
 		<div class="col-md-9">
-			From:
-			<p>{{user.City}}, {{user.State}}</p>
-			Phone:
-			<p>{{user.Phone}}</p>
-			Birthday:
-			<p>{{user.DateOfBirth}}</p>
-			About:
-			<p>{{user.AboutMe}} </p>
+			From: <button id="fromEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="fromEditor()"/>
+			<p ng-hide="fromEditOn">{{user.City}}, {{user.State}}</p> <input type="text" ng-model="user.City" 
+				ng-hide="!fromEditOn" ng-disabled="!fromEditOn"/>
+			Phone: <button id="phoneEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="phoneEditor()"/>
+			<p ng-hide="phoneEditOn">{{user.Phone}}</p> <input id="phoneTextBox" type="text" ng-model="user.Phone"
+				ng-hide="!phoneEditOn" ng-disabled="!phoneEditOn"/>
+			Birthday: <button id="birthdayEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="birthdayEditor()"/>
+			<p ng-hide="birthdayEditOn">{{user.DateOfBirth}}</p> <input ng-model="user.DateOfBirth" ng-hide="!birthdayEditOn" ng-disabled="!birthdayEditOn"/>
+			About: <button id="aboutEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="aboutEditor()"/>
+			<p ng-hide="aboutEditOn">{{user.AboutMe}} </p> <textarea class="form-control" ng-model="user.AboutMe" type="text" rows="10" maxlength="140"
+				ng-hide="!aboutEditOn" />
 		</div>
+		
+		<button id="pictureEdit" ng-model="user.ProfilePicture" class="glyphicon glyphicon-pencil" title="Edit" ng-click="pictureEditor()"/>
 	</div>	
 
 	<div id="action_div" class="row row-border">

@@ -26,7 +26,7 @@ app.controller('MeCtrl' , [
 				console.log(response);
 			});
 		});
-	};
+	}; //end createNewPost
 
 	$scope.postNewPicture = function(size) {
 		var modalInstance = $modal.open({
@@ -43,6 +43,35 @@ app.controller('MeCtrl' , [
 				console.log(response);
 			});
 		});
+	}; //end postNewPicture
+
+	/********
+	editor control variables
+	*********/
+	$scope.fromEditOn = false;
+	$scope.phoneEditOn = false;
+	$scope.birthdayEditOn = false;
+	$scope.aboutEditOn = false;
+	///////
+
+	$scope.fromEditor = function(){
+		$scope.fromEditOn = !$scope.fromEditOn;
+	};
+
+	$scope.phoneEditor = function(){		
+		$scope.phoneEditOn = !$scope.phoneEditOn;
+	};
+
+	$scope.birthdayEditor = function(){		
+		$scope.birthdayEditOn = !$scope.birthdayEditOn;
+	};
+
+	$scope.aboutEditor = function(){
+		$scope.aboutEditOn = !$scope.aboutEditOn;
+	};
+
+	$scope.pictureEditor = function(){
+		
 	};
 }]);
 
