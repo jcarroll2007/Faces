@@ -118,24 +118,25 @@ app.controller('RegisterCtrl', [
     };
 }]);
 
-app.service('registration', function($http, user) {
+app.service('registration', function($http, $user, routing, URLs) {
     this.addNewUser = function(new_user) {
-        user.user.FirstName = new_user.first_name;
-        user.user.LastName = new_user.last_name;
-        user.user.Email =  new_user.email;
-        user.user.Password = new_user.password;
-        user.user.Phone = new_user.phone;
-        user.user.DateOfBirth = new_user.date_of_birth;
-        user.user.City = new_user.city;
-        user.user.State = new_user.state;
-        user.user.AboutMe = new_user.about_me;
+        $user.user.FirstName = new_user.first_name;
+        $user.user.LastName = new_user.last_name;
+        $user.user.Email =  new_user.email;
+        $user.user.Password = new_user.password;
+        $user.user.Phone = new_user.phone;
+        $user.user.DateOfBirth = new_user.date_of_birth;
+        $user.user.City = new_user.city;
+        $user.user.State = new_user.state;
+        $user.user.AboutMe = new_user.about_me;
 
-        console.log(user.user);
+        console.log($user.user);
 //http://localhost:49517/
 //http://robertryanmorris.com/services/FaceServices/api/Users
-        $http.post('http://robertryanmorris.com/services/FaceServices/api/Users', user.user)
+        $http.post('http://robertryanmorris.com/services/FaceServices/api/Users', $user.user)
         .success(function(data) {
             console.log('New user created succesfully.' + data);
+            routing.change_view(URLs.LOGIN)
         });
     };
 });

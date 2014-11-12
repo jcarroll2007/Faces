@@ -32,7 +32,7 @@ myApp.service('fileUpload', ['$http', function ($http) {
         })
         .error(function(){
         });
-    }
+    };
 }]);
 
 
@@ -52,8 +52,8 @@ myApp.service('getImage', ['$http', function($http){
 
 
 myApp.controller('TestsCtrl', [
-    '$scope', 'fileUpload', '$http', 'getImage', 'user',
-    function($scope, fileUpload, $http, getImage, user){
+    '$scope', 'fileUpload', '$http', 'getImage', '$user',
+    function($scope, fileUpload, $http, getImage, $user){
     
     $scope.uploadFile = function(){
         var file = $scope.myFile;
@@ -82,7 +82,7 @@ myApp.controller('TestsCtrl', [
     testUser.Gender = "M";
     testUser.State = "GA";
     $scope.loginTestUser = function() {
-        user.user = testUser;
+        $user.user = testUser;
     };
     
 }]);

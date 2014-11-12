@@ -64,17 +64,17 @@ app.factory('routing', ['$location', function($location) {
     return routing;
 }]);
 
-app.controller('FacesCtrl', ['$scope', '$window', '$modal', 'user', '$interval',
-    function($scope, $window, $modal, user, $interval){
+app.controller('FacesCtrl', ['$scope', '$window', '$modal', '$user', '$interval',
+    function($scope, $window, $modal, $user, $interval){
         $scope.searchContent = "";
         $scope.activeUser = function() {
-            return user.user;
+            return $user.user;
         };
         $scope.$watch(function () {
-            return user;
+            return $user;
             },
             function(newVal, oldVal) {
-                $scope.activeUser = user.user;
+                $scope.activeUser = $user.user;
             }, true);
 
         // $interval(function() {
@@ -97,6 +97,10 @@ app.controller('FacesCtrl', ['$scope', '$window', '$modal', 'user', '$interval',
             modalInstance.result.then(function (searchContent) {
                 console.log(searchContent);
             });
+        };
+
+        $scope.logOut = function() {
+            $scope.activeUser = null;
         }
     }
 ]);

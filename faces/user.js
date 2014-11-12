@@ -16,7 +16,7 @@ app.factory('UserService', [function() {
     };
 }]);
 
-app.service('user', function() {
+app.service('$user', function() {
 
     this.user = {};
 

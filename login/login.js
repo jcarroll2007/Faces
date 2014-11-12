@@ -1,9 +1,9 @@
 var app = angular.module('Faces_Login', []);
 
-app.controller('LoginCtrl', ['$scope', 'routing', 'URLs', '$http', 'user',
-	function($scope, routing, URLs, $http, user) {
+app.controller('LoginCtrl', ['$scope', 'routing', 'URLs', '$http', '$user',
+	function($scope, routing, URLs, $http, $user) {
 
-		$scope.user	= user.user;
+		$scope.user	= $user.user;
 
 		$scope.credentials = {
 			uname: "",
@@ -15,8 +15,10 @@ app.controller('LoginCtrl', ['$scope', 'routing', 'URLs', '$http', 'user',
 		$scope.log_in = function() {
 			$http.post('http://robertryanmorris.com/services/FaceServices/api/Login', $scope.credentials)
 			.success(function(user) {
-				user.user = user;
+				$user.user = user;
 				console.log('Login Successful:' + user);
+				routing.change_view(URLs.ME);
+				
 			});
 		};
 

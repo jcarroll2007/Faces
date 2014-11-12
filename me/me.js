@@ -1,9 +1,9 @@
 var app = angular.module('Faces_Me', ['ui.bootstrap', 'ngAnimate']);
 
 app.controller('MeCtrl' , [
-	'$scope', '$window', 'user', 'post', '$modal', 'WallPostService',
-	function($scope, $window, user, post, $modal, WallPostService) {
-	$scope.user = user.user;
+	'$scope', '$window', '$user', 'post', '$modal', 'WallPostService',
+	function($scope, $window, $user, post, $modal, WallPostService) {
+	$scope.user = $user.user;
 	$scope.posts = [];
 
 	$scope.createNewPost = function (size) {
@@ -16,7 +16,7 @@ app.controller('MeCtrl' , [
 		modalInstance.result.then(function (newPostContent) {
 			console.log(newPostContent);
 			var post = {
-				UserId: 1,
+				UserId: $scope.user.Id,
 				Message: newPostContent,
 				Picture: "",
 				PostTime: new Date(),
@@ -24,6 +24,9 @@ app.controller('MeCtrl' , [
 			};
 			WallPostService.post(post).success(function(response) {
 				console.log(response);
+			});
+			WallPostService.getAll($scope.user.Id).success(function(data) {
+				$scope.posts = data;
 			});
 		});
 	};
@@ -51,8 +54,8 @@ app.service('WallPostService', function($http) {
 		return $http.post('http://robertryanmorris.com/services/FaceServices/api/walls', post);
 	};
 
-	this.getAll = function(user) {
-		return $http.get('http://robertryanmorris.com/services/FaceServices/api/walls', user.UserId);
+	this.getAll = function(userId) {
+		return $http.get('http://robertryanmorris.com/services/FaceServices/api/walls' + '/' + userId);
 	};
 });
 
