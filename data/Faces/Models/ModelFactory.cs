@@ -18,7 +18,7 @@ namespace Faces.Models
             userModelTemp.Password = entity.Password;
             userModelTemp.Email = entity.Email;
             userModelTemp.Phone = entity.Phone;
-            userModelTemp.DateOfBirth = entity.DateOfBirth.ToShortDateString();
+            userModelTemp.DateOfBirth = entity.DateOfBirth.HasValue ? entity.DateOfBirth.Value.ToShortDateString() : null;
             userModelTemp.City = entity.City;
             userModelTemp.State = entity.State;
             userModelTemp.AccountType = entity.AccountType;
@@ -54,7 +54,10 @@ namespace Faces.Models
             userEntityTemp.Password = model.Password;
             userEntityTemp.Email = model.Email;
             userEntityTemp.Phone = model.Phone;
-            userEntityTemp.DateOfBirth = Convert.ToDateTime(model.DateOfBirth);
+            if (!String.IsNullOrEmpty(model.DateOfBirth))
+            {
+                userEntityTemp.DateOfBirth = Convert.ToDateTime(model.DateOfBirth);
+            }
             userEntityTemp.City = model.City;
             userEntityTemp.State = model.State;
             userEntityTemp.AccountType = model.AccountType;

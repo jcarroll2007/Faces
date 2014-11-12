@@ -78,7 +78,7 @@
     <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Phone" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="true" />
     <Property Name="City" Type="nvarchar(max)" Nullable="true" />
     <Property Name="AccountType" Type="int" Nullable="false" />
     <Property Name="AboutMe" Type="nvarchar(max)" Nullable="true" />
@@ -394,7 +394,7 @@
           <Property Name="FirstName" Type="String" Nullable="false" />
           <Property Name="LastName" Type="String" Nullable="false" />
           <Property Name="Phone" Type="String" Nullable="true" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="true" />
           <Property Name="City" Type="String" Nullable="true" />
           <Property Name="AccountType" Type="Int32" Nullable="false" />
           <Property Name="AboutMe" Type="String" Nullable="true" MaxLength="Max" Unicode="true" />
