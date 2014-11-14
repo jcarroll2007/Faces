@@ -6,6 +6,7 @@ var app = angular.module('Faces', [
     'Faces_Login',
     'Faces_Register',
     'Faces_Me',
+    'Faces_Search',
     'tests',
     'User',
     'post'
@@ -64,8 +65,8 @@ app.factory('routing', ['$location', function($location) {
     return routing;
 }]);
 
-app.controller('FacesCtrl', ['$scope', '$window', '$modal', '$user', '$interval',
-    function($scope, $window, $modal, $user, $interval){
+app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user', '$interval', 'routing', 'URLs',
+    function($scope, $rootScope, $window, $modal, $user, $interval, routing, URLs){
         $scope.searchContent = "";
         $scope.activeUser = function() {
             return $user.user;
@@ -83,25 +84,13 @@ app.controller('FacesCtrl', ['$scope', '$window', '$modal', '$user', '$interval'
         // }, 1000);
 
         $scope.search = function(size){
-            var modalInstance = $modal.open({
-              templateUrl: 'search/search.html',
-              controller: 'searchModalCtrl',
-              size: size,
-              resolve: {
-                items: function () {
-                  return $scope.items;
-                }
-              }
-            });
-
-            modalInstance.result.then(function (searchContent) {
-                console.log(searchContent);
-            });
+            routing.change_view(URLs.SEARCH);
+            $rootScope.$broadcast('Search', $scope.searchParameter);
         };
 
         $scope.logOut = function() {
             $scope.activeUser = null;
-        }
+        };
     }
 ]);
 
