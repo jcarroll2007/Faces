@@ -9,7 +9,7 @@ app.controller('MeCtrl' , [
 	$scope.createNewPost = function (size) {
 		var modalInstance = $modal.open({
 			templateUrl: 'post/newPost.html',
-			controller: 'newPostModalCtrl',
+			controller: 'newModalCtrl',
 			size: size,
 		});
 
@@ -34,7 +34,7 @@ app.controller('MeCtrl' , [
 	$scope.postNewPicture = function(size) {
 		var modalInstance = $modal.open({
 			templateUrl: 'picturePost/picturePost.html',
-			controller: 'newPictureModalCtrl',
+			controller: 'newModalCtrl',
 			size: size,
 		});
 
@@ -88,21 +88,8 @@ app.service('WallPostService', function($http) {
 	};
 });
 
-app.controller('newPostModalCtrl', function($scope, $modalInstance) {
+app.controller('newModalCtrl', function($scope, $modalInstance) {
 	$scope.post = {};
-
-	$scope.ok = function () {
-		console.log($scope);
-		$modalInstance.close($scope.post.content);
-	};
-
-	$scope.cancel = function () {
-		$modalInstance.dismiss('cancel');
-	};
-});
-
-app.controller('newPictureModalCtrl', function($scope, $modalInstance) {
-	$scope.newPicture = "";
 
 	$scope.ok = function () {
 		console.log($scope);

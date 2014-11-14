@@ -41,43 +41,6 @@ textarea{
 	overflow: auto;
 }
 
-#postBox.ng-leave{
-	opacity: 1;
-	height: 0px;
-}
-
-#postBox.ng-leave-active {
-	opacity: 0;
-	height: 0px;
-}
-
-#pictureBox.ng-enter{
-	opacity: 0;
-	height: 0px;
-}
-
-#post_div.ng-enter {
-	transition: 1.5s;
-	opacity: 0;
-	height: 0px;
-}
-
-#post_div.ng-enter-active {
-	opacity: 1;
-	height: 100%;
-}
-
-#post_div.ng-leave {
-	transition: 1.5s;
-	opacity: 1;
-	height: 100%;
-}
-
-#post_div.ng-leave-active {
-	opacity: 0;
-	height: 0px;
-}
-
 .row-border {
 	border-style: solid;
 	border-width: .2em;
@@ -99,4 +62,16 @@ textarea{
 	text-align: center;
 	margin-top: .5em;
 	margin-bottom: .5em;
+}
+
+.me-section-border {
+	width: 50%;
+}
+
+#wall_div{
+	float: left;
+}
+
+#friend_div{
+	float: right;
 }
