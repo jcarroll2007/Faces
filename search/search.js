@@ -3,6 +3,7 @@ var app = angular.module('Faces_Search', ['ui.bootstrap', 'ngAnimate']);
 app.controller('SearchCtrl', ['$scope',  '$rootScope', '$http',
 	function($scope, $rootScope, $http) {
 		$rootScope.$on('Search', function(obj, searchParameter) {
+			$scope.searchText = searchParameter;
 			console.log(searchParameter);
 		});
 		$scope.users = [];
@@ -12,7 +13,8 @@ app.controller('SearchCtrl', ['$scope',  '$rootScope', '$http',
 				console.log(users);
 			});
 		}();
-		//  url for getting all users: http://robertryanmorris.com/services/FaceServices/api/user
-
+		$scope.searchText = function() {
+			return "";
+		};
 	}
 ]);

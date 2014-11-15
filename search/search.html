@@ -6,16 +6,16 @@
 			<h2 id="search-heading">Search Results</h2>
 		</div>
 	</div>
-
 	<div id="resultsDiv" class="row row-border" align="center">
 		<h3>Users</h3>
 	</div>
-	<div class="row row-border" ng-repeat="user in users">
+	<div class="row row-border" ng-repeat="user in users | filter: searchText" ng-hide="isCurrentUser" CONTINUE HERE!
 		<div>
 			<div class="col-lg-11"><h4 style="color: #FFFFFF">{{user.FirstName}} {{user.LastName}}</h4> <h6>From {{user.City}}, {{user.State}}</h6></div>
 		</div>
 		<div class="col-lg-1">
-			<button class="btn-sm faces-btn glyphicon glyphicon-plus" style="margin-top: 14px;"></button>
+			<button class="btn-sm faces-btn glyphicon glyphicon-plus" style="margin-top: 14px;" ng-click="addFriend(user)"></button>
 		</div>
 	</div>
+	<div class="col-lg-4 col-lg-offset-4" style="text-align: center;" ng-show="{{(users|filter:searchText).length == 0}}"><em>No results found.</em></div>
 </div>
