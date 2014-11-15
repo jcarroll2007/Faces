@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="search/search.css">
 
 <div class="container-fluid faces-container">
-	<div id="heading_div" class="row row-border">
+	<div id="heading_div" class="row row-border" style="background-color: white;">
 		<div class="search-section-border">
 			<h2 id="search-heading">Search Results</h2>
 		</div>
@@ -9,10 +9,13 @@
 
 	<div id="resultsDiv" class="row row-border" align="center">
 		<h3>Users</h3>
-		<div class="users-container col-lg-12">
-			<div ng-repeat="user in users">
-				<div>test{{user.FirstName}} {{user.LastName}}</div>
-			</div>
-		</div>	
+	</div>
+	<div class="row row-border" ng-repeat="user in users">
+		<div>
+			<div class="col-lg-11"><h4 style="color: #FFFFFF">{{user.FirstName}} {{user.LastName}}</h4> <h6>From {{user.City}}, {{user.State}}</h6></div>
+		</div>
+		<div class="col-lg-1">
+			<button class="btn-sm faces-btn glyphicon glyphicon-plus" style="margin-top: 14px;"></button>
+		</div>
 	</div>
 </div>

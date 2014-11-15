@@ -15,15 +15,6 @@
 	text-align: center;
 }
 
-.row-border {
-	border-style: solid;
-	border-width: .2em;
-	border-color: #1F2B50;
-	border-radius: .5em;	
-	margin-top: .25em;
-	margin-bottom: .25em;
-}
-
 .search-button-container {
 	text-align: center;
 	margin-top: .5em;

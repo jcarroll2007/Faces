@@ -1,18 +1,18 @@
 <link rel="stylesheet" type="text/css" href="me/me.css">
 
 <div ng-controller="MeCtrl" class="container-fluid faces-container">
-	<div id="name_div" class="row row-border">
+	<div id="name_div" class="row row-border" style="background-color: white;">
 		<div class="me-section-border">
 			<h2 id="me-username-heading">{{user.FirstName}} {{user.LastName}}</h2>
 		</div>
 	</div>
 
-	<div id="info_div" class="row row-border">		
+	<div id="info_div" class="row row-border">
 		<img id="user_photo" class="col-xs-3 profile-picture-lg" ng-src="{{user.ProfilePicture}}">
 
 		<div class="col-md-9">
 			From: <button id="fromEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="fromEditor()"/>
-			<p ng-hide="fromEditOn">{{user.City}}, {{user.State}}</p> <input type="text" ng-model="user.City" 
+			<p ng-hide="fromEditOn">{{user.City}}, {{user.State}}</p> <input type="text" ng-model="user.City"
 				ng-hide="!fromEditOn" ng-disabled="!fromEditOn"/>
 			Phone: <button id="phoneEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="phoneEditor()"/>
 			<p ng-hide="phoneEditOn">{{user.Phone}}</p> <input id="phoneTextBox" type="text" ng-model="user.Phone"
@@ -23,9 +23,9 @@
 			<p ng-hide="aboutEditOn">{{user.AboutMe}} </p> <textarea class="form-control" ng-model="user.AboutMe" type="text" rows="10" maxlength="140"
 				ng-hide="!aboutEditOn" />
 		</div>
-		
+
 		<button id="pictureEdit" ng-model="user.ProfilePicture" class="glyphicon glyphicon-pencil" title="Edit" ng-click="pictureEditor()"/>
-	</div>	
+	</div>
 
 	<div id="action_div" class="row row-border">
 		<div class="me-button-container col-xs-6">
@@ -44,7 +44,7 @@
 
 	<div id="friend_div" class="me-section-border row row-border">
 		<div ng-repeat="friend in friends">
-			
+
 		</div>
 	</div>
 </div>

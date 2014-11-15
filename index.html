@@ -39,7 +39,7 @@
     <!-- SRC -->
 
     <!-- NAVIGATION BAR -->
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
       <div ng-controller="FacesCtrl" class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -51,10 +51,10 @@
           <a id="navbar-home" class="navbar-brand" href="#/login">Faces</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav" ng-show="activeUser.FirstName">
             <li><a href="#/me">Profile</a></li>
           </ul>
-          <form class="navbar-form navbar-left" role="search" ng-submit="search()" novalidate>
+          <form class="navbar-form navbar-left" role="search" ng-submit="search()" ng-show="activeUser.FirstName" novalidate >
             <div class="form-group">
               <input type="text" class="form-control"  placeholder="Search" ng-model="searchParameter">
             </div>

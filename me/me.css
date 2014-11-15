@@ -16,18 +16,12 @@
 }
 
 .profile-picture-lg {
-	border-style: solid;
-	border-width: .15em;
-	border-color: #1F2B50;
-	border-radius: .4em;
-	border-left: 1em;
-	border-top: 1px;
-	border-bottom-width: .01em;
+	margin-top: 5px;
 	min-height: 7em;
 	min-width: 10em;
-	max-width: 20em;	
-	max-height: 20em;	
-	background-color: rgb(103,144,177);
+	max-width: 20em;
+	max-height: 20em;
+	border-radius: 3px;
 }
 
 .glyphicon-pencil {
@@ -39,17 +33,6 @@
 textarea{
 	resize: none;
 	overflow: auto;
-}
-
-.row-border {
-	border-style: solid;
-	border-width: .2em;
-	border-color: #1F2B50;
-	border-radius: .5em;
-
-	/* background-color: #94B8FF; */
-	margin-top: .25em;
-	margin-bottom: .25em;
 }
 
 #user-information-container {

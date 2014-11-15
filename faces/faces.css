@@ -1,17 +1,44 @@
-.faces-btn, .faces-btn:focus {
-	color: #FFFFFF;
+/*.faces-btn, .faces-btn:focus {
+	color: #686868;
 	background-color: #334885;
 	border-color:  rgba(255,255,255,0.3);
 }
 
 .faces-btn:hover {
 	background-color: #1F2B50;
-	color: #FFFFFF;
+	color: #686868;
 	border-color:  rgba(255,255,255,0.3);
 }
 
 .input-group-addon {
 	background-color: #334885;
+	color: #686868;
+}
+
+.faces-container {
+	max-width: 60em;
+	width: 95%;
+}*/
+.faces-btn, .faces-btn:focus {
+	color: #686868;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-width: .1em;
+	border-color: #333;
+	border-radius: .5em;
+}
+
+.faces-btn:hover {
+	background-color: #333;
+	color: #FFFFFF;
+	border-style: solid;
+	border-width: .1em;
+	border-color: #333;
+	border-radius: .5em;
+}
+
+.input-group-addon {
+	background-color: #333;
 	color: #FFFFFF;
 }
 
@@ -20,12 +47,27 @@
 	width: 95%;
 }
 
+.row-border {
+	border-style: solid;
+	border-width: .1em;
+	border-color: #333;
+	border-radius: .5em;
+
+	background-color: #17161C;
+	margin-top: .25em;
+	margin-bottom: .25em;
+}
+
 body {
 	/* background: url("/home/waterfall.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover; */
+}
+
+h1 {
+	font-size: 350%;
 }
 
 h2 {
@@ -39,6 +81,10 @@ h5 {
 }
 
 p {
-	color: #686868;
+	color: #FFFFFF;
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+div {
+	color: #686868;
 }
