@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="search/search.css">
 
 <div class="container-fluid faces-container">
-	<div id="heading_div" class="row row-border" style="background-color: white;">
+	<div id="heading_div" class="row row-border" style="background-color: #434343;">
 		<div class="search-section-border">
 			<h2 id="search-heading">Search Results</h2>
 		</div>
@@ -9,13 +9,13 @@
 	<div id="resultsDiv" class="row row-border" align="center">
 		<h3>Users</h3>
 	</div>
-	<div class="row row-border" ng-repeat="user in users | filter: searchText" ng-hide="isCurrentUser" CONTINUE HERE!
+	<div class="row row-border" ng-repeat="user in users | filter: {FirstName: searchText}" ng-hide="isCurrentUser(user)">
 		<div>
-			<div class="col-lg-11"><h4 style="color: #FFFFFF">{{user.FirstName}} {{user.LastName}}</h4> <h6>From {{user.City}}, {{user.State}}</h6></div>
+			<div class="col-lg-11"><h4 style="color: #333">{{user.FirstName}} {{user.LastName}}</h4> <h6>From {{user.City}}, {{user.State}}</h6></div>
 		</div>
 		<div class="col-lg-1">
 			<button class="btn-sm faces-btn glyphicon glyphicon-plus" style="margin-top: 14px;" ng-click="addFriend(user)"></button>
 		</div>
 	</div>
-	<div class="col-lg-4 col-lg-offset-4" style="text-align: center;" ng-show="{{(users|filter:searchText).length == 0}}"><em>No results found.</em></div>
+	<div class="col-lg-4 col-lg-offset-4" style="text-align: center;" ng-show="{{(users|filter:searchText).length === 0}}"><em> No results found.</em></div>
 </div>
