@@ -107,7 +107,28 @@ namespace Faces.Models
             return model;
         }
 
-        //Create ParseFriendRequestModelToEntityHERE
+        public static Friends ParseFriendRequestModelToEntity(FriendModel model)
+        {
+            var entity = new Friends();
+            entity.Status = model.Status;
+            entity.ActionDate = model.ActionDate;
+            entity.Id = model.Id;
+            entity.User.FirstName = model.FirstName;
+            entity.User.LastName = model.LastName;
+            entity.User.ProfilePicture = model.ProfilePicture;
+            entity.User.Phone = model.Phone;
+            if (!String.IsNullOrEmpty(model.DateOfBirth))
+            {
+                entity.User.DateOfBirth = Convert.ToDateTime(model.DateOfBirth);
+            }
+            entity.User.Email = model.Email;
+            entity.User.City = model.City;
+            entity.User.AboutMe = model.AboutMe;
+            entity.User.Gender = model.Gender;
+            entity.User.State = model.State;
+
+            return entity;
+        }
 
         public static FriendModel ParseFriendEntityToModel(Friends entity)
         {
