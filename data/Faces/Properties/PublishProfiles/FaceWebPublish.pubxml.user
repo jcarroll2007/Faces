@@ -65,7 +65,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2014 18:00:46</publishTime>
     </File>
     <File Include="bin/Faces.dll">
-      <publishTime>11/12/2014 09:29:10</publishTime>
+      <publishTime>11/14/2014 21:26:48</publishTime>
     </File>
     <File Include="bin/FriendAppDataModel.dll">
       <publishTime>11/12/2014 09:29:08</publishTime>
@@ -170,7 +170,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2014 17:52:01</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>09/22/2014 15:20:35</publishTime>
+      <publishTime>11/12/2014 15:15:30</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>09/15/2014 17:51:42</publishTime>

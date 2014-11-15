@@ -76,15 +76,31 @@ namespace Faces.Controllers
         [ResponseType(typeof(Friends))]
         public IHttpActionResult PostFriends(Friends friends)
         {
+            var temp = new Friends();
+            temp = db.Friends.Where(c => 
+                (c.UserId == friends.UserId && c.FriendId == friends.FriendId) 
+                || (c.UserId == friends.FriendId && c.FriendId == friends.UserId)).SingleOrDefault();
+
+            if (temp != null)
+            {
+                return BadRequest("Friendship already exist");
+            }
+
+            friends.Status = FriendStatus.Friend;
+            friends.ActionDate = DateTime.Now;
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            friends.User = db.Users.Where(c => c.Id == friends.UserId).SingleOrDefault();
+            friends.Friend = db.Users.Where(c => c.Id == friends.FriendId).SingleOrDefault();
+
             db.Friends.Add(friends);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = friends.Id }, friends);
+            return Ok("Friendship created");
         }
 
         // DELETE: api/Friends/5

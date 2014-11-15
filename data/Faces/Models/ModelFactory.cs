@@ -35,6 +35,11 @@ namespace Faces.Models
                 userModelTemp.Friends.Add(ParseFriendEntityToModel(u));
             }
 
+            foreach (var u in entity.FriendRequest)
+            {
+                userModelTemp.Friends.Add(ParseFriendRequestEntityToModel(u));
+            }
+
             foreach (var w in entity.Post)
             {
                 userModelTemp.Post.Add(ParseWallEntityToModel(w));
@@ -81,17 +86,51 @@ namespace Faces.Models
             return userEntityTemp;
         }
 
+        public static FriendModel ParseFriendRequestEntityToModel(Friends entity)
+        {
+            var model = new FriendModel();
+            model.Status = entity.Status;
+            model.ActionDate = entity.ActionDate;
+            model.Id = entity.UserId;
+            model.FirstName = entity.User.FirstName;
+            model.LastName = entity.User.LastName;
+            model.ProfilePicture = entity.User.ProfilePicture;
+            model.Phone = entity.User.Phone;
+            model.DateOfBirth = entity.User.DateOfBirth.HasValue ? entity.User.DateOfBirth.Value.ToShortDateString() : null;
+            model.Email = entity.User.Email;
+            model.City = entity.User.City;
+            model.AboutMe = entity.User.AboutMe;
+            model.Gender = entity.User.Gender;
+            model.State = entity.User.State;
+
+
+            return model;
+        }
+
+        //Create ParseFriendRequestModelToEntityHERE
+
         public static FriendModel ParseFriendEntityToModel(Friends entity)
         {
             var model = new FriendModel();
             model.Status = entity.Status;
             model.ActionDate = entity.ActionDate;
             model.Id = entity.FriendId;
-            model.Email = entity.Friend.Email;
+            model.FirstName = entity.Friend.FirstName;
+            model.LastName = entity.Friend.LastName;
             model.ProfilePicture = entity.Friend.ProfilePicture;
+            model.Phone = entity.Friend.Phone;
+            model.DateOfBirth = entity.Friend.DateOfBirth.HasValue ? entity.Friend.DateOfBirth.Value.ToShortDateString() : null;
+            model.Email = entity.Friend.Email;
+            model.City = entity.Friend.City;
+            model.AboutMe = entity.Friend.AboutMe;
+            model.Gender = entity.Friend.Gender;
+            model.State = entity.Friend.State;
+
 
             return model;
         }
+
+        
 
         public static Friends ParseFriendModelToEntiy(FriendModel model)
         {
@@ -99,8 +138,19 @@ namespace Faces.Models
             entity.Status = model.Status;
             entity.ActionDate = model.ActionDate;
             entity.Id = model.Id;
-            entity.Friend.Email = model.Email;
+            entity.Friend.FirstName = model.FirstName;
+            entity.Friend.LastName = model.LastName;
             entity.Friend.ProfilePicture = model.ProfilePicture;
+            entity.Friend.Phone = model.Phone;
+            if (!String.IsNullOrEmpty(model.DateOfBirth))
+            {
+                entity.Friend.DateOfBirth = Convert.ToDateTime(model.DateOfBirth);
+            }
+            entity.Friend.Email = model.Email;
+            entity.Friend.City = model.City;
+            entity.Friend.AboutMe = model.AboutMe;
+            entity.Friend.Gender = model.Gender;
+            entity.Friend.State = model.State;
 
             return entity;
         }
