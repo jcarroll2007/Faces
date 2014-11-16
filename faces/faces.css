@@ -19,6 +19,13 @@
 	max-width: 60em;
 	width: 95%;
 }*/
+
+.logo{
+	min-height: 3em;	
+	min-width: 15em;
+	max-width: 15em;
+}
+
 .faces-btn, .faces-btn:focus {
 	color: #686868;
 	background-color: #FFFFFF;
