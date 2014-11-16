@@ -21,6 +21,10 @@ app.controller('LoginCtrl', ['$scope', 'routing', 'URLs', '$http', '$user',
 				console.log('Login Successful:' + user);
 				routing.change_view(URLs.ME);
 				$scope.loading = false;
+			})
+			.error(function() {
+				$scope.loading = false;
+				toastr.error('Incorrect password or email.');
 			});
 		};
 

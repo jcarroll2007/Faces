@@ -4,7 +4,8 @@ app.controller('MeCtrl' , [
 	'$scope', '$window', '$user', 'post', '$modal', 'WallPostService',
 	function($scope, $window, $user, post, $modal, WallPostService) {
 	$scope.user = $user.user;
-	$scope.posts = [];
+	$scope.posts = $user.user.Post;
+	$scope.friends = $user.user.Friends;
 
 	$scope.createNewPost = function (size) {
 		var modalInstance = $modal.open({

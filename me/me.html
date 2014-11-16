@@ -38,15 +38,21 @@
 		</div>
 	</div>
 
-	<div id="wall_div" class="me-section-border row row-border">
-		<div ng-repeat="post in posts">
-			{{post.Message}}
+	<div class="row">
+		<div class="col-lg-8 no-pad">
+			<div ng-repeat="post in posts" class="row-border no-pad">
+				{{post.Message}}
+			</div>
+		</div>  
+		<div class="row-border col-lg-4 margin-sm"> .. fix the margin here. 
+			<h4>Friends</h4>
 		</div>
-	</div>
-
-	<div id="friend_div" class="me-section-border row row-border">
-		<div ng-repeat="friend in friends">
-
+		<div class="col-lg-4 no-pad row-border ">
+			<div ng-repeat="friend in friends" class="pad">
+				<h5>{{friend.FirstName}} {{friend.LastName}}</h5>
+				<h6>From:</h6> {{friend.City}}, {{friend.State}}
+				<h6>Phone:</h6> {{friend.Phone}}
+			</div>
 		</div>
 	</div>
 </div>

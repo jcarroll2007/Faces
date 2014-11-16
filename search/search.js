@@ -23,13 +23,15 @@ app.controller('SearchCtrl', ['$scope',  '$rootScope', '$http', '$user',
 
 		$scope.addFriend = function(user) {
 			var friendship = {
-				UserId: $user.user.id,
-				FriendId: user.id
-			};
-			$http.post('http://robertryanmorris.com/services/FaceServices/api/Friend', friendship)
+				UserId: $user.user.Id,
+				FriendId: user.Id
+			};	
+			console.log(friendship);
+			$http.post('http://robertryanmorris.com/services/FaceServices/api/Friends', friendship)
 			.success(function() {
 				user.isFriend = true;
 				console.log(user);
+				toastr.error('Are you the six fingered man?');
 			});
 		};
 	}

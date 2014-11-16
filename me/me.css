@@ -58,3 +58,11 @@ textarea{
 #friend_div{
 	float: right;
 }
+
+.no-pad {
+	padding: 0px;
+}
+
+.pad {
+	padding: 5px;
+}
