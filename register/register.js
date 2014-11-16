@@ -136,7 +136,7 @@ app.service('registration', function($http, $user, routing, URLs) {
         $http.post('http://robertryanmorris.com/services/FaceServices/api/Users', $user.user)
         .success(function(data) {
             console.log('New user created succesfully.' + data);
-            routing.change_view(URLs.LOGIN)
+            //routing.change_view(URLs.LOGIN)
         });
     };
 });

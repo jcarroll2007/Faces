@@ -29,9 +29,12 @@ app.controller('SearchCtrl', ['$scope',  '$rootScope', '$http', '$user',
 			console.log(friendship);
 			$http.post('http://robertryanmorris.com/services/FaceServices/api/Friends', friendship)
 			.success(function() {
+				$http.get('http://robertryanmorris.com/services/FaceServices/api/users' + '/' + $user.user.Id)
+				.success(function(user) {
+					$user.user = user;
+					toastr.success('Friendship created successfully.');
+				});
 				user.isFriend = true;
-				console.log(user);
-				toastr.error('Are you the six fingered man?');
 			});
 		};
 	}
