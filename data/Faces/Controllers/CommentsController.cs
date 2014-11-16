@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FriendAppDataModel;
+using Faces.Models;
 
 namespace Faces.Controllers
 {
@@ -79,10 +80,15 @@ namespace Faces.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Comments.Add(comments);
-            db.SaveChanges();
+            comments.User = db.Users.Where(c => c.Id == comments.UserId).SingleOrDefault();
 
-            return CreatedAtRoute("DefaultApi", new { id = comments.Id }, comments);
+            db.Comments.Add(comments);
+            db.SaveChanges();         
+
+            var temp = new CommentModel();
+            temp = ModelFactory.ParseCommentEntityToModel(comments);
+
+            return CreatedAtRoute("DefaultApi", new { id = comments.Id }, temp);
         }
 
         // DELETE: api/Comments/5

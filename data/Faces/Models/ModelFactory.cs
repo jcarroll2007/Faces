@@ -181,7 +181,11 @@ namespace Faces.Models
             var model = new WallModel();
             model.Id = u.Id;
             model.UserId = u.UserId;
+            model.UserFirstName = u.User.FirstName;
+            model.UserLastName = u.User.LastName;
             model.PosterId = u.PosterId;
+            model.PosterFirstName = u.WhoPosted.FirstName;
+            model.PosterLastName = u.WhoPosted.LastName;
             model.Message = u.Message;
             model.Picture = u.Picture;
             model.PostTime = u.PostTime;
@@ -233,6 +237,8 @@ namespace Faces.Models
             model.CommentText = u.CommentText;
             model.CommentDatetime = u.CommentDatetime;
             model.UserId = u.UserId;
+            model.UserFirstName = u.User.FirstName;
+            model.UserLastName = u.User.LastName;
             model.WallId = u.WallId;
 
             return model;
