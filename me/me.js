@@ -21,13 +21,13 @@ app.controller('MeCtrl' , [
 				Message: newPostContent,
 				Picture: "",
 				PostTime: new Date(),
-				PosterId: 1
+				PosterId: $scope.user.Id
 			};
 			WallPostService.post(post).success(function(response) {
-				console.log(response);
-			});
-			WallPostService.getAll($scope.user.Id).success(function(data) {
-				$scope.posts = data;
+				WallPostService.getAll($scope.user.Id).success(function(data) {
+					$scope.posts = data;
+					toastr.success("Wall post created succesfully.")
+				});
 			});
 		});
 	}; //end createNewPost
@@ -48,6 +48,11 @@ app.controller('MeCtrl' , [
 			});
 		});
 	}; //end postNewPicture
+
+
+	$scope.addComment = function(post) {
+		console.log(post);
+	};
 
 	/********
 	editor control variables

@@ -66,3 +66,11 @@ textarea{
 .pad {
 	padding: 5px;
 }
+
+.margin-left-sm {
+	margin-left: 10px;
+}
+
+.no-pad-left {
+	padding-left: 0px;
+}

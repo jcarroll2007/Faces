@@ -1,92 +1,67 @@
 <link rel="stylesheet" type="text/css" href="me/me.css">
 
 <div ng-controller="MeCtrl" class="container-fluid faces-container">
-	<div id="name_div" class="row row-border" style="background-color: #434343;">
-			<h2 id="me-username-heading">{{user.FirstName}} {{user.LastName}}</h2>
-	</div>
+    <div id="name_div" class="row row-border" style="background-color: #434343;">
+            <h2 id="me-username-heading">{{user.FirstName}} {{user.LastName}}</h2>
+    </div>
 
-	<div id="info_div" class="row row-border">
-		<img id="user_photo" class="col-xs-3 profile-picture-lg" ng-src="{{user.ProfilePicture}}">
+    <div id="info_div" class="row row-border">
+        <img id="user_photo" class="col-xs-3 profile-picture-lg" ng-src="{{user.ProfilePicture}}">
 
-		<div class="col-md-9">
-			<h5>From: </h5><span ng-hide="fromEditOn">{{user.City}}, {{user.State}}</span>
-			<button id="fromEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="fromEditor()"/>
-			<input class="form-control" type="text" ng-model="user.City" ng-hide="!fromEditOn" ng-disabled="!fromEditOn"/>
+        <div class="col-md-9">
+            <h5>From: </h5><span ng-hide="fromEditOn">{{user.City}}, {{user.State}}</span>
+            <button id="fromEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="fromEditor()"/>
+            <input class="form-control" type="text" ng-model="user.City" ng-hide="!fromEditOn" ng-disabled="!fromEditOn"/>
 
-			<h5>Phone: </h5><span ng-hide="phoneEditOn">{{user.Phone}}</span>
-			<button id="phoneEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="phoneEditor()"/>
-		    <input id="phoneTextBox" type="text" ng-model="user.Phone" ng-hide="!phoneEditOn" ng-disabled="!phoneEditOn"/>
+            <h5>Phone: </h5><span ng-hide="phoneEditOn">{{user.Phone}}</span>
+            <button id="phoneEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="phoneEditor()"/>
+            <input id="phoneTextBox" type="text" ng-model="user.Phone" ng-hide="!phoneEditOn" ng-disabled="!phoneEditOn"/>
 
-			<h5>Birthday: </h5><span ng-hide="birthdayEditOn">{{user.DateOfBirth}}</span>
-			<button id="birthdayEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="birthdayEditor()"/>
-			<input ng-model="user.DateOfBirth" ng-hide="!birthdayEditOn" ng-disabled="!birthdayEditOn"/>
+            <h5>Birthday: </h5><span ng-hide="birthdayEditOn">{{user.DateOfBirth}}</span>
+            <button id="birthdayEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="birthdayEditor()"/>
+            <input ng-model="user.DateOfBirth" ng-hide="!birthdayEditOn" ng-disabled="!birthdayEditOn"/>
 
-			<h5>About: </h5><span ng-hide="aboutEditOn">{{user.AboutMe}}</span>
-			<button id="aboutEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="aboutEditor()"/> 
-			<textarea class="form-control" ng-model="user.AboutMe" type="text" rows="10" maxlength="140" ng-hide="!aboutEditOn" />
-		</div>
+            <h5>About: </h5><span ng-hide="aboutEditOn">{{user.AboutMe}}</span>
+            <button id="aboutEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="aboutEditor()"/> 
+            <textarea class="form-control" ng-model="user.AboutMe" type="text" rows="10" maxlength="140" ng-hide="!aboutEditOn" />
+        </div>
 
-		<button id="pictureEdit" ng-model="user.ProfilePicture" class="glyphicon glyphicon-pencil" title="Edit" ng-click="pictureEditor()"/>
-	</div>
+        <button id="pictureEdit" ng-model="user.ProfilePicture" class="glyphicon glyphicon-pencil" title="Edit" ng-click="pictureEditor()"/>
+    </div>
 
-	<div id="action_div" class="row row-border">
-		<div class="me-button-container col-xs-6">
-			<button class="btn btn-default faces-btn glyphicon glyphicon-align-left" title="New Post" ng-click="createNewPost()"></button>
-		</div>
-		<div class="me-button-container col-xs-6">
-			<button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo" ng-click="postNewPicture()"></button>
-		</div>
-	</div>
+    <div id="action_div" class="row row-border" style="margin-bottom: 10px; background-color: #434343;">
+        <div class="me-button-container col-xs-6">
+            <button class="btn btn-default faces-btn glyphicon glyphicon-align-left" title="New Post" ng-click="createNewPost()"></button>
+        </div>
+        <div class="me-button-container col-xs-6">
+            <button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo" ng-click="postNewPicture()"></button>
+        </div>
+    </div>
 
-	<div class="row">
-		<div class="col-lg-8 no-pad">
-			<div ng-repeat="post in posts" class="row-border no-pad">
-				{{post.Message}}
-			</div>
-		</div>  
-		<div class="row-border col-lg-4 margin-sm"> .. fix the margin here. 
-			<h4>Friends</h4>
-		</div>
-		<div class="col-lg-4 no-pad row-border ">
-			<div ng-repeat="friend in friends" class="pad">
-				<h5>{{friend.FirstName}} {{friend.LastName}}</h5>
-				<h6>From:</h6> {{friend.City}}, {{friend.State}}
-				<h6>Phone:</h6> {{friend.Phone}}
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-lg-8 no-pad-left">
+            <div class="panel panel-default" ng-repeat="post in posts" class="pad">
+                <div class="panel-heading">{{post.PosterFirstName}} {{post.PosterLastName}}</div>
+                <div class="panel-body">
+                    {{post.Message}}
+                </div>
+                <div class="panel-footer">
+                    <form ng-submit="addComment(post)" novalidate>
+                        <input type="text" class="form-control" placeholder="Comment" style="height: 28px;">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Friends -->
+        <div class="list-group col-lg-4 no-pad" style="border-radius: .5em; margin: 0px;">
+            <span href="#" class="list-group-item active" style="background-color: #434343; border-color: #434343; border-radius: .5em; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;"> Friends
+            </span>
+            <div ng-repeat="friend in friends" class="list-group-item">
+                <h5>{{friend.FirstName}} {{friend.LastName}}</h5>
+                <h6>From:</h6> {{friend.City}}, {{friend.State}}
+                <h6>Phone:</h6> {{friend.Phone}}
+            </div>
+        </div>
+    </div>
 </div>
-
-<!-- <div id="me-container">
-	<div class="container">
-		<div class="me-section-border row">
-			<h2 id="me-username-heading">{{user.firstName}} {{user.lastName}}</h2>
-		</div>
-		<div class="me-section-border row">
-			<img id="me-profile-picture" ng-src="{{user.profilePictureUrl}}">
-			<div id="user-information-container">
-				From:
-				<p>{{user.city}}, {{user.state}}</p>
-				Phone:
-				<p>{{user.phone}}</p>
-				Birthday:
-				<p>{{user.dateOfBirth}}</p>
-				About:
-				<p>{{user.aboutMe}} </p>
-			</div>
-		</div>
-
-		<div class="me-section-border row">
-			<div class="me-button-container col-md-6">
-				<button class="btn btn-default faces-btn glyphicon glyphicon-align-left" title="New Post"></button>
-			</div>
-			<div class="me-button-container col-md-6">
-				<button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo"></button>
-			</div>
-		</div>
-
-		<div ng-repeat="post in posts">
-			<div class="me-section-border row">{{post.textContent}}</div>
-		</div>
-	</div>
-</div> -->

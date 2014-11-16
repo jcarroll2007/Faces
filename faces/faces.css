@@ -53,9 +53,29 @@
 	border-color: #333;
 	border-radius: .5em;
 
-	background-color: #EEEEEE;
+	background-color: #FFFFFF;
 	margin-top: .25em;
 	margin-bottom: .25em;
+}
+
+.panel-default > .panel-heading {
+	background-color: #434343;
+	color: #FFFFFF;
+	border-style: solid;
+	border-width: .1em;
+	border-color: #333;
+	border-top-right-radius: .5em;
+	border-top-left-radius: .5em;
+}
+
+.panel {
+	border-radius: .5em;
+}
+
+.panel-footer {
+	border-bottom-right-radius: .5em;
+	border-bottom-left-radius: .5em;
+	background-color: #EEEEEE;
 }
 
 body {
