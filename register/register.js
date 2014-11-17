@@ -53,7 +53,7 @@ app.controller('RegisterCtrl', [
             url: 'http://robertryanmorris.com/Pictures/Profile',
             data: {myObj: $scope.myModelObj},
             file: file,
-            filename: $scope.username + ".jpg" 
+            filename: $scope.username + ".jpg"
         })
         .success(function() {
             console.log('File Uploaded Succesfully');
@@ -81,7 +81,7 @@ app.controller('RegisterCtrl', [
 
    /*
     * The following code controls the partial  that is displayed in the ng-include
-    * div on the register page. It also handles the changing of the partials. 
+    * div on the register page. It also handles the changing of the partials.
     * Partials Include: personal_info.html, about.html, profile_picture.html
     */
 
@@ -118,25 +118,30 @@ app.controller('RegisterCtrl', [
     };
 }]);
 
-app.service('registration', function($http, $user, routing, URLs) {
+app.service('registration', function($http, LoadingGif, routing, URLs) {
     this.addNewUser = function(new_user) {
-        $user.user.FirstName = new_user.first_name;
-        $user.user.LastName = new_user.last_name;
-        $user.user.Email =  new_user.email;
-        $user.user.Password = new_user.password;
-        $user.user.Phone = new_user.phone;
-        $user.user.DateOfBirth = new_user.date_of_birth;
-        $user.user.City = new_user.city;
-        $user.user.State = new_user.state;
-        $user.user.AboutMe = new_user.about_me;
+        LoadingGif.show();
+        var user = {};
 
-        console.log($user.user);
-//http://localhost:49517/
-//http://robertryanmorris.com/services/FaceServices/api/Users
-        $http.post('http://robertryanmorris.com/services/FaceServices/api/Users', $user.user)
+        user.FirstName = new_user.first_name;
+        user.LastName = new_user.last_name;
+        user.Email =  new_user.email;
+        user.Password = new_user.password;
+        user.Phone = new_user.phone;
+        user.DateOfBirth = new_user.date_of_birth;
+        user.City = new_user.city;
+        user.State = new_user.state;
+        user.AboutMe = new_user.about_me;
+
+        $http.post('http://robertryanmorris.com/services/FaceServices/api/Users', user)
         .success(function(data) {
-            console.log('New user created succesfully.' + data);
-            //routing.change_view(URLs.LOGIN)
+            LoadingGif.hide();
+            toastr.success('Welcome to Faces, please login to continue.');
+            routing.change_view(URLs.LOGIN);
+        })
+        .error(function(data) {
+            LoadingGif.hide();
+            toastr.error('An account has already been registered with that email address.');
         });
     };
 });

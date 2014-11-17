@@ -19,9 +19,15 @@
 	max-width: 60em;
 	width: 95%;
 }*/
+.loading-gif {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 1000;
+}
 
 .logo{
-	min-height: 3em;	
+	min-height: 3em;
 	min-width: 15em;
 	max-width: 15em;
 }

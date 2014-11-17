@@ -80,7 +80,7 @@ app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user
 
         // $interval(function() {
         //  console.log(user.user);
-        //  console.log($scope.activeUser); 
+        //  console.log($scope.activeUser);
         // }, 1000);
 
         $scope.search = function(size){
@@ -91,6 +91,14 @@ app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user
         $scope.logOut = function() {
             $scope.activeUser = null;
         };
+
+        $scope.loading = false;
+        $scope.$on("Loading", function() {
+            $scope.loading = true;
+        });
+        $scope.$on("LoadingDone", function() {
+            $scope.loading = false;
+        });
     }
 ]);
 
@@ -105,4 +113,17 @@ app.controller('searchModalCtrl', function($scope, $modalInstance){
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
+});
+
+app.service('LoadingGif', function($rootScope) {
+    loadingGif = {};
+
+    loadingGif.show = function() {
+        $rootScope.$broadcast('Loading');
+    };
+    loadingGif.hide = function() {
+        $rootScope.$broadcast('LoadingDone');
+    };
+
+    return loadingGif;
 });

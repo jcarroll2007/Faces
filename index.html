@@ -50,7 +50,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a id="navbar-home" class="navbar-brand" href="#/login">Faces</a>          
+          <a id="navbar-home" class="navbar-brand" href="#/login">Faces</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" ng-show="activeUser.FirstName">
@@ -71,6 +71,10 @@
               </ul>
             </li>
           </ul>
+        </div>
+
+        <div class="row-border" ng-if="loading">
+          <img src="static/photos/loading.gif" class="loading-gif">
         </div>
       </div>
     </nav>

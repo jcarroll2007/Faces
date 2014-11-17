@@ -1,7 +1,7 @@
 var app = angular.module('Faces_Search', ['ui.bootstrap', 'ngAnimate']);
 
-app.controller('SearchCtrl', ['$scope',  '$rootScope', '$http', '$user',
-	function($scope, $rootScope, $http, $user) {
+app.controller('SearchCtrl', ['$scope', 'LoadingGif',  '$http', '$user',
+	function($scope, LoadingGif, $http, $user) {
 		$scope.$on('Search', function(obj, searchParameter) {
 			$scope.searchText = searchParameter;
 			console.log(searchParameter);
@@ -22,19 +22,28 @@ app.controller('SearchCtrl', ['$scope',  '$rootScope', '$http', '$user',
 		};
 
 		$scope.addFriend = function(user) {
+			LoadingGif.show();
 			var friendship = {
 				UserId: $user.user.Id,
 				FriendId: user.Id
-			};	
+			};
 			console.log(friendship);
 			$http.post('http://robertryanmorris.com/services/FaceServices/api/Friends', friendship)
 			.success(function() {
 				$http.get('http://robertryanmorris.com/services/FaceServices/api/users' + '/' + $user.user.Id)
-				.success(function(user) {
-					$user.user = user;
-					toastr.success('Friendship created successfully.');
+				.success(function(updatedUser) {
+					LoadingGif.hide();
+					$user.user = updatedUser;
+					toastr.success('Friendship with ' + user.FirstName  + ' ' + user.LastName + ' created successfully.');
+				})
+				.error(function() {
+					toastr.error('There was a problem connecting with the server.');
 				});
 				user.isFriend = true;
+			})
+			.error(function(data) {
+				LoadingGif.hide();
+				toastr.error('Friendship already exists.');
 			});
 		};
 	}
