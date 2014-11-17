@@ -28,7 +28,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-8 no-pad-left">
+        <div class="col-xs-8 no-pad-left">
             <div class="panel panel-default" ng-repeat="post in friend.Post | reverse" class="pad">
                 <div class="panel-heading">{{post.PosterFirstName}} {{post.PosterLastName}} <span style="float: right;">{{post.PostTime | date:'M/d/yy h:mm'}}</span></div>
                 <div class="panel-body">
@@ -47,7 +47,7 @@
         </div>
 
         <!-- Friends -->
-        <div class="list-group col-lg-4 no-pad" style="border-radius: .5em; margin: 0px;">
+        <div class="list-group col-xs-4 no-pad" style="border-radius: .5em; margin: 0px;">
             <span href="#" class="list-group-item active" style="background-color: #434343; border-color: #434343; border-radius: .5em; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;"> Friends
             </span>
             <div ng-repeat="friend in friend.Friends | orderBy: 'FirstName'" class="list-group-item">

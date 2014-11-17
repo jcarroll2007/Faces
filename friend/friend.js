@@ -1,8 +1,31 @@
 var app = angular.module('Faces_Friend', ['ui.bootstrap', 'ngAnimate'])
 
-.controller('FriendCtrl', function($scope, FriendView, $http, $user, $modal, WallPostService) {
+.controller('FriendCtrl', function($scope, FriendView, $http, $user, $modal, WallPostService, routing, URLs, $location, $anchorScroll) {
 	$scope.friend = FriendView.friend;
 	console.log($scope.friend);
+	$scope.toTopOfPage = function() {
+		// set the location.hash to the id of
+		// the element you wish to scroll to.
+		$location.hash('top');
+
+		// call $anchorScroll()
+		$anchorScroll();
+    };
+	$scope.toTopOfPage();
+
+	$scope.viewFriend = function(friend) {
+		if (friend.Email !== $user.user.Email) {
+			FriendView.show(friend).then(function() {
+				$scope.friend = FriendView.friend;
+				$scope.toTopOfPage();
+
+			});
+		}
+		else {
+			routing.change_view(URLs.ME);
+			$scope.toTopOfPage();
+		}
+	};
 
 	$scope.createNewPost = function (size) {
 		var modalInstance = $modal.open({
@@ -55,7 +78,7 @@ var app = angular.module('Faces_Friend', ['ui.bootstrap', 'ngAnimate'])
 
 	friendView.show = function(user) {
 		LoadingGif.show();
-		$http.get('http://robertryanmorris.com/services/FaceServices/api/users' + '/' + user.Id)
+		return $http.get('http://robertryanmorris.com/services/FaceServices/api/users' + '/' + user.Id)
 				.success(function(updatedUser) {
 					LoadingGif.hide();
 					friendView.friend = updatedUser;
