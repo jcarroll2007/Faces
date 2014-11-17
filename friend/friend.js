@@ -28,6 +28,26 @@ var app = angular.module('Faces_Friend', ['ui.bootstrap', 'ngAnimate'])
 			});
 		});
 	}; //end createNewPost
+
+	$scope.addComment = function(post) {
+		var newComment = {
+			CommentText: post.commentText,
+			CommentDatetime: new Date(),
+			UserId: $user.user.Id,
+			WallId: post.Id
+		};
+		$http.post('http://robertryanmorris.com/services/FaceServices/api/Comments', newComment)
+		.success(function(response) {
+			console.log(response);
+			newComment.UserFirstName = $user.user.FirstName;
+			newComment.UserLastName = $user.user.LastName;
+			post.Comments.push(newComment);
+			post.commentText = "";
+		})
+		.error(function() {
+			toastr.error('There was a problem communicating witht the server.');
+		});
+	};
 })
 
 .service('FriendView', function(routing, URLs, $rootScope, LoadingGif, $http) {

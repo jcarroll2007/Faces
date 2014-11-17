@@ -30,13 +30,17 @@
     <div class="row">
         <div class="col-lg-8 no-pad-left">
             <div class="panel panel-default" ng-repeat="post in friend.Post | reverse" class="pad">
-                <div class="panel-heading">{{post.PosterFirstName}} {{post.PosterLastName}} {{post.Date}}</div>
+                <div class="panel-heading">{{post.PosterFirstName}} {{post.PosterLastName}} <span style="float: right;">{{post.PostTime | date:'M/d/yy h:mm'}}</span></div>
                 <div class="panel-body">
-                    {{post.Message}}
+                    <div style="margin-bottom: 7px;" class="border-left-lite">{{post.Message}}</div>
+                    <div ng-repeat="comment in post.Comments" class="border-lite">
+                        <h6>{{comment.UserFirstName}} {{comment.UserLastName}} <span style="float: right;">{{comment.CommentDatetime | date: 'M/d/yy h:mm'}}</span></h6>
+                        <div style="padding-left: 8px;"><span>{{comment.CommentText}}</span></div>
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <form ng-submit="addComment(post)" novalidate>
-                        <input type="text" class="form-control" placeholder="Comment" style="height: 28px;">
+                        <input type="text" class="form-control" placeholder="Comment" style="height: 28px;" ng-model="post.commentText">
                     </form>
                 </div>
             </div>
@@ -46,8 +50,8 @@
         <div class="list-group col-lg-4 no-pad" style="border-radius: .5em; margin: 0px;">
             <span href="#" class="list-group-item active" style="background-color: #434343; border-color: #434343; border-radius: .5em; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;"> Friends
             </span>
-            <div ng-repeat="friend in friend.Friends | orderBy: FirstName" class="list-group-item">
-                <h5>{{friend.FirstName}} {{friend.LastName}}</h5>
+            <div ng-repeat="friend in friend.Friends | orderBy: 'FirstName'" class="list-group-item">
+                <button class="btn-sm faces-btn" ng-click="viewFriend(friend)"><span class="glyphicon glyphicon-user"></span>&nbsp;{{friend.FirstName}} {{friend.LastName}}</button>
                 <h6>From:</h6> {{friend.City}}, {{friend.State}}
                 <h6>Phone:</h6> {{friend.Phone}}
             </div>

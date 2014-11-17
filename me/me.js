@@ -1,8 +1,8 @@
 var app = angular.module('Faces_Me', ['ui.bootstrap', 'ngAnimate']);
 
 app.controller('MeCtrl' , [
-	'$scope', '$window', '$user', 'post', '$modal', 'WallPostService', 'FriendView',
-	function($scope, $window, $user, post, $modal, WallPostService, FriendView) {
+	'$scope', '$window', '$user', 'post', '$modal', 'WallPostService', 'FriendView', '$http',
+	function($scope, $window, $user, post, $modal, WallPostService, FriendView, $http) {
 	$scope.user = $user.user;
 	$scope.posts = $user.user.Post;
 	$scope.friends = $user.user.Friends;
@@ -51,7 +51,23 @@ app.controller('MeCtrl' , [
 
 
 	$scope.addComment = function(post) {
-		console.log(post);
+		var newComment = {
+			CommentText: post.commentText,
+			CommentDatetime: new Date(),
+			UserId: $user.user.Id,
+			WallId: post.Id
+		};
+		$http.post('http://robertryanmorris.com/services/FaceServices/api/Comments', newComment)
+		.success(function(response) {
+			console.log(response);
+			newComment.UserFirstName = $user.user.FirstName;
+			newComment.UserLastName = $user.user.LastName;
+			post.Comments.push(newComment);
+			post.commentText = "";
+		})
+		.error(function() {
+			toastr.error('There was a problem communicating witht the server.');
+		});
 	};
 
 	$scope.viewFriend = function(user) {
