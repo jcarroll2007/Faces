@@ -66,8 +66,8 @@ app.factory('routing', ['$location', function($location) {
     return routing;
 }]);
 
-app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user', '$interval', 'routing', 'URLs', '$http',
-    function($scope, $rootScope, $window, $modal, $user, $interval, routing, URLs, $http){
+app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user', '$interval', 'routing', 'URLs', '$http', 'users', 'SearchParameter',
+    function($scope, $rootScope, $window, $modal, $user, $interval, routing, URLs, $http, users, SearchParameter){
 
         /*
          * Automatic login for debug only
@@ -95,8 +95,8 @@ app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user
         // }, 1000);
 
         $scope.search = function(size){
+            SearchParameter.text = $scope.searchParameter;
             routing.change_view(URLs.SEARCH);
-            $rootScope.$broadcast('Search', $scope.searchParameter);
         };
 
         $scope.logOut = function() {

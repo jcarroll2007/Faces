@@ -14,7 +14,8 @@
 			<div class="col-lg-11"><h4 style="color: #333">{{user.FirstName}} {{user.LastName}}</h4> <h6>From {{user.City}}, {{user.State}}</h6></div>
 		</div>
 		<div class="col-lg-1">
-			<button class="btn-sm faces-btn glyphicon glyphicon-plus" style="margin-top: 14px;" ng-click="addFriend(user)"></button>
+			<button class="btn-sm faces-btn glyphicon glyphicon-plus"  ng-click="addFriend(user)" ng-hide="isFriend(user);" style="margin-top: 14px;"></button>
+			<span class="glyphicon glyphicon-ok btn-sm btn-success" ng-show="isFriend(user)" style="margin-top: 14px;"></span>
 		</div>
 	</div>
 	<div class="col-lg-4 col-lg-offset-4" style="text-align: center;" ng-show="{{(users|filter:searchText).length === 0}}"><em> No results found.</em></div>

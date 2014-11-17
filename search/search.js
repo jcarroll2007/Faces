@@ -1,25 +1,36 @@
 var app = angular.module('Faces_Search', ['ui.bootstrap', 'ngAnimate']);
 
-app.controller('SearchCtrl', ['$scope', 'LoadingGif',  '$http', '$user',
-	function($scope, LoadingGif, $http, $user) {
-		$scope.$on('Search', function(obj, searchParameter) {
-			$scope.searchText = searchParameter;
-			console.log(searchParameter);
-		});
-		$scope.users = [];
-		$scope.updateUsers = function() {
-			$http.get('http://robertryanmorris.com/services/FaceServices/api/users').success(function(users) {
-				$scope.users = users;
-				console.log(users);
-			});
-		}();
+app.controller('SearchCtrl', ['$scope', 'LoadingGif',  '$http', '$user', 'users', 'SearchParameter', '$filter',
+	function($scope, LoadingGif, $http, $user, users, SearchParameter, $filter) {
+		$scope.users = users.getAll();
+
 		$scope.searchText = function() {
 			return "";
 		};
+		console.log($scope.searchText());
+		$scope.searchText = SearchParameter.text;
+		console.log($scope.searchText);
 
 		$scope.isCurrentUser = function(user) {
 			return (user.Email === $user.user.Email);
 		};
+
+		$scope.isFriend = function(friend) {
+			// if friend in $user.user.Friends
+			if (($filter('filter')($user.user.Friends, {Email: friend.Email})).length === 1)
+			{
+				console.log('isFriend');
+				console.log(friend.Email);
+				return true;
+			}
+			return false;
+		};
+
+		$scope.$watch(function() {
+			return SearchParameter.text;
+		}, function(oldVal, newVal) {
+			$scope.searchText = searchParameter.text;
+		}, true);
 
 		$scope.addFriend = function(user) {
 			LoadingGif.show();
@@ -48,3 +59,29 @@ app.controller('SearchCtrl', ['$scope', 'LoadingGif',  '$http', '$user',
 		};
 	}
 ]);
+
+app.service('SearchParameter', function() {
+	searchParameter = {};
+	searchParameter.text = "";
+	return searchParameter;
+});
+
+app.service('users', function($http) {
+	usersService = {};
+
+	usersService.updatedUsers = function() {
+		return $http.get('http://robertryanmorris.com/services/FaceServices/api/users');
+	};
+
+	usersService.updatedUsers()
+	.success(function(response) {
+		usersService.users = response;
+		console.log(response);
+	});
+
+	usersService.getAll = function() {
+		return usersService.users;
+	};
+
+	return usersService;
+});
