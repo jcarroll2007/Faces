@@ -7,6 +7,7 @@ var app = angular.module('Faces', [
     'Faces_Register',
     'Faces_Me',
     'Faces_Search',
+    'Faces_Friend',
     'tests',
     'User',
     'post'
@@ -48,7 +49,7 @@ app.config(['$routeProvider', 'URLs',
         }).
         when(URLs.FRIEND, {
             templateUrl: 'friend/friend.html',
-            controller: "FriendsCtrl"
+            controller: "FriendCtrl"
         }).
         otherwise({
             redirectTo: URLs.LOGIN
@@ -65,8 +66,18 @@ app.factory('routing', ['$location', function($location) {
     return routing;
 }]);
 
-app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user', '$interval', 'routing', 'URLs',
-    function($scope, $rootScope, $window, $modal, $user, $interval, routing, URLs){
+app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user', '$interval', 'routing', 'URLs', '$http',
+    function($scope, $rootScope, $window, $modal, $user, $interval, routing, URLs, $http){
+
+        /*
+         * Automatic login for debug only
+         */
+        $http.post('http://robertryanmorris.com/services/FaceServices/api/Login', { uname: 'jcarroll2007@gmail.com', pass: 'faces'})
+        .success(function(user) {
+            $user.user = user;
+            $scope.activeUser = $user.user;
+        });
+
         $scope.searchContent = "";
         $scope.activeUser = function() {
             return $user.user;

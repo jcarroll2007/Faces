@@ -1,8 +1,8 @@
 var app = angular.module('Faces_Me', ['ui.bootstrap', 'ngAnimate']);
 
 app.controller('MeCtrl' , [
-	'$scope', '$window', '$user', 'post', '$modal', 'WallPostService',
-	function($scope, $window, $user, post, $modal, WallPostService) {
+	'$scope', '$window', '$user', 'post', '$modal', 'WallPostService', 'FriendView',
+	function($scope, $window, $user, post, $modal, WallPostService, FriendView) {
 	$scope.user = $user.user;
 	$scope.posts = $user.user.Post;
 	$scope.friends = $user.user.Friends;
@@ -26,7 +26,7 @@ app.controller('MeCtrl' , [
 			WallPostService.post(post).success(function(response) {
 				WallPostService.getAll($scope.user.Id).success(function(data) {
 					$scope.posts = data;
-					toastr.success("Wall post created succesfully.")
+					toastr.success("Wall post created succesfully.");
 				});
 			});
 		});
@@ -54,6 +54,10 @@ app.controller('MeCtrl' , [
 		console.log(post);
 	};
 
+	$scope.viewFriend = function(user) {
+		FriendView.show(user);
+	};
+
 	/********
 	editor control variables
 	*********/
@@ -67,11 +71,11 @@ app.controller('MeCtrl' , [
 		$scope.fromEditOn = !$scope.fromEditOn;
 	};
 
-	$scope.phoneEditor = function(){		
+	$scope.phoneEditor = function(){
 		$scope.phoneEditOn = !$scope.phoneEditOn;
 	};
 
-	$scope.birthdayEditor = function(){		
+	$scope.birthdayEditor = function(){
 		$scope.birthdayEditOn = !$scope.birthdayEditOn;
 	};
 
@@ -80,7 +84,7 @@ app.controller('MeCtrl' , [
 	};
 
 	$scope.pictureEditor = function(){
-		
+
 	};
 }]);
 
@@ -105,4 +109,10 @@ app.controller('newModalCtrl', function($scope, $modalInstance) {
 	$scope.cancel = function () {
 		$modalInstance.dismiss('cancel');
 	};
+});
+
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
 });

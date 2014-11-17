@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="me/me.css">
 
-<div ng-controller="MeCtrl" class="container-fluid faces-container">
+<div class="container-fluid faces-container">
     <div id="name_div" class="row row-border" style="background-color: #434343;">
             <h2 id="me-username-heading">{{user.FirstName}} {{user.LastName}}</h2>
     </div>
@@ -22,7 +22,7 @@
             <input ng-model="user.DateOfBirth" ng-hide="!birthdayEditOn" ng-disabled="!birthdayEditOn"/>
 
             <h5>About: </h5><span ng-hide="aboutEditOn">{{user.AboutMe}}</span>
-            <button id="aboutEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="aboutEditor()"/> 
+            <button id="aboutEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="aboutEditor()"/>
             <textarea class="form-control" ng-model="user.AboutMe" type="text" rows="10" maxlength="140" ng-hide="!aboutEditOn" />
         </div>
 
@@ -40,10 +40,13 @@
 
     <div class="row">
         <div class="col-lg-8 no-pad-left">
-            <div class="panel panel-default" ng-repeat="post in posts" class="pad">
-                <div class="panel-heading">{{post.PosterFirstName}} {{post.PosterLastName}} {{post.Date}}</div>
+            <div class="panel panel-default" ng-repeat="post in posts | reverse" class="pad">
+                <div class="panel-heading">{{post.PosterFirstName}} {{post.PosterLastName}} <span style="float: right;">{{post.PostTime | date:'short'}}</span></div>
                 <div class="panel-body">
                     {{post.Message}}
+                    <div ng-repeat="comment in post.Comments">
+                        {{comment}}
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <form ng-submit="addComment(post)" novalidate>
@@ -57,8 +60,8 @@
         <div class="list-group col-lg-4 no-pad" style="border-radius: .5em; margin: 0px;">
             <span href="#" class="list-group-item active" style="background-color: #434343; border-color: #434343; border-radius: .5em; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;"> Friends
             </span>
-            <div ng-repeat="friend in friends" class="list-group-item">
-                <h5>{{friend.FirstName}} {{friend.LastName}}</h5>
+            <div ng-repeat="friend in friends | orderBy: 'FirstName'" class="list-group-item">
+                <button class="btn-sm faces-btn" ng-click="viewFriend(friend)">{{friend.FirstName}} {{friend.LastName}}</button>
                 <h6>From:</h6> {{friend.City}}, {{friend.State}}
                 <h6>Phone:</h6> {{friend.Phone}}
             </div>

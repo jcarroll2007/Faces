@@ -1,29 +1,56 @@
-<link rel="stylesheet" type="text/css" href="friend/friend.css">
+<link rel="stylesheet" type="text/css" href="me/me.css">
+<div class="container-fluid faces-container">
+    <div id="name_div" class="row row-border" style="background-color: #434343;">
+            <h2 id="me-username-heading">{{friend.FirstName}} {{friend.LastName}}</h2>
+    </div>
 
-<div ng-controller="FriendsCtrl" class="container-fluid faces-container" id="friend-controls-container">
+    <div id="info_div" class="row row-border">
+        <img id="user_photo" class="col-xs-3 profile-picture-lg" ng-src="{{friend.ProfilePicture}}">
 
-	<div id="name_div" class="row row-border">
-		<div class="user-section-border">
-			<h2 id="friend-username-heading">{{friend.FirstName}} {{friend.LastName}}</h2>
-		</div>
-	</div>
+        <div class="col-md-9">
+            <h5>From: </h5><span ng-hide="fromEditOn">{{friend.City}}, {{friend.State}}</span>
 
-	<div id="info_div" class="row row-border">
-		<img id="friend_photo" class="col-xs-3 profile-picture-lg" ng-src="{{friend.ProfilePicture}}">
-		<div class="col-md-9">
-			From:
-			<p>{{friend.City}}, {{friend.State}}</p>
-			Phone:
-			<p>{{friend.Phone}}</p>
-			Birthday:
-			<p>{{friend.DateOfBirth}}</p>
-			About:
-			<p>{{friend.AboutMe}} </p>
-		</div>
-	</div>	
+            <h5>Phone: </h5><span ng-hide="phoneEditOn">{{friend.Phone}}</span>
 
-	<div id="action_div" class="row row-border">
-		
-	</div>	
+            <h5>Birthday: </h5><span ng-hide="birthdayEditOn">{{friend.DateOfBirth}}</span>
 
+            <h5>About: </h5><span ng-hide="aboutEditOn">{{friend.AboutMe}}</span>
+        </div>
+    </div>
+
+    <div id="action_div" class="row row-border" style="margin-bottom: 10px; background-color: #434343;">
+        <div class="me-button-container col-xs-6">
+            <button class="btn btn-default faces-btn glyphicon glyphicon-align-left" title="New Post" ng-click="createNewPost()"></button>
+        </div>
+        <div class="me-button-container col-xs-6">
+            <button class="btn btn-default faces-btn glyphicon glyphicon-picture" title="Post Photo" ng-click="postNewPicture()"></button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 no-pad-left">
+            <div class="panel panel-default" ng-repeat="post in friend.Post | reverse" class="pad">
+                <div class="panel-heading">{{post.PosterFirstName}} {{post.PosterLastName}} {{post.Date}}</div>
+                <div class="panel-body">
+                    {{post.Message}}
+                </div>
+                <div class="panel-footer">
+                    <form ng-submit="addComment(post)" novalidate>
+                        <input type="text" class="form-control" placeholder="Comment" style="height: 28px;">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Friends -->
+        <div class="list-group col-lg-4 no-pad" style="border-radius: .5em; margin: 0px;">
+            <span href="#" class="list-group-item active" style="background-color: #434343; border-color: #434343; border-radius: .5em; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;"> Friends
+            </span>
+            <div ng-repeat="friend in friend.Friends | orderBy: FirstName" class="list-group-item">
+                <h5>{{friend.FirstName}} {{friend.LastName}}</h5>
+                <h6>From:</h6> {{friend.City}}, {{friend.State}}
+                <h6>Phone:</h6> {{friend.Phone}}
+            </div>
+        </div>
+    </div>
 </div>
