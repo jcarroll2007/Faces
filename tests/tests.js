@@ -6,7 +6,7 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
         link: function(scope, element, attrs) {
             var model = $parse(attrs.fileModel);
             var modelSetter = model.assign;
-            
+
             element.bind('change', function(){
                 scope.$apply(function(){
                     modelSetter(scope, element[0].files[0]);
@@ -19,10 +19,10 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 
 
 myApp.service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(file, uploadUrl){
+    this.uploadFileToUrl = function(file, uploadUrl, userId){
         var fd = new FormData();
         var filename = '1';
-        fd.userId = '2';
+        fd.userId = userId;
         fd.append(filename, file);
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
@@ -45,7 +45,7 @@ myApp.service('getImage', ['$http', function($http){
                 path: iPath
             }
         }).success(function (data,status){
-            
+
         });
     };
 }]);
@@ -54,7 +54,7 @@ myApp.service('getImage', ['$http', function($http){
 myApp.controller('TestsCtrl', [
     '$scope', 'fileUpload', '$http', 'getImage', '$user',
     function($scope, fileUpload, $http, getImage, $user){
-    
+
     $scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
@@ -67,7 +67,7 @@ myApp.controller('TestsCtrl', [
         var imagePath = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
         getImage.getFileFromPath(imagePath);
     };
-    
+
     var testUser = {};
     testUser.Email = "ryanmorris793@gmail.com";
     testUser.Password = "123";
@@ -84,7 +84,7 @@ myApp.controller('TestsCtrl', [
     $scope.loginTestUser = function() {
         $user.user = testUser;
     };
-    
+
 }]);
 
 /*
@@ -144,16 +144,16 @@ app.factory('test_web_services', ['$http', function($http) {
         });
     };
 
-    
-    test_web_services.onFileSelect = function(file) { 
+
+    test_web_services.onFileSelect = function(file) {
         var fd = new FormData();
         fd.append("file", file);
         $http.post('http://localhost:49517/api/ProfilePicture', fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined }
         })};
-        
-    
+
+
 
     return test_web_services;
 }]);

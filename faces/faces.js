@@ -72,11 +72,11 @@ app.controller('FacesCtrl', ['$scope', '$rootScope', '$window', '$modal', '$user
         /*
          * Automatic login for debug only
          */
-        $http.post('http://robertryanmorris.com/services/FaceServices/api/Login', { uname: 'jcarroll2007@gmail.com', pass: 'faces'})
-        .success(function(user) {
-            $user.user = user;
-            $scope.activeUser = $user.user;
-        });
+        // $http.post('http://robertryanmorris.com/services/FaceServices/api/Login', { uname: 'jcarroll2007@gmail.com', pass: 'faces'})
+        // .success(function(user) {
+        //     $user.user = user;
+        //     $scope.activeUser = $user.user;
+        // });
 
         $scope.searchContent = "";
         $scope.activeUser = function() {
