@@ -54,6 +54,12 @@ myApp.service('getImage', ['$http', function($http){
 myApp.controller('TestsCtrl', [
     '$scope', 'fileUpload', '$http', 'getImage', '$user',
     function($scope, fileUpload, $http, getImage, $user){
+    $http.get('http://robertryanmorris.com/services/FaceServices/api/ProfilePicture', {path: 'D:/Hosting/11030611/html/services/faceservices/App_Data/profile/1.jpeg'})
+    .success(function(response) {
+        $scope.picture = response;
+        console.log(response);
+    });
+    $scope.picture = "";
 
     $scope.uploadFile = function(){
         var file = $scope.myFile;
