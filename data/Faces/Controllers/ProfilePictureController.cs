@@ -3,13 +3,17 @@ using FriendAppDataModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -22,19 +26,37 @@ namespace Faces.Controllers
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();
 
 
-        [System.Web.Http.AcceptVerbs("GET")]
-        [System.Web.Http.HttpGet]
-        public HttpResponseMessage Get(String path)
-        {
-            var fileStream = new FileStream(path, FileMode.Open);
-            var resp = new HttpResponseMessage()
-            {
-                Content = new StreamContent(fileStream)
-            };
-            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
+        //[System.Web.Http.AcceptVerbs("GET")]
+        //[System.Web.Http.HttpGet]
+        //public HttpResponseMessage Get(String path)
+        //{
+        //    var result = new HttpResponseMessage(HttpStatusCode.OK);
+        //    //String filePath = HostingEnvironment.MapPath("~/Images/HT.jpg");
+        //    FileStream fileStream = new FileStream(path, FileMode.Open);
+        //    Image image = Image.FromStream(fileStream);
+        //    MemoryStream memoryStream = new MemoryStream();
+        //    image.Save(memoryStream, ImageFormat.Jpeg);
+        //    //string binary64 = ImageToBase64(image, ImageFormat.Jpeg);
+        //    result.Content = new ByteArrayContent(memoryStream.ToArray());
+        //    result.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+ 
+        //    return result;
+        //}
 
-            return resp;
-        }
+        //public string ImageToBase64(Image image,
+        //System.Drawing.Imaging.ImageFormat format)
+        //{
+        //    using (MemoryStream ms = new MemoryStream())
+        //    {
+        //        // Convert Image to byte[]
+        //        image.Save(ms, format);
+        //        byte[] imageBytes = ms.ToArray();
+
+        //        // Convert byte[] to Base64 String
+        //        string base64String = Convert.ToBase64String(imageBytes);
+        //        return base64String;
+        //    }
+        //}
 
         public async Task<HttpResponseMessage> PostFormData()
         {
@@ -44,7 +66,8 @@ namespace Faces.Controllers
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
             //    ~/App_Data/profile
-            string root = HttpContext.Current.Server.MapPath("~/App_Data/profile");
+            //string root = HttpContext.Current.Server.MapPath("~/App_Data/profile");
+            string root = HttpContext.Current.Server.MapPath("/services/pictures/profile");
             //string root = HttpContext.Current.Server.MapPath("~/App_Data");
             var provider = new MultipartFormDataStreamProvider(root);
 
@@ -69,6 +92,8 @@ namespace Faces.Controllers
                     var userId = Convert.ToInt32(filename);
                     filename += ".jpeg";
 
+                    string tempUrl = "http://robertryanmorris.com/services/pictures/profile/" + filename;
+
                     if (File.Exists(Path.Combine(root, filename).ToString()))
                     {
                         File.Delete(Path.Combine(root, filename).ToString());
@@ -77,10 +102,11 @@ namespace Faces.Controllers
                     File.Move(file.LocalFileName, Path.Combine(root, filename));
 
                     var user = db.Users.Where(c => c.Id == userId).FirstOrDefault();
-                    user.ProfilePicture = Path.Combine(root, filename);
+                    //user.ProfilePicture = Path.Combine(root, filename);
+                    user.ProfilePicture = tempUrl;
                     db.SaveChanges();
                    
-                    return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(root, filename).ToString());
+                    return Request.CreateResponse(HttpStatusCode.OK, tempUrl);
 
                     //Trace.WriteLine(file.Headers.ContentDisposition.FileName);
                     //Trace.WriteLine("Server file path: " + file.LocalFileName);
