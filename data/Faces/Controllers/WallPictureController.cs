@@ -41,7 +41,7 @@ namespace Faces.Controllers
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
             //    ~/App_Data/profile
-            string root = HttpContext.Current.Server.MapPath("~/App_Data/wall");
+            string root = HttpContext.Current.Server.MapPath("/services/pictures/wall");
             //string root = HttpContext.Current.Server.MapPath("~/App_Data");
             var provider = new MultipartFormDataStreamProvider(root);
 
@@ -65,6 +65,7 @@ namespace Faces.Controllers
 
                     var wallId = Convert.ToInt32(filename);
                     filename += ".jpeg";
+                    string tempUrl = "http://robertryanmorris.com/services/pictures/wall/" + filename;
 
                     if (File.Exists(Path.Combine(root, filename).ToString()))
                     {
@@ -74,10 +75,10 @@ namespace Faces.Controllers
                     File.Move(file.LocalFileName, Path.Combine(root, filename));
 
                     var wall = db.Walls.Where(c => c.Id == wallId).FirstOrDefault();
-                    wall.Picture = Path.Combine(root, filename);
+                    wall.Picture = tempUrl;
                     db.SaveChanges();
 
-                    return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(root, filename).ToString());
+                    return Request.CreateResponse(HttpStatusCode.OK, tempUrl);
 
                     //Trace.WriteLine(file.Headers.ContentDisposition.FileName);
                     //Trace.WriteLine("Server file path: " + file.LocalFileName);
