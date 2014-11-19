@@ -8,8 +8,8 @@ app.constant('partial_file_paths', {
 });
 
 app.controller('RegisterCtrl', [
-    '$scope', 'partial_file_paths', '$upload', 'registration',
-    function($scope, partial_file_paths, $upload, registration) {
+    '$scope', 'partial_file_paths', '$upload', 'registration', 'hashpass',
+    function($scope, partial_file_paths, $upload, registration, hashpass) {
 
     // User Data
     $scope.user = {
@@ -118,7 +118,7 @@ app.controller('RegisterCtrl', [
     };
 }]);
 
-app.service('registration', function($http, LoadingGif, routing, URLs) {
+app.service('registration', function($http, LoadingGif, routing, URLs, hashpass) {
     this.addNewUser = function(new_user) {
         LoadingGif.show();
         var user = {};
@@ -126,7 +126,7 @@ app.service('registration', function($http, LoadingGif, routing, URLs) {
         user.FirstName = new_user.first_name;
         user.LastName = new_user.last_name;
         user.Email =  new_user.email;
-        user.Password = new_user.password;
+        user.Password = hashpass.encode(new_user.password);
         user.Phone = new_user.phone;
         user.DateOfBirth = new_user.date_of_birth;
         user.City = new_user.city;

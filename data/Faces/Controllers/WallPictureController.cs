@@ -19,19 +19,6 @@ namespace Faces.Controllers
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();
 
 
-        [System.Web.Http.AcceptVerbs("GET")]
-        [System.Web.Http.HttpGet]
-        public HttpResponseMessage Get(String path)
-        {
-            var fileStream = new FileStream(path, FileMode.Open);
-            var resp = new HttpResponseMessage()
-            {
-                Content = new StreamContent(fileStream)
-            };
-            resp.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpg");
-
-            return resp;
-        }
 
         public async Task<HttpResponseMessage> PostFormData()
         {
@@ -42,7 +29,6 @@ namespace Faces.Controllers
             }
             //    ~/App_Data/profile
             string root = HttpContext.Current.Server.MapPath("/services/pictures/wall");
-            //string root = HttpContext.Current.Server.MapPath("~/App_Data");
             var provider = new MultipartFormDataStreamProvider(root);
 
             try

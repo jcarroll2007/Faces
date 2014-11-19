@@ -1,7 +1,7 @@
 var app = angular.module('Faces_Login', []);
 
-app.controller('LoginCtrl', ['$scope', 'LoadingGif', 'routing', 'URLs', '$http', '$user',
-	function($scope, LoadingGif, routing, URLs, $http, $user) {
+app.controller('LoginCtrl', ['$scope', 'LoadingGif', 'routing', 'URLs', '$http', '$user', 'hashpass',
+	function($scope, LoadingGif, routing, URLs, $http, $user, hashpass) {
 
 		$scope.user	= $user.user;
 
@@ -15,6 +15,7 @@ app.controller('LoginCtrl', ['$scope', 'LoadingGif', 'routing', 'URLs', '$http',
 //http://robertryanmorris.com/services/FaceServices/api/Login
 		$scope.log_in = function() {
 			LoadingGif.show();
+			$scope.credentials.pass = hashpass.encode($scope.credentials.pass);
 			$http.post('http://robertryanmorris.com/services/FaceServices/api/Login', $scope.credentials)
 			.success(function(user) {
 				$user.user = user;
@@ -31,4 +32,6 @@ app.controller('LoginCtrl', ['$scope', 'LoadingGif', 'routing', 'URLs', '$http',
 		$scope.register = function() {
 			routing.change_view(URLs.REGISTER);
 		};
+
+
 }]);
