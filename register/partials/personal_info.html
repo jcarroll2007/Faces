@@ -2,7 +2,7 @@
 
 <div id="personal-information-conatiner">
     <form name="registerForm" novalidate>
-        <div class="input-group input-group-first">
+        <div class="input-group input-group-first row">
             <span class="input-group-addon">First Name</span>
             <input type="text" name="firstName" class="form-control" ng-minlength="1" ng-model="user.first_name" required/>
             <span ng-show="registerForm.firstName.$dirty">
@@ -14,7 +14,7 @@
             
         </div>
 
-        <div class="input-group">
+        <div class="input-group row">
             <span class="input-group-addon">Last Name</span>
             <input type="text" class="form-control" ng-minlength="1" ng-model="user.last_name" name="last_name" required/>
             <span ng-show="registerForm.last_name.$dirty">
@@ -25,7 +25,7 @@
             </span>
         </div>
 
-        <div class="input-group">
+        <div class="input-group row">
             <span class="input-group-addon">Email</span>
             <input type="email" class="form-control" name="email" ng-model="user.email" required>
             <span type="error" ng-show="registerForm.email.$dirty">
@@ -36,7 +36,7 @@
             </span>
         </div>
 
-        <div class="input-group">
+        <div class="input-group row">
             <span class="input-group-addon">Re-enter Email</span>
             <input type="email" class="form-control" ng-model="user.email_verification" name="email_verification" required>
             <span type="error" ng-show="registerForm.email_verification.$dirty">
@@ -47,7 +47,7 @@
             </span>
         </div>
 
-        <div class="input-group">
+        <div class="input-group row">
             <span class="input-group-addon">Password</span>
             <input type="password" class="form-control" minlength="6" ng-model="user.password" name="password" required>
             <span type="error" ng-show="registerForm.password.$dirty">
@@ -58,7 +58,7 @@
             </span>
         </div>
 
-        <div class="input-group">
+        <div class="input-group row">
             <span class="input-group-addon">Re-enter Password</span>
             <input type="password" class="form-control" ng-model="user.password_verification" name="password_verification" required>
             <span type="error" ng-show="registerForm.password_verification.$dirty">
@@ -69,10 +69,11 @@
             </span>
         </div>
 
-        <div class="input-group">
+        <div class="input-group row">
             <span class="input-group-addon">City & State</span>
             <input type="text" class="form-control form-city" ng-model="user.city" name="city"  ng-minlength="4">
-            <select name="state" ng-model="user.state">
+             <div class="input-group-btn">
+                <select name="state" ng-model="user.state" class="btn btn-default" style="border-top-left-radius: 0; border-bottom-left-radius: 0; height: 2.44em;">
                 <option value="AL" selected>AL</option>
                 <option value="AK">AK</option>
                 <option value="AZ">AZ</option>
@@ -125,6 +126,7 @@
                 <option value="WI">WI</option>
                 <option value="WY">WY</option>
             </select>
+            </div>
             <span type="error" ng-show="registerForm.city.$dirty || registerForm.state.$dirty">
                 <span ng-show="registerForm.city.$error.minlength || user.city.length == 0 || user.state == null" class="glyphicon glyphicon-remove form-validation-wrong">
                 </span>
@@ -133,7 +135,7 @@
             </span>
         </div>
 
-        <div class="input-group">
+        <div class="input-group row">
             <span class="input-group-addon">Phone</span>
             <input type="text" class="form-control" ng-model="user.phone" name="phone" ng-minlength="10" ng-maxlength="10" maxlength="10">
             <span type="error" ng-show="registerForm.phone.$dirty">
@@ -144,7 +146,7 @@
             </span> 
         </div>
         
-        <div class="input-group">
+        <div class="input-group row">
             <span class="input-group-addon">Gender</span>
             <section>
                 <label style="margin-left: 2em; margin-right: 2em;">Male
@@ -160,7 +162,7 @@
         </div>
         
 
-        <div class="input-group input-group-last">
+        <div class="input-group row input-group-last">
             <span class="input-group-addon">Birthdate</span>
             <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="user.date_of_birth" is-open="$parent.datepicker_opened" datepicker-options="date_options" ng-required="true" name="birthDate" close-text="Close"
             disabled/>
