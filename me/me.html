@@ -6,7 +6,7 @@
     </div>
 
     <div id="info_div" class="row row-border">
-        <img id="user_photo" class="col-xs-3 profile-picture-lg" ng-src="{{user.ProfilePicture}}">
+        <img id="user_photo" class="profile-picture-lg col-xs-3" ng-src="{{user.ProfilePicture}}">
 
         <div class="col-md-9">
             <h5>From: </h5><span ng-hide="fromEditOn">{{user.City}}, {{user.State}}</span>
@@ -25,8 +25,11 @@
             <button id="aboutEdit" class="glyphicon glyphicon-pencil" title="Edit" ng-click="aboutEditor()"/>
             <textarea class="form-control" ng-model="user.AboutMe" type="text" rows="10" maxlength="140" ng-hide="!aboutEditOn" />
         </div>
-        <!-- <input type="file" file-model="myFile"/>
-        <button ng-click="uploadFile()">Change Profile Photo</button> -->
+
+        <div class="col-xs-3 btn-group">
+            <input type="file" file-model="myFile" class="btn btn-default"/>
+            <button ng-click="uploadFile()" class="btn btn-default">Upload</button>
+        </div>
     </div>
 
     <div id="action_div" class="row row-border" style="margin-bottom: 10px; background-color: #434343;">

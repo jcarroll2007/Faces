@@ -21,14 +21,15 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
 myApp.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl, userId){
         var fd = new FormData();
-        var filename = '1';
+        var filename = userId;
         fd.userId = userId;
         fd.append(filename, file);
         $http.post(uploadUrl, fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
-        .success(function(){
+        .success(function(response){
+            toastr.success('Profile picture updated successfully. You may need to restart your browser in order for the change to apply.')
         })
         .error(function(){
         });

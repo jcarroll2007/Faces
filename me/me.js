@@ -11,7 +11,7 @@ app.controller('MeCtrl' , [
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
         var uploadUrl = "http://robertryanmorris.com/services/FaceServices/api/ProfilePicture";
-        fileUpload.uploadFileToUrl(file, uploadUrl);
+        fileUpload.uploadFileToUrl(file, uploadUrl, $user.user.Id);
     };
 
     $scope.createNewPost = function (size) {

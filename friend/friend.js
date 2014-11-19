@@ -2,6 +2,7 @@ var app = angular.module('Faces_Friend', ['ui.bootstrap', 'ngAnimate'])
 
 .controller('FriendCtrl', function($scope, FriendView, $http, $user, $modal, WallPostService, routing, URLs, $location, $anchorScroll) {
 	$scope.friend = FriendView.friend;
+	$scope.profilePicture = $scope.friend.ProfilePicture;
 	console.log($scope.friend);
 	$scope.toTopOfPage = function() {
 		// set the location.hash to the id of
@@ -18,7 +19,8 @@ var app = angular.module('Faces_Friend', ['ui.bootstrap', 'ngAnimate'])
 			FriendView.show(friend).then(function() {
 				$scope.friend = FriendView.friend;
 				$scope.toTopOfPage();
-
+				$scope.profilePicture = $scope.friend.ProfilePicture;
+				$scope.$apply();
 			});
 		}
 		else {
