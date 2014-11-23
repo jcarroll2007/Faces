@@ -47,10 +47,13 @@ app.controller('MeCtrl' , [
         });
 
         modalInstance.result.then(function (newPictureContent) {
-            //console.log(newPostContent);
+            console.log(newPictureContent);
             var newPicture = newPictureContent;
-            $scope.posts.push(newPicture);
-            WallPostService.post(newPicture).success(function(response) {
+            console.log('file is ' + JSON.stringify(newPicture));
+            var fd = new FormData();
+            var filename = $user.user.Id + ":" + $scope.user.Id;
+            fd.append(filename, newPicture);
+            WallPostService.uploadPhoto(fd).success(function(response) {
                 console.log(response);
             });
         });
@@ -118,6 +121,13 @@ app.service('WallPostService', function($http) {
 
     this.getAll = function(userId) {
         return $http.get('http://robertryanmorris.com/services/FaceServices/api/walls' + '/' + userId);
+    };
+
+    this.uploadPhoto = function(post) {
+        return $http.post('http://localhost:49517/api/WallPicture', post, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+    });
     };
 });
 

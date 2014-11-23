@@ -28,7 +28,8 @@ namespace Faces.Controllers
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
             //    ~/App_Data/profile
-            string root = HttpContext.Current.Server.MapPath("/services/pictures/wall");
+            string root = HttpContext.Current.Server.MapPath("~/App_Data/");
+            //string root = HttpContext.Current.Server.MapPath("/services/pictures/wall");
             var provider = new MultipartFormDataStreamProvider(root);
 
             try
