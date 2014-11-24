@@ -1,4 +1,5 @@
-﻿using FriendAppDataModel;
+﻿using Faces.Models;
+using FriendAppDataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,8 +51,18 @@ namespace Faces.Controllers
                         filename = Path.GetFileName(filename);
                     }
 
-                    var wallId = Convert.ToInt32(filename);
-                    filename += ".jpeg";
+                    string[] idholder = filename.Split(':');
+
+                    var newWall = new Wall();
+                    newWall.UserId = Convert.ToInt32(idholder[0]);
+                    newWall.PosterId = Convert.ToInt32(idholder[1]);
+                    newWall.PostTime = DateTime.Now;
+                    newWall.Message = "";
+                    db.Walls.Add(newWall);           
+                    db.SaveChanges();
+
+                    filename = newWall.Id + ".jpeg";
+
                     string tempUrl = "http://robertryanmorris.com/services/pictures/wall/" + filename;
 
                     if (File.Exists(Path.Combine(root, filename).ToString()))
@@ -61,8 +72,9 @@ namespace Faces.Controllers
 
                     File.Move(file.LocalFileName, Path.Combine(root, filename));
 
-                    var wall = db.Walls.Where(c => c.Id == wallId).FirstOrDefault();
-                    wall.Picture = tempUrl;
+                    newWall.Picture = tempUrl;
+
+                    
                     db.SaveChanges();
 
                     return Request.CreateResponse(HttpStatusCode.OK, tempUrl);

@@ -54,7 +54,10 @@ app.controller('MeCtrl' , [
             var filename = $user.user.Id + ":" + $scope.user.Id;
             fd.append(filename, newPicture);
             WallPostService.uploadPhoto(fd).success(function(response) {
-                console.log(response);
+                WallPostService.getAll($scope.user.Id).success(function(data) {
+                    $scope.posts = data;
+                    toastr.success("Wall post created succesfully.");
+                });
             });
         });
     }; //end postNewPicture
