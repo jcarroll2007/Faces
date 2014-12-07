@@ -20,7 +20,7 @@ using System.Web.Http.Cors;
 namespace Faces.Controllers
 {
     
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProfilePictureController : ApiController
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();

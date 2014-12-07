@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace Faces.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LoginController : ApiController
     {
         private FriendAppDataModelContainer db = new FriendAppDataModelContainer();
